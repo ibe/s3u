@@ -1,0 +1,15 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  value: MyString
+  criterion_type: MyString
+  operator: MyString
+  trial: 
+  datum: 
+
+two:
+  value: MyString
+  criterion_type: MyString
+  operator: MyString
+  trial: 
+  datum: 

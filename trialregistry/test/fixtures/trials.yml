@@ -1,0 +1,11 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  extId: MyString
+  description: MyString
+  recruitingTarget: 1
+
+two:
+  extId: MyString
+  description: MyString
+  recruitingTarget: 1

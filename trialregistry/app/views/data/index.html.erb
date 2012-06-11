@@ -1,0 +1,31 @@
+<h1>Listing data</h1>
+
+<table class="person">
+  <tr>
+    <th>Description</th>
+    <th>Segment</th>
+    <th>Composite</th>
+    <th>Subcomposite</th>
+    <th>Subsubcomposite</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @data.each do |datum| %>
+  <tr>
+    <td><%= datum.description %></td>
+    <td><%= datum.segment %></td>
+    <td><%= datum.composite %></td>
+    <td><%= datum.subcomposite %></td>
+    <td><%= datum.subsubcomposite %></td>
+    <td><%= link_to 'Show', datum %></td>
+    <td><%= link_to 'Edit', edit_datum_path(datum) %></td>
+    <td><%= link_to 'Destroy', datum, :confirm => 'Are you sure?', :method => :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Datum', new_datum_path %>

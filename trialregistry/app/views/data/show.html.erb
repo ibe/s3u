@@ -1,0 +1,30 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Description:</b>
+  <%= @datum.description %>
+</p>
+
+<p>
+  <b>Segment:</b>
+  <%= @datum.segment %>
+</p>
+
+<p>
+  <b>Composite:</b>
+  <%= @datum.composite %>
+</p>
+
+<p>
+  <b>Subcomposite:</b>
+  <%= @datum.subcomposite %>
+</p>
+
+<p>
+  <b>Subsubcomposite:</b>
+  <%= @datum.subsubcomposite %>
+</p>
+
+
+<%= link_to 'Edit', edit_datum_path(@datum) %> |
+<%= link_to 'Back', data_path %>

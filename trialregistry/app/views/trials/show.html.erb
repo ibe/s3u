@@ -1,0 +1,59 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Extid:</b>
+  <%= @trial.extId %>
+</p>
+
+<p>
+  <b>Description:</b>
+  <%= @trial.description %>
+</p>
+
+<p>
+  <b>Recruitingtarget:</b>
+  <%= @trial.recruitingTarget %>
+</p>
+
+<p>
+  <b>Recruiting Status:</b>
+  <%= @trial.recruiting_status %>
+</p>
+
+<p>
+  <b>PrenameInvestigator:</b>
+  <%= @trial.prenameInvestigator %>
+</p>
+
+<p>
+  <b>SurnameInvestigator:</b>
+  <%= @trial.surnameInvestigator %>
+</p>
+
+<p>
+  <b>MailInvestigator:</b>
+  <%= @trial.mailInvestigator %>
+</p>
+
+<p>
+  <b>InformedConsent:</b>
+  <%= link_to "Download", @trial.informed_consent.url %>
+</p>
+
+<h2>Criteria</h2>
+<table>
+  <tr>
+    <th>Criterion type</th>
+    <th>Datum</th>
+    <th>Operator</th>
+    <th>Value</th>
+    <th></th>
+  </tr>
+<%= render @trial.criteria %>
+</table>
+ 
+<h2>Add a criterion:</h2>
+<%= render "criteria/form" %>
+
+<%= link_to 'Edit', edit_trial_path(@trial) %> |
+<%= link_to 'Back', trials_path %>

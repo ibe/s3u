@@ -1,0 +1,9 @@
+<tr>
+  <td><%= criterion.criterion_type %></td>
+  <td><%= criterion.datum.description %></td>
+  <td><%= criterion.operator %></td>
+  <td><%= criterion.value %></td>
+  <td>
+    <%= link_to 'Destroy Criterion', [criterion.trial, criterion], :confirm => 'Are you sure?', :method => :delete %>
+  </td>
+</tr>

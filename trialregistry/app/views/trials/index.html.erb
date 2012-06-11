@@ -1,0 +1,29 @@
+<h1>Listing trials</h1>
+
+<table class="person center">
+  <tr>
+    <th>Extid</th>
+    <th>Recruitingtarget</th>
+    <th>Recruiting Status</th>
+    <th>Investigator</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @trials.each do |trial| %>
+  <tr>
+    <td><%= trial.extId %></td>
+    <td><%= trial.recruitingTarget %></td>
+    <td><%= trial.recruiting_status %></td>
+    <td><%= mail_to trial.mailInvestigator, "#{trial.prenameInvestigator} #{trial.surnameInvestigator}" %></td>
+    <td><%= link_to 'Show', trial %></td>
+    <td><%= link_to 'Edit', edit_trial_path(trial) %></td>
+    <td><%= link_to 'Destroy', trial, :confirm => 'Are you sure?', :method => :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Trial', new_trial_path %>

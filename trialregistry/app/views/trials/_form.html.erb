@@ -1,0 +1,45 @@
+<%= form_for(@trial, :html => { :multipart => true }) do |f| %>
+  <% if @trial.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@trial.errors.count, "error") %> prohibited this trial from being saved:</h2>
+
+      <ul>
+      <% @trial.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :extId %><br />
+    <%= f.text_field :extId %>
+  </div>
+  <div class="field">
+    <%= f.label :description %><br />
+    <%= f.text_field :description %>
+  </div>
+  <div class="field">
+    <%= f.label :recruitingTarget %><br />
+    <%= f.number_field :recruitingTarget %>
+  </div>
+  <div class="field">
+    <%= f.label :prenameInvestigator %><br />
+    <%= f.number_field :prenameInvestigator %>
+  </div>
+  <div class="field">
+    <%= f.label :surnameInvestigator %><br />
+    <%= f.number_field :surnameInvestigator %>
+  </div>
+  <div class="field">
+    <%= f.label :mailInvestigator %><br />
+    <%= f.number_field :mailInvestigator %>
+  </div>
+  <div class="field">
+    <%= f.label :informed_consent %><br />
+    <%= f.file_field :informed_consent %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

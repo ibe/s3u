@@ -1,0 +1,6 @@
+.bundle
+db/*.sqlite3
+log/*.log
+tmp/
+.sass-cache/
+app/assets/stylesheets/lmu_corporate_design.css.scss

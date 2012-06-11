@@ -1,0 +1,37 @@
+<%= form_for(@datum) do |f| %>
+  <% if @datum.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@datum.errors.count, "error") %> prohibited this datum from being saved:</h2>
+
+      <ul>
+      <% @datum.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :description %><br />
+    <%= f.text_field :description %>
+  </div>
+  <div class="field">
+    <%= f.label :segment %><br />
+    <%= f.select :segment, options_for_select([['MSH','MSH'],['EVN','EVN'],['PID','PID'],['PV1','PV1'],['DG1','DG1'],['NK1','NK1'],['IN1','IN1']]) %>
+  </div>
+  <div class="field">
+    <%= f.label :composite %><br />
+    <%= f.number_field :composite %>
+  </div>
+  <div class="field">
+    <%= f.label :subcomposite %><br />
+    <%= f.number_field :subcomposite %>
+  </div>
+  <div class="field">
+    <%= f.label :subsubcomposite %><br />
+    <%= f.number_field :subsubcomposite %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

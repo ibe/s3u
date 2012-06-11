@@ -1,0 +1,31 @@
+<h1>Listing criteria</h1>
+
+<table class="person">
+  <tr>
+    <th>Value</th>
+    <th>Criterion type</th>
+    <th>Operator</th>
+    <th>Trial</th>
+    <th>Datum</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @criteria.each do |criterion| %>
+  <tr>
+    <td><%= criterion.value %></td>
+    <td><%= criterion.criterion_type %></td>
+    <td><%= criterion.operator %></td>
+    <td><%= link_to criterion.trial.description, criterion.trial %></td>
+    <td><%= link_to criterion.datum.description, criterion.datum %></td>
+    <td><%= link_to 'Show', criterion %></td>
+    <td><%= link_to 'Edit', edit_criterion_path(criterion) %></td>
+    <td><%= link_to 'Destroy', criterion, :confirm => 'Are you sure?', :method => :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Criterion', new_criterion_path %>

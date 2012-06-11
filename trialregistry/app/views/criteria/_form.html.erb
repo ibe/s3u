@@ -1,0 +1,27 @@
+<%= form_for([@trial, @trial.criteria.build]) do |f| %>
+  <div class="field">
+    <%= f.label :criterion_type %><br />
+    <%= f.radio_button :criterion_type, "inclusion" %> inclusion<br/>
+    <%= f.radio_button :criterion_type, "exclusion" %> exclusion
+  </div>
+  <div class="field">
+    <%= f.label :datum_id %><br />
+    <%= f.select :datum_id, Datum.all.collect{|d| [d.description, d.id]} %>
+  </div>
+  <div class="field">
+    <%= f.label :operator %><br />
+    <%= f.radio_button :operator, "=" %> =
+    <%= f.radio_button :operator, ">" %> &gt;
+    <%= f.radio_button :operator, "<" %> &lt;
+    <%= f.radio_button :operator, "<>" %> &lt;&gt;
+    <%= f.radio_button :operator, ">=" %> &gt;=
+    <%= f.radio_button :operator, "=<" %> =&lt;
+  </div>
+  <div class="field">
+    <%= f.label :value %><br />
+    <%= f.text_field :value %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

@@ -1,0 +1,29 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Criterion type:</b>
+  <%= @criterion.criterion_type %>
+</p>
+
+<p>
+  <b>Trial:</b>
+  <%= link_to @criterion.trial.description, @criterion.trial %>
+</p>
+
+<p>
+  <b>Datum:</b>
+  <%= link_to @criterion.datum.description, @criterion.datum %>
+</p>
+
+<p>
+  <b>Operator:</b>
+  <%= @criterion.operator %>
+</p>
+
+<p>
+  <b>Value:</b>
+  <%= @criterion.value %>
+</p>
+
+<%= link_to 'Edit', edit_criterion_path(@criterion) %> |
+<%= link_to 'Back', criteria_path %>
