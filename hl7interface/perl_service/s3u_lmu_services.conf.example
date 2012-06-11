@@ -1,0 +1,53 @@
+#
+# this is the config file of s3u_lmu_hl7interface
+# unless otherwise noted, all config variables are mandatory!
+#
+
+# file, where Log4Perl configurations for HL7-interface are stored
+# mandatory, defaults to:
+# s3u_lmu_hl7interface_log.conf
+LOG4PERL_HL7_CONF = s3u_lmu_hl7interface_log.conf
+
+# file, where Log4Perl configurations for eraser are stored
+# mandatory, defaults to:
+# s3u_lmu_eraser_log.conf
+LOG4PERL_ERASER_CONF = s3u_lmu_eraser_log.conf
+
+# dsn for the KUM DB connection
+# mandatory, defaults to:
+# DBI:mysql:database=s3u_lmu_hl7interface_development;host=localhost;port=3306
+KUM_DB_DSN = DBI:mysql:database=s3u_lmu_hl7interface_development;host=localhost;port=3306
+
+# credentials for the KUM DB connection
+# mandatory
+KUM_DB_USER = my_kum_db_user
+KUM_DB_PASSWORD = my_kum_db_password
+
+# dsn for the m4 DB connection
+# mandatory, defaults to:
+# DBI:mysql:database=hl7sniffer;host=localhost;port=3306
+M4_DB_DSN = DBI:mysql:database=hl7sniffer;host=localhost;port=3306
+
+# credentials for the m4 DB connection
+# mandatory
+M4_DB_USER = my_m4_db_user
+M4_DB_PASSWORD = my_m4_db_password
+
+# TCP port where the s3u_lmu_hl7interface perl daemon listens for incoming HL7 messages
+# mandatory, defaults to:
+# 15000
+DAEMON_PORT = 15000
+
+# timespan (in seconds) after which discharged patients have to be deleted from the DB
+# (counting from timestamp of discharge onwards)
+# mandatory, defaults to:
+# 172800
+ERASER_TIMESPAN = 172800
+
+# mode, the eraser runs in. available modes are: DEBUG, LIVE
+# results in the way, data is deleted from the database:
+# DEBUG = all data/patients regardless of dischargeDateTime
+# LIVE = only data/patients that have been discharged (see also ERASER_TIMESPAN)
+# mandatory, defaults to:
+# DEBUG
+ERASER_MODE = DEBUG

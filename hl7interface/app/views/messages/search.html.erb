@@ -1,0 +1,20 @@
+<h1>Search results</h1>
+
+<table>
+  <tr>
+    <th>mci</th>
+    <th>seg</th>
+    <th>val</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @messages.each do |message| %>
+  <tr>
+    <td><%= message.messageControlId %></td>
+    <td><%= message.segment %>/<%= message.composite %>/<%= message.subcomposite %></td>
+    <td><%= message.value %></td>
+  </tr>
+<% end %>
+</table>

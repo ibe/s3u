@@ -1,0 +1,35 @@
+<h1>Listing permissions</h1>
+
+<table>
+  <tr>
+    <th>Datasource</th>
+    <th>Segment</th>
+    <th>Composite</th>
+    <th>Subcomposite</th>
+    <th>Subsubcomposite</th>
+    <th>Value</th>
+    <th>Group</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @permissions.each do |permission| %>
+  <tr>
+    <td><%= permission.dataSource %></td>
+    <td><%= permission.segment %></td>
+    <td><%= permission.composite %></td>
+    <td><%= permission.subcomposite %></td>
+    <td><%= permission.subsubcomposite %></td>
+    <td><%= permission.value %></td>
+    <td><%= permission.group %></td>
+    <td><%= link_to 'Show', permission %></td>
+    <td><%= link_to 'Edit', edit_permission_path(permission) %></td>
+    <td><%= link_to 'Destroy', permission, :confirm => 'Are you sure?', :method => :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Permission', new_permission_path %>

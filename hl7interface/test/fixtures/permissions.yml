@@ -1,0 +1,17 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  dataSource: MyString
+  segment: MyString
+  composite: 1
+  subcomposite: 1
+  subsubcomposite: 1
+  group: 
+
+two:
+  dataSource: MyString
+  segment: MyString
+  composite: 1
+  subcomposite: 1
+  subsubcomposite: 1
+  group: 

@@ -1,0 +1,28 @@
+<h1><%= @message.segment %> segment of message <%= @message.messageControlId %></h1>
+
+<table>
+  <tr>
+    <th>Datasource</th>
+    <th>Messagecontrolid</th>
+    <th>Segment</th>
+    <th>Composite</th>
+    <th>Subcomposite</th>
+    <th>Subsubcomposite</th>
+    <th>Value</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @messages.each do |message| %>
+  <tr>
+    <td><%= message.dataSource %></td>
+    <td><%= link_to message.messageControlId, id_message_path(message) %></td>
+    <td><%= link_to message.segment, segment_message_path(message) %></td>
+    <td><%= message.composite %></td>
+    <td><%= message.subcomposite %></td>
+    <td><%= message.subsubcomposite %></td>
+    <td><%= message.value %></td>
+  </tr>
+<% end %>
+</table>

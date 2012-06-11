@@ -1,0 +1,17 @@
+== Intention
+* simple storage of hl7 messages from eGate
+* authentication required (via activedirectory)
+* authorization implemented (appropriate activedirectory group membership required)
+== Note
+* cp config/database.yml.example config/database.yml (and set db credentials)
+* cp config/ldap.yml.example config/ldap.yml (and set ldap credentials)
+* check reasonable credentials at config/ldap.yml (section 'development')
+* directory perl_service contains the perl service, that receives socket-based HL7 messages (from eGate)
+== Change Log
+* (+) ActiveDirectory authentication
+* (o) put reasonable credentials in ldap.yml (incl. SSL)
+* (+) authentication SSL-ified
+* (+) authorization via ActiveDirectory
+
+(+) newly added
+(o) todo

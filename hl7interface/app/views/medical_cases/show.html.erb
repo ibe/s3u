@@ -1,0 +1,32 @@
+<p id="notice"><%= notice %></p>
+
+<table class="classic">
+  <tr>
+    <th>Extid</th>
+    <td>: <%= @medical_case.extId %></td>
+  </tr>
+  <tr>
+    <th>ExtPatId</th>
+    <td>: <%= link_to @medical_case.patient.extId, @medical_case.patient %></td>
+  </tr>
+  <tr>
+    <th>FuncOu</th>
+    <td>: <%= @medical_case.funcOu %></td>
+  </tr>
+  <tr>
+    <th>NurseOu</th>
+    <td>: <%= @medical_case.nurseOu %></td>
+  </tr>
+  <tr>
+    <th>ExtDocId</th>
+    <td>: <%= @medical_case.extDocId %></td>
+  </tr>
+  <tr>
+    <th>AdmitDateTime</th>
+    <td>: <%= @medical_case.admitDateTime %></td>
+  </tr>
+  <tr>
+    <th>DischargeDateTime</th>
+    <td>: <%= @medical_case.dischargeDateTime %></td>
+  </tr>
+</table>

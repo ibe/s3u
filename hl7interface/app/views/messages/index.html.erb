@@ -1,0 +1,32 @@
+<h1>Listing messages</h1>
+
+<%= paginate @messages %>
+
+<table class="person">
+  <tr>
+    <th>Datasource</th>
+    <th>Messagecontrolid</th>
+    <th>Segment</th>
+    <th>Composite</th>
+    <th>Subcomposite</th>
+    <th>Subsubcomposite</th>
+    <th>Value</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @messages.each do |message| %>
+  <tr>
+    <td><%= message.dataSource %></td>
+    <td><%= message.messageControlId %></td>
+    <td><%= message.segment %></td>
+    <td><%= message.composite %></td>
+    <td><%= message.subcomposite %></td>
+    <td><%= message.subsubcomposite %></td>
+    <td><%= message.value %></td>
+  </tr>
+<% end %>
+</table>
+
+<%= paginate @messages %>

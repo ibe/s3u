@@ -1,0 +1,35 @@
+<p id="notice"><%= notice %></p>
+
+<table class="classic">
+  <tr>
+    <th>Datasource</th>
+    <td>: <%= @permission.dataSource %></td>
+  </tr>
+  <tr>
+    <th>Segment</th>
+    <td>: <%= @permission.segment %></td>
+  </tr>
+  <tr>
+    <th>Composite</th>
+    <td>: <%= @permission.composite %></td>
+  </tr>
+  <tr>
+    <th>Subcomposite</th>
+    <td>: <%= @permission.subcomposite %></td>
+  </tr>
+  <tr>
+    <th>Subsubcomposite</th>
+    <td>: <%= @permission.subsubcomposite %></td>
+  </tr>
+  <tr>
+    <th>Value</th>
+    <td>: <%= @permission.value %></td>
+  </tr>
+  <tr>
+    <th>Group</th>
+    <td>: <%= @permission.group %></td>
+  </tr>
+</table>
+
+<%= link_to 'Edit', edit_permission_path(@permission) %> |
+<%= link_to 'Back', permissions_path %>

@@ -1,0 +1,29 @@
+<%= form_for([@group, @group.permissions.build]) do |f| %>
+  <div class="field">
+    <%= f.label :dataSource %><br />
+    <%= f.select :dataSource, options_for_select([["ALL","ALL"],["ISH","ISH"]],2) %>
+  </div>
+  <div class="field">
+    <%= f.label :segment %><br />
+    <%= f.select :segment, options_for_select([["ALL","ALL"],["DG1","DG1"],["EVN","EVN"],["MSH","MSH"],["PID","PID"],["PV1","PV1"]],1) %>
+  </div>
+  <div class="field">
+    <%= f.label :composite %><br />
+    <%= f.number_field :composite %>
+  </div>
+  <div class="field">
+    <%= f.label :subcomposite %><br />
+    <%= f.number_field :subcomposite %>
+  </div>
+  <div class="field">
+    <%= f.label :subsubcomposite %><br />
+    <%= f.number_field :subsubcomposite %>
+  </div>
+  <div class="field">
+    <%= f.label :value %><br />
+    <%= f.text_field :value %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

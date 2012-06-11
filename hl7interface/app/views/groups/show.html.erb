@@ -1,0 +1,35 @@
+<p id="notice"><%= notice %></p>
+
+<table class="classic">
+  <tr>
+    <th>Distinguishedname</th>
+    <td>: <%= @group.distinguishedName %></td>
+  </tr>
+  <tr>
+    <th>Description</th>
+    <td>: <%= @group.description %></td>
+  </tr>
+  <tr>
+    <th></th>
+    <td></td>
+  </tr>
+</table>
+
+<table class="person center">
+  <tr>
+    <th>Data source</th>
+    <th>Segment</th>
+    <th>Composite</th>
+    <th>Subcomposite</th>
+    <th>Subsubcomposite</th>
+    <th>Value</th>
+    <th></th>
+  </tr>
+<%= render @group.permissions %>
+</table>
+ 
+<h2>Add a permission:</h2>
+<%= render "permissions/form" %>
+
+<%= link_to 'Edit', edit_group_path(@group) %> |
+<%= link_to 'Back', groups_path %>

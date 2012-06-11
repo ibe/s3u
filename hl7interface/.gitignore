@@ -1,0 +1,8 @@
+.bundle
+db/*.sqlite3
+log/*.log
+tmp/
+.sass-cache/
+app/models/group.rb
+config/initializers/s3u_lmu.rb
+app/assets/stylesheets/lmu_corporate_design.css.scss

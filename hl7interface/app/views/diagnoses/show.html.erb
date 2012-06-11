@@ -1,0 +1,24 @@
+<p id="notice"><%= notice %></p>
+
+<table class="classic">
+  <tr>
+    <th>Medical case</th>
+    <td>: <%= @diagnosis.medical_case.extId %></td>
+  </tr>
+  <tr>
+    <th>Patient</th>
+    <td>: <%= @diagnosis.medical_case.patient.extId %></td>
+  </tr>
+  <tr>
+    <th>Icd10code</th>
+    <td>: <%= @diagnosis.icd10Code %></td>
+  </tr>
+  <tr>
+    <th>Icd10text</th>
+    <td>: <%= @diagnosis.icd10Text %></td>
+  </tr>
+  <tr>
+    <th>Icd10version</th>
+    <td>: <%= @diagnosis.icd10Version %></td>
+  </tr>
+</table>

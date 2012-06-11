@@ -1,0 +1,8 @@
+#
+# here, the Active Directory group is defined, which users must be member of
+# if they should be recognized as administrators of this application.
+# mandatory, default is:
+# CN=admins,OU=group,DC=your,DC=org,DC=company,DC=de
+#
+
+S3uLmuHl7interface::Application.config.administrator_group = 'CN=admins,OU=group,DC=your,DC=org,DC=company,DC=de'

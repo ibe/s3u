@@ -1,0 +1,27 @@
+<h1>Listing medical_cases</h1>
+
+<table class="person">
+  <tr>
+    <th>Extid</th>
+    <th>ExtPatid</th>
+    <th>FuncOu</th>
+    <th>NurseOu</th>
+    <th>ExtDocId</th>
+    <th>AdmitDateTime</th>
+    <th>DischargeDateTime</th>
+    <th></th>
+  </tr>
+
+<% @medical_cases.each do |medical_case| %>
+  <tr>
+    <td><%= medical_case.extId %></td>
+    <td><%= link_to medical_case.patient.extId, medical_case.patient %></td>
+    <td><%= medical_case.funcOu %></td>
+    <td><%= medical_case.nurseOu %></td>
+    <td><%= medical_case.extDocId %></td>
+    <td><%= medical_case.admitDateTime %></td>
+    <td><%= medical_case.dischargeDateTime %></td>
+    <td><%= link_to 'Show', medical_case %></td>
+  </tr>
+<% end %>
+</table>

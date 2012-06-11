@@ -1,0 +1,8 @@
+class Group < ActiveRecord::Base
+  has_many :permissions
+  # more general validation:
+  #validates :distinguishedName, :format => { :with => /^cn=[^,]+(,ou=[^,]+)+(,dc=[^,]+){2,}/ }
+  # more restricted validation:
+  validates :distinguishedName, :format => { :with => /^cn=[^,]+(,ou=[^,]+)+,dc=your,dc=org,dc=company,dc=de/ }
+  attr_accessible :distinguishedName, :description
+end
