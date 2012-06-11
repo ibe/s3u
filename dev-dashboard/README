@@ -1,0 +1,13 @@
+these files are mainly for debug purposes
+
+apache-vhost-config:
+
+a sample vhost config file for apache which makes the s3u perl files (recruiter, eraser) executable via web browser call
+
+s3u_index.html:
+
+simple html file that presents all components of the s3u infrastructure
+
+s3u_startup.sh / s3u_kill.sh:
+
+simple bash scripts that starts up every component of s3u and kills them respectively
