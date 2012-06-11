@@ -1,0 +1,27 @@
+<h1><%=t :listing_cases %></h1>
+
+<table class="person">
+  <tr>
+    <th><%=t :new %>?</th>
+    <th><%=t :extcaseid %></th>
+    <th><%=t :patient, :count => 1 %></th>
+    <th title="<%=t :funcou_long %>"><%=t :funcou_short %></th>
+    <th title="<%=t :nurseou_long %>"><%=t :nurseou_short %></th>
+    <th><%=t :created_at %></th>
+    <th><%=t :updated_at %></th>
+    <th></th>
+  </tr>
+
+<% @medical_cases.each do |medical_case| %>
+  <tr>
+    <td class="center"><% if current_user.last_sign_in_at < medical_case.created_at %>&lowast;<% end %></td>
+    <td><%= medical_case.extCaseId %></td>
+    <td><%= link_to medical_case.patient.extId, medical_case.patient %></td>
+    <td><%= medical_case.funcOu %></td>
+    <td><%= medical_case.nurseOu %></td>
+    <td><%= time_ago_in_words(medical_case.created_at) %></td>
+    <td><%= time_ago_in_words(medical_case.updated_at) %></td>
+    <td><%= link_to(medical_case) do %><%=t :show %><% end %></td>
+  </tr>
+<% end %>
+</table>

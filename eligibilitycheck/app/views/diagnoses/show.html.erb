@@ -1,0 +1,22 @@
+<h1><%=t :details_diagnosis %></h1>
+
+<p id="notice"><%= notice %></p>
+
+<table class="classic">
+  <tr>
+    <th><%=t :medical_case, :count => 1 %></th>
+    <td>: <%= link_to @diagnosis.medical_case.extCaseId, @diagnosis.medical_case %></td>
+  </tr>
+  <tr>
+    <th><%=t :icd10code %></th>
+    <td>: <%= @diagnosis.icd10Code %></td>
+  </tr>
+  <tr>
+    <th><%=t :icd10text %></th>
+    <td>: <%= @diagnosis.icd10Text %></td>
+  </tr>
+  <tr>
+    <th><%=t :icd10version %></th>
+    <td>: <%= @diagnosis.icd10Version %></td>
+  </tr>
+</table>

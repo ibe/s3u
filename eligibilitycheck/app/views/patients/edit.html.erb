@@ -1,0 +1,8 @@
+<h1>Setting Consent Status</h1>
+
+<%= link_to 'Download informed consent template', "#{S3uLmuAerzteUi::Application.config.s3u_lmu_studienmonitor_url}/system/informed_consents/#{@patient.trial.id}/original/#{@patient.trial.informed_consent_file_name}" %>
+ 
+<%= render 'form' %>
+
+<%= link_to 'Show', @patient %> |
+<%= link_to 'Back', patients_path %>

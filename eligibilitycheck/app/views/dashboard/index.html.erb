@@ -1,0 +1,27 @@
+<!--
+<div style="float: left; width: 50%; border: 1px dotted #ccc; cursor: pointer;">
+  <div style="font-size: 50pt; color: #f00; line-height: 50pt; vertical-align:middle; text-align: center;"><%= @new_patients.count %></div>
+  <div>New patients that have been detected by S3U<sup>LMU</sup> as potentially recruitable since your last sign in <%= time_ago_in_words(current_user.last_sign_in_at) %> ago.</div>
+</div>
+
+<div style="border: 1px dotted #ccc; cursor: pointer;">
+  <div style="font-size: 50pt; color: #f00; line-height: 50pt; vertical-align:middle; text-align: center;"><%= @total_patients.count %></div>
+  <div>Amount of potentially recruitable patients that you have on your recruiting list.</div>
+</div>
+-->
+<table>
+  <tr class="huge center bold">
+    <td><%= @new_patients.count %></td>
+    <td></td>
+    <td><%= @total_patients.count - @new_patients.count %></td>
+    <td></td>
+    <td><%= @total_patients.count %></td>
+  </tr>
+  <tr>
+    <td>New patients that have been detected by S3U<sup>LMU</sup> as potentially recruitable since your last sign in <%= time_ago_in_words(current_user.last_sign_in_at) %> ago.</td>
+    <td>+</td>
+    <td>Remaining patients that await your approach on them on trial participation.</td>
+    <td>=</td>
+    <td>Total amount of potentially recruitable patients that you have on your recruiting list.</td>
+  </tr>
+</table>

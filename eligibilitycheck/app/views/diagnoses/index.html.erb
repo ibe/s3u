@@ -1,0 +1,25 @@
+<h1><%=t :listing_diagnoses %></h1>
+
+<table class="person">
+  <tr>
+    <th><%=t :new %>?</th>
+    <th><%=t :medical_case, :count => 1 %></th>
+    <th><%=t :icd10code %></th>
+    <th><%=t :icd10text %></th>
+    <th><%=t :created_at %></th>
+    <th><%=t :updated_at %></th>
+    <th></th>
+  </tr>
+
+<% @diagnoses.each do |diagnosis| %>
+  <tr>
+    <td class="center"><% if current_user.last_sign_in_at < diagnosis.created_at %>&lowast;<% end %></td>
+    <td><%= link_to diagnosis.medical_case.extCaseId, diagnosis.medical_case %></td>
+    <td title="<%= diagnosis.icd10Version %>"><%= diagnosis.icd10Code %></td>
+    <td><%= diagnosis.icd10Text %></td>
+    <td><%= time_ago_in_words(diagnosis.created_at) %></td>
+    <td><%= time_ago_in_words(diagnosis.updated_at) %></td>
+    <td><%= link_to(diagnosis) do %><%=t :show %><% end %></td>
+  </tr>
+<% end %>
+</table>

@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Klinikum der Universität München &middot; S3U-Infrastruktur &middot; Webinterface</title>
+  <%= stylesheet_link_tag    "application" %>
+  <%= javascript_include_tag "application" %>
+  <%= csrf_meta_tags %>
+</head>
+<body>
+  <div id="mainWrapper">
+    <div id="header"><img src="/assets/header.jpg"/></div>
+    <div id="main">
+      <div id="firstColumn">
+        <div id="search">
+          <% if user_signed_in? %>
+          <%=t :logged_in_as, :user => current_user.cn %> | <%= link_to "Logout", destroy_user_session_path, :method => :delete %>
+          <% end %>
+        </div>
+        <ul id="navigation">
+          <li>
+            <% if user_signed_in? %>
+              <% patients = Patient.where("extDocId = ? AND created_at > ?", current_user.extDocId, current_user.last_sign_in_at).count %>
+              <% medical_cases = MedicalCase.joins(:patient).where("patients.extDocId = ? AND medical_cases.created_at > ?", current_user.extDocId, current_user.last_sign_in_at).count %>
+              <% diagnoses = Diagnosis.where("created_at > ?", current_user.last_sign_in_at).count %>
+            <% else %>
+              <% patients = medical_cases = diagnoses = 0 %>
+            <% end %>
+            <% if user_signed_in? %><%= link_to :controller => 'dashboard' do %><%=t :dashboard %><% end %><% end %>
+            <ul>
+              <% if patients > 0 %>
+                <li class="bold"><%= link_to :patients do %><%=t :patient, :count => 2 %> (<%= patients %>)<% end %></li>
+              <% else %>
+                <li><%= link_to :patients do %><%=t :patient, :count => 2 %><% end %></li>
+              <% end %>
+              <% if medical_cases > 0 %>
+                <li class="bold"><%= link_to :medical_cases do %><%=t :medical_case, :count => 2 %> (<%= medical_cases %>)<% end %>
+              <% else %>
+                <li><%= link_to :medical_cases do %><%=t :medical_case, :count => 2 %><% end %></li>
+              <% end %>
+              <% if diagnoses > 0 %>
+                <li class="bold"><%= link_to :diagnoses do %><%=t :diagnosis, :count => 2 %> (<%= diagnoses %>)<% end %></li>
+              <% else %>
+                <li><%= link_to :diagnoses do %><%=t :diagnosis, :count => 2 %><% end %></li>
+              <% end %>
+            </ul>
+          </li>
+        </ul>
+      </div>
+      <div id="secondColumn">
+        <div id="quickLinks">
+          <%= link_to "Universität München", 'http://www.uni-muenchen.de' %> | <%= link_to "Klinikum der Universität München", 'http://www.klinikum.uni-muenchen.de' %> | <%= link_to "Medizinische Fakultät", 'http://www.med.uni-muenchen.de' %>
+        </div>
+        <div id="breadcrumb">
+          <% if controller.controller_name != 'dashboard' %>
+            <%=t :dashboard %>
+            >
+            <%=t controller.controller_name.singularize, :count => 2 %><% if controller.action_name != 'index' %> > <%=t controller.action_name %><% end %>
+          <% else %>
+            <%=t :dashboard %>
+          <% end %>          
+        </div>
+        <div id="notifications">
+          <p class="notice"><%= notice %></p>
+          <p class="alert"><%= alert %></p>
+        </div>
+        <div id="content">
+          <%= yield %>
+        </div>
+        <div id="functions">
+          <div class="printlink">
+            <%= link_to image_tag("/assets/drucken.gif"), "#" %>
+          </div>
+          <div class="responsible">&nbsp;</div>
+          <div class="toplink">
+            <%= link_to image_tag("/assets/toplink.gif"), "#" %>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div id="footer">
+      bottom
+    </div>
+  </div>
+</body>
+</html>

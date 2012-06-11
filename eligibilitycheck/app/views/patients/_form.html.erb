@@ -1,0 +1,52 @@
+<%= form_for(@patient) do |f| %>
+  <% if @patient.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@patient.errors.count, "error") %> prohibited this patient from being saved:</h2>
+
+      <ul>
+      <% @patient.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+<!--
+  <div class="field">
+    <%= f.label :extId %><br />
+    <%= f.text_field :extId %>
+  </div>
+  <div class="field">
+    <%= f.label :prename %><br />
+    <%= f.text_field :prename %>
+  </div>
+  <div class="field">
+    <%= f.label :surname %><br />
+    <%= f.text_field :surname %>
+  </div>
+  <div class="field">
+    <%= f.label :dob %><br />
+    <%= f.date_select :dob %>
+  </div>
+  <div class="field">
+    <%= f.label :sex %><br />
+    <%= f.text_field :sex %>
+  </div>
+  <div class="field">
+    <%= f.label :extDocId %><br />
+    <%= f.text_field :extDocId %>
+  </div>
+  -->
+  <div class="field">
+    <%= f.label :consent_status %><br />
+    <%= f.radio_button :consent_status, 0 %> consent withdrawn<br/>
+    <%= f.radio_button :consent_status, 1 %> consent issued
+  </div>
+  <div class="field">
+    <%= f.label :self_service_status %><br />
+    <%= f.radio_button :self_service_status, 0 %> Patient does not want access to the S3U<sup>LMU</sup>-Consent-Manager<br/>
+    <%= f.radio_button :self_service_status, 1 %> Patient wants access to the S3U<sup>LMU</sup>-Consent-Manager
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

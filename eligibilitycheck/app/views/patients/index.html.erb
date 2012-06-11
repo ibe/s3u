@@ -1,0 +1,45 @@
+<h1><%=t :listing_patients %></h1>
+
+<table class="person">
+  <tr>
+    <th><%=t :new %>?</th>
+<!--    <th>Extid</th>-->
+    <th><%=t :prename %></th>
+    <th><%=t :surname %></th>
+    <th><%=t :dob %></th>
+    <th><%=t :sex %></th>
+    <th><%=t :trial %></th>
+    <th><%=t :consent %></th>
+    <th><%=t :created_at %></th>
+    <th><%=t :updated_at %></th>
+    <th></th>
+  </tr>
+
+<% @patients.each do |patient| %>
+  <tr>
+    <td class="center"><% if current_user.last_sign_in_at < patient.created_at %>&lowast;<% end %></td>
+<!--    <td><%= patient.extId %></td>-->
+    <td><%= patient.prename %></td>
+    <td><%= patient.surname %></td>
+    <td><%= patient.dob %></td>
+    <% if patient.sex == 'M' %>
+      <td title="<%=t :male %>" class="male_female center">&#9794;</td>
+    <% elsif patient.sex == 'F' %>
+      <td title="<%=t :female %>" class="male_female center">&#9792;</td>
+    <% else %>
+      <td title="<%=t :unclear %>" class="center">?</td>
+    <% end %>
+    <td><%= link_to patient.trial.extId, S3uLmuAerzteUi::Application.config.s3u_lmu_studienmonitor_url + "/trials/" + patient.trial.id.to_s %></td>
+    <% if patient.consent_status == 1 %>
+      <td class="green center" title="<%=t :consent_yes %>">&radic;</td>
+    <% elsif patient.consent_status == 0 %>
+      <td class="red center" title="<%=t :consent_no %>">&empty;</td>
+    <% else %>
+      <td class="center" title="<%=t :consent_unknown %>">?</td>
+    <% end %>
+    <td><%= time_ago_in_words(patient.created_at) %></td>
+    <td><%= time_ago_in_words(patient.updated_at) %></td>
+    <td><%= link_to(patient) do %><%=t :show %><% end %></td>
+  </tr>
+<% end %>
+</table>

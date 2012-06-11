@@ -1,0 +1,57 @@
+<h1><%=t :details_patient, :prename => @patient.prename, :surname => @patient.surname %></h1>
+
+<p id="notice"><%= notice %></p>
+
+<table class="classic">
+  <tr>
+    <th><%=t :patient, :count => 1 %></th>
+    <td>: <%= @patient.extId %></td>
+  </tr>
+  <tr>
+    <th><%=t :prename %></th>
+    <td>: <%= @patient.prename %></td>
+  </tr>
+  <tr>
+    <th><%=t :surname %></th>
+    <td>: <%= @patient.surname %></td>
+  </tr>
+  <tr>
+    <th><%=t :dob %></th>
+    <td>: <%= @patient.dob %></td>
+  </tr>
+  <tr>
+    <th><%=t :sex %></th>
+    <% if @patient.sex == 'M' %>
+      <td title="<%=t :male %>">: <span class="male_female">&#9794;</span></td>
+    <% elsif @patient.sex == 'F' %>
+      <td title="<%=t :female %>">: <span class="male_female">&#9792;</span></td>
+    <% else %>
+      <td title="<%=t :unclear %>">: ?</td>
+    <% end %>
+  </tr>
+  <tr>
+    <th><%=t :extdocid %></th>
+    <td>: <%= @patient.extDocId %></td>
+  </tr>
+  <tr>
+    <th><%=t :trial %></th>
+    <td>: <%= @patient.trial.extId %> (<%= link_to 'initiated informed consent process', edit_patient_path %>)</td>
+  </tr>
+  <tr>
+    <th><%=t :consent %></th>
+    <td>: <% if @patient.consent_status == 1 %>&radic;<% elsif @patient.consent_status == 0 %>&empty;<% else %>?<% end %></td>
+  </tr>
+  <tr>
+    <th><%=t :self_service %></th>
+    <td>: <% if @patient.self_service_status == 1 %>&radic;<% elsif @patient.self_service_status == 0 %>&empty;<% else %>?<% end %></td>
+  </tr>
+</table>
+<table class="person">
+  <tr>
+    <th><%=t :extcaseid %></th>
+    <th><%=t :funcou_short %></th>
+    <th><%=t :nurseou_short %></th>
+    <th></th>
+  </tr>
+<%= render @patient.medical_cases %>
+</table>

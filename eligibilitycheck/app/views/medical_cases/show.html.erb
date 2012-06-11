@@ -1,0 +1,30 @@
+<h1><%=t :details_case, :medical_case => @medical_case.extCaseId %></h1>
+
+<p id="notice"><%= notice %></p>
+
+<table class="classic">
+  <tr>
+    <th><%=t :medical_case, :count => 1 %></th>
+    <td>: <%= @medical_case.extCaseId %></td>
+  </tr>
+  <tr>
+    <th><%=t :patient, :count => 1 %></th>
+    <td>: <%= link_to @medical_case.patient.extId, @medical_case.patient %></td>
+  </tr>
+  <tr>
+    <th><%=t :funcou_short %></th>
+    <td>: <%= @medical_case.funcOu %></td>
+  </tr>
+  <tr>
+    <th><%=t :nurseou_short %></th>
+    <td>: <%= @medical_case.nurseOu %></td>
+  </tr>
+</table>
+<table class="person">
+  <tr>
+    <th><%=t :icd10text %></th>
+    <th><%=t :icd10code %></th>
+    <th></th>
+  </tr>
+<%= render @medical_case.diagnoses %>
+</table>
