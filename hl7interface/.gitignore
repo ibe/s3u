@@ -5,5 +5,7 @@ tmp/
 .sass-cache/
 app/models/group.rb
 config/initializers/s3u_lmu.rb
+config/database.yml
+config/ldap.yml
 app/assets/stylesheets/lmu_corporate_design.css.scss
 perl_service/s3u_lmu_services.conf
