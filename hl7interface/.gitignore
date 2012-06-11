@@ -6,3 +6,4 @@ tmp/
 app/models/group.rb
 config/initializers/s3u_lmu.rb
 app/assets/stylesheets/lmu_corporate_design.css.scss
+perl_service/s3u_lmu_services.conf
