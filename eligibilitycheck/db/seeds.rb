@@ -1,3 +1,5 @@
+# encoding: utf-8
+
 # This file should contain all the record creation needed to seed the database with its default values.
 # The data can then be loaded with the rake db:seed (or created alongside the db with db:setup).
 #
@@ -16,10 +18,10 @@
 case Rails.env
 when "development"
   Patient.create([
-    { :id => 1, :extId => '31008006', :extDocId => 'M36083', :prename => 'Benjamin', :surname => 'Hertz', :dob => '1985-09-02', :sex => 'M', :extDocID => 'M36083', :created_at => '2012-01-01 09:00:00', :updated_at => '2012-01-01 09:00:00' },
-    { :id => 2, :extId => '29654630', :extDocId => 'M36083', :prename => 'Lucas', :surname => 'Schmidt', :dob => '1904-04-13', :sex => 'M', :extDocID => 'M36083', :created_at => '2012-01-01 09:00:00', :updated_at => '2012-01-01 09:00:00' },
-    { :id => 3, :extId => '30099942', :extDocId => 'M36083', :prename => 'Juliane', :surname => 'Krüger', :dob => '1967-04-09', :sex => 'F', :extDocID => 'M36083', :created_at => '2012-01-01 09:00:00', :updated_at => '2012-01-01 09:00:00' },
-    { :id => 4, :extId => '27167923', :extDocId => 'M36083', :prename => 'Nicole', :surname => 'Frei', :dob => '1958-05-03', :sex => 'F', :extDocID => 'M36083', :created_at => '2012-01-01 09:00:00', :updated_at => '2012-01-01 09:00:00' }
+    { :id => 1, :extId => '31008006', :extDocId => 'M36083', :prename => 'Benjamin', :surname => 'Hertz', :dob => '1985-09-02', :sex => 'M', :extDocID => 'M36083', :trial_id => 1, :created_at => '2012-01-01 09:00:00', :updated_at => '2012-01-01 09:00:00' },
+    { :id => 2, :extId => '29654630', :extDocId => 'M36083', :prename => 'Lucas', :surname => 'Schmidt', :dob => '1904-04-13', :sex => 'M', :extDocID => 'M36083', :trial_id => 2, :created_at => '2012-01-01 09:00:00', :updated_at => '2012-01-01 09:00:00' },
+    { :id => 3, :extId => '30099942', :extDocId => 'M36083', :prename => 'Juliane', :surname => 'Krüger', :dob => '1967-04-09', :sex => 'F', :extDocID => 'M36083', :trial_id => 1, :created_at => '2012-01-01 09:00:00', :updated_at => '2012-01-01 09:00:00' },
+    { :id => 4, :extId => '27167923', :extDocId => 'M36083', :prename => 'Nicole', :surname => 'Frei', :dob => '1958-05-03', :sex => 'F', :extDocID => 'M36083', :trial_id => 1, :created_at => '2012-01-01 09:00:00', :updated_at => '2012-01-01 09:00:00' }
   ])
 
   MedicalCase.create([

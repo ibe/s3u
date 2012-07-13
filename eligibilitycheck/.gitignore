@@ -6,3 +6,4 @@ tmp/
 config/database.yml
 config/ldap.yml
 app/assets/stylesheets/lmu_corporate_design.css.scss
+app/config/environments/*.rb
