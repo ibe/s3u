@@ -59,8 +59,8 @@ S3uLmuAerzteUi::Application.configure do
   config.active_support.deprecation = :notify
 
   # set the url where the studienmonitor webservice runs
-  config.s3u_lmu_studienmonitor_url = "http://localhost:3000"
+  config.s3u_lmu_studienmonitor_url = "https://mitibem4.srv.med.uni-muenchen.de/trialregistry"
 
   # set the url where the consentmanager webservice runs
-  config.s3u_lmu_consentmanager_url = "http://localhost:3005"
+  config.s3u_lmu_consentmanager_url = "https://mitibem4.srv.med.uni-muenchen.de/consentmanager"
 end
