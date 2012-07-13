@@ -1,3 +1,4 @@
+# encoding: UTF-8
 # This file is auto-generated from the current state of the database. Instead
 # of editing this file, please use the migrations feature of Active Record to
 # incrementally modify your database, and then regenerate this schema definition.
@@ -44,10 +45,10 @@ ActiveRecord::Schema.define(:version => 20120518072838) do
     t.string   "prenameInvestigator"
     t.string   "surnameInvestigator"
     t.string   "mailInvestigator"
-    t.string   "informed_consent_content_type"
     t.string   "informed_consent_file_name"
-    t.datetime "informed_consent_updated_at"
+    t.string   "informed_consent_content_type"
     t.integer  "informed_consent_file_size"
+    t.datetime "informed_consent_updated_at"
     t.integer  "recruiting_status"
   end
 
