@@ -1,0 +1,81 @@
+<html>
+<head>
+	<style type="text/css">
+	body {
+		font-family: sans-serif;
+		font-size: 10pt;
+		width: 100%;
+	}
+	</style>
+</head>
+<body>
+	<div style="width: 955px; margin-left: auto; margin-right: auto">
+	<div><img src="" height="155" width="955"></div>
+	<ul>
+		<li>
+			backend services<br/><br/>
+			<ul>
+				<li>
+					<a href="https://localhost/cgi-bin/s3u_lmu_hl7interface.pl">S3U<sup>LMU</sup>-HL7-Interface server</a><br/>
+					<i>Service that receives HL7 messages from the KUM comm server eGate. Is intended to run 24/7/365.</i>
+					<br/><br/>
+				</li>
+				<li>
+					<a href="https://localhost/cgi-bin/s3u_lmu_recruiter.pl">S3U<sup>LMU</sup>-Recruiter</a><br/>
+					<i>Service that checks the <a href="https://localhost:3001">S3U<sup>LMU</sup>-HL7-Interface's</a> database on a daily basis for patients that fit the trials inclusion/exclusion criteria defined at <a href="https://localhost:3000">S3U<sup>LMU</sup>-Studienmonitor</a>. Writes 'hits' to the <a href="localhost:3002">S3U<sup>LMU</sup>-Webinterface</a> and informs physicians and trial personell by mail.</i>
+					<br/><br/>
+				</li>
+				<li>
+					<a href="https://localhost/s3u_lmu_feasibilitycheck.pl">S3U<sup>LMU</sup>-Feasibility Check</a><br/>
+					<i>Service that checks the <a href="https://localhost:3001">S3U<sup>LMU</sup>-HL7-Interface's</a> database on a daily basis for patients that fit the feasibility requests defined at <a href="https://localhost:3003">S3U<sup>LMU</sup>-Webrequest</a>. Writes 'hits' to the <a href="https://localhost:3003">S3U<sup>LMU</sup>-Webrequest</a> and informs scientists and administrators by mail.</i>
+					<br/><br/>
+				</li>
+				<li>
+					<a href="https://localhost/s3u_lmu_eraser.pl">S3U<sup>LMU</sup>-Eraser</a><br/>
+					<i>Service that checks the <a href="https://localhost:3001">S3U<sup>LMU</sup>-HL7-Interface's</a> database on a daily basis for patients that have been discharged 48 or more hours ago. If any datasets are found, they will be deleted for privacy reasons.</i>
+					<br/><br/>
+				</li>
+			</ul>
+		</li>
+		<li>
+			frontend ui's<br/><br/>
+			<ul>
+				<li>
+					<a href="https://localhost:3000">S3U<sup>LMU</sup>-Studienmonitor (Mockup)</a><br/>
+					<i>Dummy/Placeholder application to demonstrate registration of KUM trials and their (structured) inclusion/exclusion criteria.</i>
+					<br/><br/>
+				</li>
+				<li>
+					<a href="https://localhost:3001">S3U<sup>LMU</sup>-HL7-Interface database</a><br/>
+					<i>Database of the <a href="https://localhost/s3u_lmu_hl7interface.pl">S3U<sup>LMU</sup>-HL7-Interface server</a>.</i>
+					<br/><br/>
+				</li>
+				<li>
+					<a href="https://localhost:3002">S3U<sup>LMU</sup>-Webinterface</a><br/>
+					<i>Interface for physicians to view and consent patients that fit trial inclusion/exclusion criteria of the <a href="https://localhost:3000">S3U<sup>LMU</sup>-Studienmonitor</a>.<br/>
+					WARNING: requires startup of <a href="https://localhost:3000">S3U<sup>LMU</sup>-Studienmonitor</a> and <a href="https://localhost:3005">S3U<sup>LMU</sup>-Consent Manager</a></i>
+					<br/><br/>
+				</li>
+				<li>
+					<a href="https://localhost:3005">S3U<sup>LMU</sup>-Consent Manager</a><br/>
+					<i>(possibly) Internet-exposed self-service application for patients managing their informed consents (or physicians viewing the consents of their patients which have been automatically transfered from the <a href="https://localhost:3002">S3U<sup>LMU</sup>-Webinterface</a>).<br/>
+					WARNING: requires startup of <a href="https://localhost:3000">S3U<sup>LMU</sup>-Studienmonitor</a></i>
+					<br/><br/>
+				</li>
+				<li>
+					<a href="https://localhost:3003">S3U<sup>LMU</sup>-Webrequest</a><br/>
+					<i>Internet-exposed application which gives interested scientists the ability to check for cohort sizes of certain criteria (similar to <a href="https://localhost:3000">S3U<sup>LMU</sup>-Studienmonitor</a> but with anonymized/aggregated results). Might fit for m<sup>4</sup> TSC or KUM CSC processes.<br/>
+					WARNING: requires startup of <a href="https://localhost:3000">S3U<sup>LMU</sup>-Studienmonitor</a></i>
+					<br/><br/>
+				</li>
+				<li>
+					<a href="https://localhost:3004">S3U<sup>LMU</sup>-Studiendatenbank (Mockup)</a><br/>
+					<i>dummy/placeholder application to demonstrate data communication from <a href="https://localhost:3002">S3U<sup>LMU</sup>-Webinterface</a> to an arbitrary CDMS/CDBMS</i>
+					<br/><br/>
+				</li>
+			</ul>
+		</li>
+	</ul>
+	</div>
+</body>
+</html>
