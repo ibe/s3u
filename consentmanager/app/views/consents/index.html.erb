@@ -1,0 +1,36 @@
+<h1>Listing consents</h1>
+
+<table class="person">
+  <tr>
+    <th>Subject</th>
+    <th>Trial</th>
+    <th>Physician</th>
+    <th>Status</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @consents.each do |consent| %>
+  <tr>
+    <td><%= consent.subject.prename %> <%= consent.subject.surname %></td>
+    <td><%= consent.trial.extId %></td>
+    <td><%= mail_to consent.mailPhysician, "#{consent.prenamePhysician} #{consent.surnamePhysician}" %></td>
+    <% if consent.status == 1 %>
+      <td class="green center">&radic;</td>
+    <% elsif consent.status == 0 %>
+      <td class="red center">&empty;</td>
+    <% else %>
+      <td class="center">?</td>
+    <% end %>
+
+    <td><%= link_to 'Show', consent %></td>
+    <td><%= link_to 'Edit', edit_consent_path(consent) %></td>
+    <td><%= link_to 'Destroy', consent, :confirm => 'Are you sure?', :method => :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Consent', new_consent_path %>

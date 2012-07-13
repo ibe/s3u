@@ -1,0 +1,23 @@
+<p id="notice"><%= notice %></p>
+
+<table class="classic">
+  <tr>
+    <th>Subject</th>
+    <td>: <%= @consent.subject.prename %> <%= @consent.subject.surname %></td>
+  </tr>
+  <tr>
+    <th>Trial</th>
+    <td>: <%= @consent.trial.extId %></td>
+  </tr>
+  <tr>
+    <th>Physician</th>
+    <td>: <%= mail_to @consent.mailPhysician, "#{@consent.prenamePhysician} #{@consent.surnamePhysician}" %></td>
+  </tr>
+  <tr>
+    <th>Status</th>
+    <td>: <% if @consent.status == 1 %>consent issued<% else %>consent withdrawn<% end %></td>
+  </tr>
+</table>
+
+<%= link_to 'Edit', edit_consent_path(@consent) %> |
+<%= link_to 'Back', consents_path %>

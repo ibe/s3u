@@ -1,0 +1,7 @@
+<% if consent.status == 1 %><% @status = 'consent issued' %><% else %><% @status = 'consent withdrawn' %><% end %>
+<tr>
+  <td><%= consent.trial.extId %></td>
+  <td><%= mail_to consent.mailPhysician, "#{consent.prenamePhysician} #{consent.surnamePhysician}" %></td>
+  <td><%= link_to "#{@status}", edit_consent_path(consent) %></td>
+  <td><%= consent.created_at %></td>
+</tr>
