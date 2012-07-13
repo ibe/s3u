@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120514062159) do
+ActiveRecord::Schema.define(:version => 20120709135210) do
 
   create_table "diagnoses", :force => true do |t|
     t.integer  "medical_case_id"
@@ -41,6 +41,7 @@ ActiveRecord::Schema.define(:version => 20120514062159) do
     t.string   "extDocId"
     t.datetime "admitDateTime"
     t.datetime "dischargeDateTime"
+    t.integer  "admissionType"
   end
 
   create_table "messages", :force => true do |t|
