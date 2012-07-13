@@ -1,0 +1,42 @@
+<%= form_for(@consent) do |f| %>
+  <% if @consent.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@consent.errors.count, "error") %> prohibited this consent from being saved:</h2>
+
+      <ul>
+      <% @consent.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :subject_id %><br />
+    <%= f.select :subject_id, Subject.all.collect{|s| [s.prename + " " + s.surname, s.id]}, { :include_blank => true }, :disabled => "disabled" %>
+  </div>
+  <div class="field">
+    <%= f.label :trial_id %><br />
+    <%= f.select :trial_id, Trial.all.collect{|t| [t.extId, t.id]}, { :include_blank => true }, :disabled => "disabled" %>
+  </div>
+  <div class="field">
+    <%= f.label :status %><br />
+    <%= f.radio_button :status, 0 %> consent withdrawn<br/>
+    <%= f.radio_button :status, 1 %> consent issued
+  </div>
+  <div class="field">
+    <%= f.label :prenamePhysician %><br />
+    <%= f.text_field :prenamePhysician, :disabled => "disabled" %>
+  </div>
+  <div class="field">
+    <%= f.label :surnamePhysician %><br />
+    <%= f.text_field :surnamePhysician, :disabled => "disabled" %>
+  </div>
+  <div class="field">
+    <%= f.label :mailPhysician %><br />
+    <%= f.text_field :mailPhysician, :disabled => "disabled" %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

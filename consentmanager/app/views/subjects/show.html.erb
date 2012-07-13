@@ -1,0 +1,25 @@
+<p id="notice"><%= notice %></p>
+
+<table class="classic">
+  <tr>
+    <th>Prename</th>
+    <td>: <%= @subject.prename %></td>
+  </tr>
+  <tr>
+    <th>Surname</th>
+    <td>: <%= @subject.surname %></td>
+  </tr>
+</table>
+
+<table class="person">
+  <tr>
+    <th>Trial</th>
+    <th>Physician</th>
+    <th>Status</th>
+    <th>Issued at</th>
+  </tr>
+<%= render @subject.consents %>
+</table>
+
+<%= link_to 'Edit', edit_subject_path(@subject) %> |
+<%= link_to 'Back', subjects_path %>
