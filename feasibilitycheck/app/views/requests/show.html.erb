@@ -1,0 +1,92 @@
+<p id="notice"><%= notice %></p>
+
+<table class="classic">
+  <tr>
+    <th><%=t :prename %></th>
+    <td>: <%= @request.prenameContact %></td>
+    <td><% if @request.submit != 1 %><%= link_to 'Edit request', edit_request_path(@request) %><% end %></td>
+  </tr>
+  <tr>
+    <th><%=t :surname %></th>
+    <td>: <%= @request.surnameContact %></td>
+    <td></td>
+  </tr>
+  <tr>
+    <th><%=t :contact_mail %></th>
+    <td>: <%= mail_to @request.mailContact %></td>
+    <td></td>
+  </tr>
+  <tr>
+    <th><%=t :contact_phone %></th>
+    <td>: <%= @request.phoneContact %></td>
+    <td></td>
+  </tr>
+  <tr>
+    <th><%=t :description %></th>
+    <td>: <%= @request.description %></td>
+    <td></td>
+  </tr>
+  <tr>
+    <th><%=t :submitted %></th>
+    <td>:
+      <% if @request.submit == 1 %>
+        <span class="">&radic;</span>
+      <% else %>
+        <span class="">not yet submitted</span>
+      <% end %>
+    </td>
+    <td>
+      <% if @request.submit != 1 %>
+        <%= form_for(@request) do |f| %>
+          <%= f.hidden_field :submit, :value => 1 %>
+          <%= f.submit "submit request" %>
+        <% end %>
+      <% end %>
+    </td>
+  </tr>
+  <tr>
+    <th><%=t :approved %></th>
+    <td>:
+      <% if @request.approved == true %>
+        <span class="">&radic;</span>
+      <% elsif @request.approved == false %>
+        <span class="">&empty;</span>
+      <% else %>
+        not yet reviewed
+      <% end %>
+    </td>
+    <td>
+      <% if user_signed_in? && current_user.admin? %>
+      <% if @request.approved.nil? %>
+        <%= form_for(@request) do |f| %>
+          <%= f.hidden_field :approved, :value => 1 %>
+          <%= f.submit "approve" %>
+        <% end %>
+        <%= form_for(@request) do |f| %>
+          <%= f.hidden_field :approved, :value => 0 %>
+          <%= f.submit "reject" %>
+        <% end %>
+      <% end %>
+      <% end %>
+    </td>
+  </tr>
+  <tr>
+    <th><%=t :result %></th>
+    <td>: <% if @request.result == nil %>pending<% else %><%= @request.result %> (snapshot result processed <%= time_ago_in_words(@request.updated_at) %> ago)<% end %></td>
+    <td></td>
+  </tr>
+</table>
+
+<table class="person center">
+  <tr>
+    <th><%=t :criterion_type %></th>
+    <th><%=t :datum %></th>
+    <th><%=t :operator %></th>
+    <th><%=t :value %></th>
+    <th></th>
+  </tr>
+<%= render @request.criteria %>
+<% if @request.submit != 1 %>
+  <%= render "criteria/form" %>
+<% end %>
+</table>

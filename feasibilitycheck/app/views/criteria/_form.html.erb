@@ -1,0 +1,19 @@
+<%= form_for([@request, @request.criteria.build]) do |f| %>
+<tr>
+  <td class="field">
+    <%= f.select :criterion_type, options_for_select([['inclusion', 'inclusion'], ['exclusion', 'exclusion']]) %>
+  </td>
+  <td class="field">
+    <%= f.select :datum_id, Datum.all.collect{|d| [d.description, d.id]} %>
+  </td>
+  <td class="field">
+    <%= f.select :operator, options_for_select([['=', '='], ['>', '>'], ['<', '<'], ['>=', '>='], ['<=', '<='], ['<>', '<>']]) %>
+  </td>
+  <td class="field">
+    <%= f.text_field :value, :size => 10 %>
+  </td>
+  <td class="actions">
+    <%= f.submit %>
+  </td>
+</tr>
+<% end %>

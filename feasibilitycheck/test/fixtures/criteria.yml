@@ -1,0 +1,15 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  request: 
+  datum: 
+  criterion_type: MyString
+  operator: MyString
+  value: MyString
+
+two:
+  request: 
+  datum: 
+  criterion_type: MyString
+  operator: MyString
+  value: MyString

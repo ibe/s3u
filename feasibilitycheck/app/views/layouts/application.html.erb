@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>[S3U] Protocol Feasibility Check &middot; Klinikum der Universität München</title>
+  <%= stylesheet_link_tag    "application" %>
+  <%= javascript_include_tag "application" %>
+  <%= csrf_meta_tags %>
+</head>
+<body>
+  <div id="mainWrapper">
+    <div id="header"><%= image_tag("/assets/header.jpg") %></div>
+    <div id="main">
+      <div id="firstColumn">
+        <div id="search">
+          <% if user_signed_in? %>
+          Logged in as <%= current_user.cn %>
+          <%= link_to "Logout from AD", destroy_user_session_path, :method => :delete %>
+          <% else %>
+          <%= link_to('Login as CCC/CSC/TSC user', new_user_session_path) %>
+          <% end %>
+        </div>
+        <ul id="navigation">
+          <li>
+            <% if user_signed_in? %>
+              <ul><%= link_to "Requests", :requests %></ul>
+            <% else %>
+              <ul><%= link_to "Create a new request", new_request_path %></ul>
+            <% end %>
+          </li>
+        </ul>
+      </div>
+      <div id="secondColumn">
+        <div id="quickLinks">
+          <%= link_to "Universität München", 'http://www.uni-muenchen.de' %> | <%= link_to "Klinikum der Universität München", 'http://www.klinikum.uni-muenchen.de' %> | <%= link_to "Medizinische Fakultät", 'http://www.med.uni-muenchen.de' %>
+        </div>
+        <div id="breadcrumb">
+          breadbrumb
+        </div>
+        <div id="notifications">
+          <p class="notice"><%= notice %></p>
+          <p class="alert"><%= alert %></p>
+        </div>
+        <div id="content">
+          <%= yield %>
+        </div>
+        <div id="functions">
+          <div class="printlink">
+            <%= link_to image_tag("/assets/drucken.gif"), "#" %>
+          </div>
+          <div class="responsible">&nbsp;</div>
+          <div class="toplink">
+            <%= link_to image_tag("/assets/toplink.gif"), "#" %>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div id="footer">
+      bottom
+    </div>
+  </div>
+</body>
+</html>

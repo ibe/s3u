@@ -1,0 +1,40 @@
+<h1>Listing requests</h1>
+
+<table class="person">
+  <tr>
+    <th>Contact</th>
+    <th>Phonecontact</th>
+    <th>Description</th>
+    <th>Submitted</th>
+    <th>Approved</th>
+    <th>Result</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @requests.each do |request| %>
+  <tr>
+    <td><%= mail_to request.mailContact, "#{request.prenameContact} #{request.surnameContact}" %></td>
+    <td><%= request.phoneContact %></td>
+    <td><%= request.description %></td>
+    <td class="center">
+      <% if request.submit == 1 %>
+        <span title="submitted">&radic;</span>
+      <% end %>
+    </td>
+    <% if request.approved == true %>
+      <td class="green center" title="approved">&radic;</td>
+    <% elsif request.approved == false %>
+      <td class="red center" title="rejected">&empty;</td>
+    <% else %>
+      <td class="center" title="pending">pending</td>
+    <% end %>
+    </td>
+    <td><% if request.result == nil %>pending<% else %><%= request.result %><% end %></td>
+    <td><%= link_to 'Show', request %></td>
+    <td><%= link_to 'Edit', edit_request_path(request) %></td>
+    <td><%= link_to 'Destroy', request, :confirm => 'Are you sure?', :method => :delete %></td>
+  </tr>
+<% end %>
+</table>

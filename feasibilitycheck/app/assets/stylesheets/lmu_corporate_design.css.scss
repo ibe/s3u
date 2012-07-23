@@ -1,0 +1,173 @@
+$total_width: 955px;
+$right_width: 735px;
+
+/*
+div {
+    border: 1px dotted black;
+}
+*/
+
+body {
+    width: 100%;
+}
+#mainWrapper {
+    margin-left: auto;
+    margin-right: auto;
+    width: $total_width;
+}
+
+#header {
+    height: 155px;
+}
+
+#main {
+}
+
+#footer {
+    height: 18px;
+    border-top: 1px solid #ccc;
+}
+
+#firstColumn {
+    float: left;
+    width: $total_width - $right_width;
+    margin-right: 1.4em;
+}
+
+#secondColumn {
+    width: $right_width;
+    margin-right: 0px;
+    margin-left: $total_width - $right_width + 20;
+    padding: 0px;
+}
+
+#search {
+    
+}
+
+ul#navigation {
+    display: block;
+    list-style-type: none;
+    padding: 0px;
+}
+
+#navigation li {
+    border-top: 1px solid #999;
+}
+
+#navigation li a {
+    color: #333;
+    display: block;
+    font-size: 1em;
+    margin-left: 0px;
+    padding-bottom: 0.3em;
+    padding-left: 0.1em;
+    padding-top: 0.3em;
+    text-decoration: none;
+    text-transform: uppercase;
+}
+
+#navigation li a:hover {
+    background-color: #e5e5e4;
+}
+
+#navigation li ul {
+    list-style-type: none;
+    padding: 0px;
+    margin-left: 0.5em;
+}
+
+#navigation li li {
+    border-style: none;
+    font-size: 0.9em;
+}
+
+#navigation li li a {
+    text-transform: none;
+}
+
+#quickLinks {
+    height: 24px;
+}
+
+#breadcrumb {
+    height: 15px;
+    border-top: 1px solid #999;
+}
+
+#functions {
+    clear: both;
+}
+
+.printlink {
+    float: left;
+}
+
+.responsible {
+    width: 93%;
+    display: inline;
+    float: left;
+}
+
+.toplink {
+    display: inline;
+}
+
+.male_female {
+    font-size: 18px;
+}
+
+h1, h2 {
+    font-size: 1.1em;
+}
+
+table.classic th {
+    text-align: left !important;
+}
+
+table.nested td, table.nested th {
+    border: 1px solid #ccc;
+    padding-top: 0px;
+    margin-top: 0px;
+    vertical-align: top;
+}
+
+table.person {
+    border-collapse: separate;
+    margin-bottom: 3em;
+    table-layout: auto;
+    width: 98%;
+}
+
+table.person th {
+    background-color: #f7f7f7;
+    font-weight: bold;
+    text-align: left;
+    font-size: 105%;
+    padding: 0.6em 0 0.4em 0.2em;
+}
+
+table.person td {
+    background-color: #e5e5e4;
+    padding: 0.3em 0.2em;
+}
+
+td.red {
+    background-color: #f55 !important;
+}
+
+td.green {
+    background-color: #5f5 !important;
+}
+
+.center {
+    text-align: center;
+}
+.bold {
+    font-weight: bold;
+}
+.huge td {
+    font-size: 50pt !important;
+    line-height: 50pt;
+    color: #f00;
+}

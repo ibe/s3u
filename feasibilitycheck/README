@@ -1,0 +1,6 @@
+* warning!! requires interaction (REST webservice) with s3u_lmu_studienmonitor. see app/models/datum.rb for configuration (p.ex. webservice URI)
+* possible web interface
+* users can define requests (structured inclusion/exclusion criteria)
+* requests are approved by humans (p.ex. members of m4 TSC or KUM CSC)
+* after approval, amount of possible recruitable patients is collected per request
+* amount is returned to user
