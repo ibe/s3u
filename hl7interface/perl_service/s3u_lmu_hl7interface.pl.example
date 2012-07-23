@@ -1,0 +1,23 @@
+#
+# This is a placeholer for a simple perl-based TCP server receiving HL7 messages and writing
+# the results to a database.
+#
+# Unfortunately it does not seem possible to publish the source code as someone seems
+# to think that it violates his intellectual property. For political reasons, I will not comment
+# on this further, except for the fact, that I do not think, that I have violated IP's.
+# 
+# Hint: These CPAN modules were used:
+#  Log::Log4perl
+#  Net::HL7::Daemon
+#  DBI
+#  DBD::mysql
+#
+# Instructions:
+#  * create a daemon and listen to a particular TCP port to which HL7 messages are sent by a HL7 client
+#  * use public available documentation on HL7 to determine, which data you need from the whole HL7 stream
+#  * store it into your database
+#  * done
+#
+# Feel free to contact me on this topic. Use the appropriate mail address on the organization's website:
+# https://github.com/ibe
+#
