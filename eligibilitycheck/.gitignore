@@ -7,3 +7,5 @@ config/database.yml
 config/ldap.yml
 app/assets/stylesheets/lmu_corporate_design.css.scss
 config/environments/*.rb
+app/assets/images/
+public/assets/

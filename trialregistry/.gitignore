@@ -5,3 +5,5 @@ tmp/
 .sass-cache/
 app/assets/stylesheets/lmu_corporate_design.css.scss
 config/database.yml
+app/assets/images/
+public/assets/
