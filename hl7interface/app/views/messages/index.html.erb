@@ -4,13 +4,14 @@
 
 <table class="person">
   <tr>
-    <th>Datasource</th>
-    <th>Messagecontrolid</th>
-    <th>Segment</th>
-    <th>Composite</th>
-    <th>Subcomposite</th>
-    <th>Subsubcomposite</th>
-    <th>Value</th>
+    <th title="Datasource"><%= sortable "dataSource", "Ds" %></th>
+    <th><%= sortable "messageControlId" %></th>
+    <th title="HL7 segment"><%= sortable "segment", "Se" %></th>
+    <th title="HL7 composite"><%= sortable "composite", "Co" %></th>
+    <th title="HL7 subcomposite"><%= sortable "subcomposite", "Sc" %></th>
+    <th title="HL7 subsubcomposite"><%= sortable "subsubcomposite", "Ss" %></th>
+    <th><%= sortable "value" %></th>
+    <th><%= sortable "created_at" %></th>
     <th></th>
     <th></th>
     <th></th>
@@ -25,6 +26,7 @@
     <td><%= message.subcomposite %></td>
     <td><%= message.subsubcomposite %></td>
     <td><%= message.value %></td>
+    <td><%= message.created_at %></td>
   </tr>
 <% end %>
 </table>
