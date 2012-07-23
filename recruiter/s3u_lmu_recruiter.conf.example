@@ -1,0 +1,57 @@
+#
+# this is the config file of s3u_lmu_recruiter
+# unless otherwise noted, all config variables are mandatory!
+#
+
+# file, where Log4Perl configurations for the recruiter are stored
+# mandatory, defaults to:
+# s3u_lmu_recruiter_log.conf
+LOG4PERL_CONF = s3u_lmu_recruiter_log.conf
+
+# dsn+credentials for the studienmonitor DB connection
+# mandatory, defaults to:
+# DBI:mysql:database=s3u_lmu_hl7interface_development;host=localhost;port=3306
+DB_DSN_STUDIENMONITOR = DBI:mysql:database=s3u_lmu_studienmonitor_development;host=localhost;port=3306
+DB_USER_STUDIENMONITOR = my_db_user
+DB_PASSWORD_STUDIENMONITOR = my_db_password
+
+# dsn+credentials for the webreqest DB connection
+# mandatory, defaults to:
+# DBI:mysql:database=s3u_lmu_hl7interface_development;host=localhost;port=3306
+DB_DSN_WEBREQUEST = DBI:mysql:database=s3u_lmu_webrequest_development;host=localhost;port=3306
+DB_USER_WEBREQUEST = my_db_user
+DB_PASSWORD_WEBREQUEST = my_db_password
+
+# dsn+credentials for the hl7interface DB connection
+# mandatory, defaults to:
+# DBI:mysql:database=s3u_lmu_hl7interface_development;host=localhost;port=3306
+DB_DSN_HL7IF = DBI:mysql:database=s3u_lmu_hl7interface_development;host=localhost;port=3306
+DB_USER_HL7IF = my_db_user
+DB_PASSWORD_HL7IF = my_db_password
+
+# dsn+credentials for the webinterface DB connection
+# mandatory, defaults to:
+# DBI:mysql:database=s3u_lmu_hl7interface_development;host=localhost;port=3306
+DB_DSN_WEBINTERFACE = DBI:mysql:database=s3u_lmu_aerzte_ui_development;host=localhost;port=3306
+DB_USER_WEBINTERFACE = my_db_user
+DB_PASSWORD_WEBINTERFACE = my_db_password
+
+# server+credentials for querying the LDAP/AD directory
+# mandatory, defaults to:
+# localhost
+LDAP_SERVER = localhost
+LDAP_USER = CN=my,OU=full,OU=bind,DC=distinguished,DC=name
+LDAP_PASSWORD = my_ldap_password
+LDAP_BASEDN = DC=localhost
+
+MAIL_TEMPLATE_PATH_PHYSICIAN = my_directory_path_to_the_templates
+MAIL_TEMPLATE_FILE_PHYSICIAN = physicians.txt.tt
+MAIL_TEMPLATE_FILE_TRIAL = trial_personnel.txt.tt
+
+# overwrites default recipients in order not to spam real physicians with dummy mails.
+# if NOT in production mode, use an existing inboxes mail address on which you have access to.
+DEBUG_MAIL_RECIPIENT = my_user@localhost
+
+# sender of mails. should be of course an existing mail address. is used in the 'From' field
+# of any mails being sent
+MAIL_SENDER = my_other_user@localhost
