@@ -3,10 +3,12 @@ class PatientsController < ApplicationController
   before_filter :authenticate_user!
   load_and_authorize_resource
 
+  helper_method :sort_column, :sort_direction
+
   # GET /patients
   # GET /patients.json
   def index
-    @patients = Patient.all
+    @patients = Patient.order(sort_column + ' ' + sort_direction)
 
     respond_to do |format|
       format.html # index.html.erb
@@ -84,4 +86,14 @@ class PatientsController < ApplicationController
   #    format.json { head :ok }
   #  end
   #end
+
+  private
+  
+  def sort_column
+    Patient.column_names.include?(params[:sort]) ? params[:sort] : "created_at"
+  end
+  
+  def sort_direction
+    %w[asc desc].include?(params[:direction]) ? params[:direction] : "desc"
+  end
 end
