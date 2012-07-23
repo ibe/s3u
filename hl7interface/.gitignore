@@ -12,3 +12,5 @@ perl_service/*.conf
 perl_service/*.log
 perl_service/*.sql
 perl_service/s3u_lmu_hl7interface.pl
+app/assets/images/
+public/assets/
