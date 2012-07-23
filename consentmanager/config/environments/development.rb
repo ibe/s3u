@@ -29,8 +29,8 @@ S3uLmuConsentmanager::Application.configure do
   config.assets.debug = true
 
   # set the url where the studienmonitor webservice runs
-  config.s3u_lmu_studienmonitor_url = "http://localhost:3000"
+  config.s3u_lmu_studienmonitor_url = "https://mitibem4.srv.med.uni-muenchen.de/trialregistry"
 
   # set the url where the webinterface webservice runs
-  config.s3u_lmu_webinterface_url = "http://localhost:3002"
+  config.s3u_lmu_webinterface_url = "https://mitibem4.srv.med.uni-muenchen.de/eligibilitycheck"
 end
