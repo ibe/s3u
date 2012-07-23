@@ -44,6 +44,7 @@ LDAP_USER = CN=my,OU=full,OU=bind,DC=distinguished,DC=name
 LDAP_PASSWORD = my_ldap_password
 LDAP_BASEDN = DC=localhost
 
+# full path to mail templates directory
 MAIL_TEMPLATE_PATH_PHYSICIAN = my_directory_path_to_the_templates
 MAIL_TEMPLATE_FILE_PHYSICIAN = physicians.txt.tt
 MAIL_TEMPLATE_FILE_TRIAL = trial_personnel.txt.tt

@@ -249,5 +249,4 @@ sub buildAdministratorMail {
     Encoding => 'quoted-printable'
   );
   $msg->send();
-  #print $msg->as_string;
 }
