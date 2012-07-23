@@ -2,15 +2,17 @@ class MessagesController < ApplicationController
 
   before_filter :authenticate_user!
   load_and_authorize_resource
+
+  helper_method :sort_column, :sort_direction
   
   # GET /messages
   # GET /messages.json
   def index
     if (current_user.admin?)
-      @messages = Message.order(:messageControlId).page params[:page]
+      @messages = Message.order(sort_column + ' ' + sort_direction).page params[:page]
     else
       @mymessages = Message.where(current_user.permissions)
-      @messages = Message.where(:messageControlId => @mymessages.collect{|x| x.messageControlId}).order(:messageControlId).page params[:page]
+      @messages = Message.where(:messageControlId => @mymessages.collect{|x| x.messageControlId}).order(sort_column + ' ' + sort_direction).page params[:page]
     end
 
     respond_to do |format|
@@ -53,6 +55,16 @@ class MessagesController < ApplicationController
       format.html
       format.json { render :json => @messages }
     end
+  end
+  
+  private
+  
+  def sort_column
+    Message.column_names.include?(params[:sort]) ? params[:sort] : "created_at"
+  end
+  
+  def sort_direction
+    %w[asc desc].include?(params[:direction]) ? params[:direction] : "desc"
   end
 end
 
