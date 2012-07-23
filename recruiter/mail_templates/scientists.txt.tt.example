@@ -1,0 +1,2 @@
+placeholder for mail template addressed to external scientists
+(uses variables [% date %], [% hits %], [% id %])
