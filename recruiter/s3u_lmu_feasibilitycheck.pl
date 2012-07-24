@@ -178,7 +178,7 @@ $sth = $dbh_webrequest->prepare(
 $sth->execute();
 my $request_hits = 0;
 while (my $r = $sth->fetchrow_hashref) {
-  buildScientistMail($r->{'mailContact'},$r->{'result'},$r->{'created_at'},$r->{'id'});
+  buildScientistMail($r->{'mailContact'},$r->{'result'},$r->{'created_at'},$r->{'id'},$r->{'prenameContact'},$r->{'surnameContact'},$r->{'updated_at'});
   $request_hits++;
 }
 
@@ -193,17 +193,18 @@ $dbh_webrequest->disconnect();
 #
 sub buildScientistMail {
   my $recipient = $_[0];
-  my $hits = $_[1];
-  my $date = $_[2];
-  my $id = $_[3];
-  
-  my %options;
-  $options{INCLUDE_PATH} = $S3U_CONF{MAIL_TEMPLATE_PATH_PHYSICIAN};
-  
+
   my %params;
-  $params{hits} = $hits;
-  $params{date} = $date;
-  $params{id} = $id;
+  $params{hits} = $_[1];
+  $params{date} = $_[2];
+  $params{id} = $_[3];
+  $params{prename} = $_[4];
+  $params{surname} = $_[5];
+  $params{url} = $S3U_CONF{FEASIBILITY_CHECK_URL} . "/" . $_[3];
+  $params{check_date} = $_[6];
+
+  my %options;
+  $options{INCLUDE_PATH} = $S3U_CONF{MAIL_TEMPLATE_PATH_PHYSICIAN}; 
   
   my %template;
   $template{text} = $S3U_CONF{MAIL_TEMPLATE_FILE_SCIENTIST};
@@ -231,6 +232,9 @@ sub buildScientistMail {
 sub buildAdministratorMail {
   #my $trialPersonnel = $_[0];
   
+  my %params;
+  $params{url} = $S3U_CONF{FEASIBILITY_CHECK_URL};
+
   my %options;
   $options{INCLUDE_PATH} = $S3U_CONF{MAIL_TEMPLATE_PATH_PHYSICIAN};
   
@@ -245,6 +249,7 @@ sub buildAdministratorMail {
     Subject => '[S3U][Feasibility Digest] Übersicht über Feasibility Ergebnisse',
     Template => \%template,
     TmplOptions => \%options,
+    TmplParams => \%params,
     Charset => 'utf-8',
     Encoding => 'quoted-printable'
   );
