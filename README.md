@@ -8,5 +8,5 @@ consists of theses modules:
 - eligibilitycheck
 - feasibilitycheck
 - recruiter
-- basic trialregistry
-- basic cdms
+- basic trialregistry (to show proof-of-concept)
+- basic cdms (to show proof-of-concept)
