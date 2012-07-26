@@ -1,2 +1,3 @@
 hl7interface/perl_service/s3u_lmu_hl7interface.pl
 consentmanager/config/environments/development.rb
+dummy-data/
