@@ -4,14 +4,14 @@
   <tr>
     <th><%=t :new %>?</th>
 <!--    <th>Extid</th>-->
-    <th><%=t :prename %></th>
-    <th><%=t :surname %></th>
-    <th><%=t :dob %></th>
-    <th><%=t :sex %></th>
+    <th><%= sortable "prename" %></th>
+    <th><%= sortable "surname" %></th>
+    <th><%= sortable "dob" %></th>
+    <th><%= sortable "sex" %></th>
     <th><%=t :trial %></th>
-    <th><%=t :consent %></th>
-    <th><%=t :created_at %></th>
-    <th><%=t :updated_at %></th>
+    <th><%= sortable "consent_status", t(:consent) %></th>
+    <th><%= sortable "created_at" %></th>
+    <th><%= sortable "updated_at" %></th>
     <th></th>
   </tr>
 

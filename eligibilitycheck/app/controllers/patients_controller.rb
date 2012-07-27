@@ -1,11 +1,13 @@
 class PatientsController < ApplicationController
   
   before_filter :authenticate_user!
-  
+
+  helper_method :sort_column, :sort_direction
+
   # GET /patients
   # GET /patients.json
   def index
-    @patients = Patient.where(:extDocId => current_user.extDocId).order("consent_status ASC, created_at DESC")
+    @patients = Patient.where(:extDocId => current_user.extDocId).order(sort_column + ' ' + sort_direction)
 
     respond_to do |format|
       format.html # index.html.erb
@@ -110,5 +112,15 @@ class PatientsController < ApplicationController
         format.json { render :json => @patient.errors, :status => :unprocessable_entity }
       end
     end
+  end
+
+  private
+  
+  def sort_column
+    Patient.column_names.include?(params[:sort]) ? params[:sort] : "consent_status"
+  end
+  
+  def sort_direction
+    %w[asc desc].include?(params[:direction]) ? params[:direction] : "asc"
   end
 end
