@@ -1,0 +1,27 @@
+<h1>Listing patients</h1>
+
+<table>
+  <tr>
+    <th>Extid</th>
+    <th>Prename</th>
+    <th>Surname</th>
+    <th>Dob</th>
+    <th>Ext</th>
+    <th>Extdocid</th>
+    <th></th>
+  </tr>
+
+<% @patients.each do |patient| %>
+  <tr>
+    <td><%= patient.extId %></td>
+    <td><%= patient.prename %></td>
+    <td><%= patient.surname %></td>
+    <td><%= patient.dob %></td>
+    <td><%= patient.ext %></td>
+    <td><%= patient.extDocId %></td>
+    <td><%= link_to 'Show', patient %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />

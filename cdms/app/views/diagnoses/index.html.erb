@@ -1,0 +1,23 @@
+<h1>Listing diagnoses</h1>
+
+<table>
+  <tr>
+    <th>Icd10code</th>
+    <th>Icd10text</th>
+    <th>Icd10version</th>
+    <th>Medical case</th>
+    <th></th>
+  </tr>
+
+<% @diagnoses.each do |diagnosis| %>
+  <tr>
+    <td><%= diagnosis.icd10Code %></td>
+    <td><%= diagnosis.icd10Text %></td>
+    <td><%= diagnosis.icd10Version %></td>
+    <td><%= diagnosis.medical_case %></td>
+    <td><%= link_to 'Show', diagnosis %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />

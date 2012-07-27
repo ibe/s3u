@@ -1,0 +1,9 @@
+.bundle
+db/*.sqlite3
+log/*.log
+tmp/
+.sass-cache/
+config/database.yml
+app/assets/stylesheets/lmu_corporate_design.css.scss
+app/assets/images/
+public/assets/

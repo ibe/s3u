@@ -1,0 +1,17 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  extId: MyString
+  prename: MyString
+  surname: MyString
+  dob: 2012-05-15
+  ext: MyString
+  extDocId: MyString
+
+two:
+  extId: MyString
+  prename: MyString
+  surname: MyString
+  dob: 2012-05-15
+  ext: MyString
+  extDocId: MyString

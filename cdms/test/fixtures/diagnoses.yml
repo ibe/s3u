@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  icd10Code: MyString
+  icd10Text: MyString
+  icd10Version: MyString
+  medical_case: 
+
+two:
+  icd10Code: MyString
+  icd10Text: MyString
+  icd10Version: MyString
+  medical_case: 

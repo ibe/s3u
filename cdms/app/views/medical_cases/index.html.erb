@@ -1,0 +1,23 @@
+<h1>Listing medical_cases</h1>
+
+<table>
+  <tr>
+    <th>Extcaseid</th>
+    <th>Patient</th>
+    <th>Funcou</th>
+    <th>Nurseou</th>
+    <th></th>
+  </tr>
+
+<% @medical_cases.each do |medical_case| %>
+  <tr>
+    <td><%= medical_case.extCaseId %></td>
+    <td><%= medical_case.patient %></td>
+    <td><%= medical_case.funcOu %></td>
+    <td><%= medical_case.nurseOu %></td>
+    <td><%= link_to 'Show', medical_case %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />

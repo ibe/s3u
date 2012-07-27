@@ -1,0 +1,24 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Icd10code:</b>
+  <%= @diagnosis.icd10Code %>
+</p>
+
+<p>
+  <b>Icd10text:</b>
+  <%= @diagnosis.icd10Text %>
+</p>
+
+<p>
+  <b>Icd10version:</b>
+  <%= @diagnosis.icd10Version %>
+</p>
+
+<p>
+  <b>Medical case:</b>
+  <%= @diagnosis.medical_case %>
+</p>
+
+
+<%= link_to 'Back', diagnoses_path %>

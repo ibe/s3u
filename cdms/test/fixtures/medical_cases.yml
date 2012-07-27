@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  extCaseId: MyString
+  patient: 
+  funcOu: MyString
+  nurseOu: MyString
+
+two:
+  extCaseId: MyString
+  patient: 
+  funcOu: MyString
+  nurseOu: MyString
