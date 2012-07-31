@@ -40,6 +40,26 @@ class PatientsController < ApplicationController
     # update/insert is not *that* easy as with ActiveRecord based models
     # maybe we have to re-design this at a later stage due to privacy concerns
     
+    # we need to update two remote applications: consentmanager + cdms
+    
+    cs_hit = 0
+    @cdms_subjects = CdmsSubject.all
+    @cdms_subjects.each do |cs|
+      if cs.prename == @patient.prename && cs.surname == @patient.surname
+        cs_hit = cs.id
+      end
+    end
+    if cs_hit > 0
+      @cdms_subject = CdmsSubject.find(cs_hit)
+      @cdms_subject.update_attributes(:prename => @patient.prename, :surname => @patient.surname)
+    else
+      @cdms_subject = CdmsSubject.new(
+        :prename => @patient.prename,
+        :surname => @patient.surname
+      )
+      @cdms_subject.save!
+    end
+    
     s_hit = 0
     
     # let's search for "our" patient
