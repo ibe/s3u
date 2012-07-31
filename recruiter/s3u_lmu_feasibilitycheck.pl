@@ -207,8 +207,8 @@ sub buildScientistMail {
   $options{INCLUDE_PATH} = $S3U_CONF{MAIL_TEMPLATE_PATH_PHYSICIAN}; 
   
   my %template;
-  $template{text} = $S3U_CONF{MAIL_TEMPLATE_FILE_SCIENTIST};
-  $template{html} = $S3U_CONF{MAIL_TEMPLATE_FILE_SCIENTIST};
+  $template{text} = $S3U_CONF{MAIL_TEMPLATE_FILE_TRIAL};
+  $template{html} = $S3U_CONF{MAIL_TEMPLATE_FILE_TRIAL};
   
   my $msg = MIME::Lite::TT::HTML->new(
     From => $S3U_CONF{MAIL_SENDER},
