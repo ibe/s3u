@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120518072838) do
+ActiveRecord::Schema.define(:version => 20120730121503) do
 
   create_table "criteria", :force => true do |t|
     t.string   "value"
@@ -35,6 +35,16 @@ ActiveRecord::Schema.define(:version => 20120518072838) do
     t.datetime "created_at"
     t.datetime "updated_at"
   end
+
+  create_table "physicians", :force => true do |t|
+    t.integer  "trial_id"
+    t.string   "extDocId"
+    t.integer  "counter"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "physicians", ["trial_id"], :name => "index_physicians_on_trial_id"
 
   create_table "trials", :force => true do |t|
     t.string   "extId"

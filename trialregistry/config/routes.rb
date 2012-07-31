@@ -1,4 +1,6 @@
 S3uLmuStudienmonitor::Application.routes.draw do
+  resources :physicians
+
   #resources :criteria
 
   resources :data

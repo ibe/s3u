@@ -1,0 +1,20 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Trial:</b>
+  <%= @physician.trial %>
+</p>
+
+<p>
+  <b>Extdocid:</b>
+  <%= @physician.extDocId %>
+</p>
+
+<p>
+  <b>Counter:</b>
+  <%= @physician.counter %>
+</p>
+
+
+<%= link_to 'Edit', edit_physician_path(@physician) %> |
+<%= link_to 'Back', physicians_path %>

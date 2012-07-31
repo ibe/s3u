@@ -1,0 +1,29 @@
+<%= form_for(@physician) do |f| %>
+  <% if @physician.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@physician.errors.count, "error") %> prohibited this physician from being saved:</h2>
+
+      <ul>
+      <% @physician.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :trial %><br />
+    <%= f.text_field :trial %>
+  </div>
+  <div class="field">
+    <%= f.label :extDocId %><br />
+    <%= f.text_field :extDocId %>
+  </div>
+  <div class="field">
+    <%= f.label :counter %><br />
+    <%= f.number_field :counter %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

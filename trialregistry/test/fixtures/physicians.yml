@@ -1,0 +1,11 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  trial: 
+  extDocId: MyString
+  counter: 1
+
+two:
+  trial: 
+  extDocId: MyString
+  counter: 1
