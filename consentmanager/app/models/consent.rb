@@ -16,7 +16,13 @@ class Consent < ActiveRecord::Base
       else
         self.trial.recruiting_status = self.trial.recruiting_status + 1
       end
-      self.trial.save
+    else
+      if self.trial.recruiting_status > 1
+        self.trial.recruiting_status = self.trial.recruiting_status - 1
+      else
+        self.trial.recruiting_status = nil
+      end
     end
+    self.trial.save
   end
 end
