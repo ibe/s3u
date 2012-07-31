@@ -42,4 +42,7 @@ S3uLmuAerzteUi::Application.configure do
   
   # set the url where the consentmanager webservice runs
   config.s3u_lmu_consentmanager_url = "http://localhost:3005"
+
+  # set the url where the cdms webservice runs
+  config.s3u_lmu_cdms_url = "http://localhost:3007"
 end
