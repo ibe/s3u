@@ -17,7 +17,7 @@
   <tr>
     <td><%= mail_to request.mailContact, "#{request.prenameContact} #{request.surnameContact}" %></td>
     <td><%= request.phoneContact %></td>
-    <td><%= request.description %></td>
+    <td><%= link_to truncate(request.description, :length => 50), request %></td>
     <td class="center">
       <% if request.submit == 1 %>
         <span title="submitted">&radic;</span>
