@@ -92,6 +92,10 @@ foreach (@trials) {
   my $dbh_hl7interface = DBI->connect($S3U_CONF{DB_DSN_HL7IF}, $S3U_CONF{DB_USER_HL7IF}, $S3U_CONF{DB_PASSWORD_HL7IF});
   $dbh_hl7interface && $log->info("3/... success: hl7interface connection") || die $log->error("3/... failure: hl7interface connection " . DBI::errstr);
 
+  # step 3: connect to the aerzte_ui DB an insert all true hits into it
+  my $dbh_aerzte_ui = DBI->connect($S3U_CONF{DB_DSN_WEBINTERFACE}, $S3U_CONF{DB_USER_WEBINTERFACE}, $S3U_CONF{DB_PASSWORD_WEBINTERFACE});
+  $dbh_aerzte_ui && $log->info("4/... success: webinterface connection") || die $log->error("3/... failure: webinterface connection " . DBI::errstr);
+
   # initiate several hashes/arrays
   my $criteria_size = @criteria;
   my @messageControlId_hits = ();
@@ -148,7 +152,9 @@ foreach (@trials) {
     $sth->execute();
     my $r = $sth->fetchrow_hashref;
     $dataset{'extId'} = $r->{'value'};
-    $dataset{'extId'} =~ s/^0*(.*)/$1/g;
+    if ($dataset{'extId'}) {
+      $dataset{'extId'} =~ s/^0*(.*)/$1/g;
+    }
 
     $sth = $dbh_hl7interface->prepare($select . " AND segment = 'PID' AND composite = 5 AND subcomposite = 0 AND subsubcomposite = 0");
     $sth->execute();
@@ -164,7 +170,9 @@ foreach (@trials) {
     $sth->execute();
     $r = $sth->fetchrow_hashref;
     $dataset{'dob'} = $r->{'value'};
-    $dataset{'dob'} =~ s/(....)(..)(..)/$1-$2-$3/g;
+    if ($dataset{'dob'}) {
+      $dataset{'dob'} =~ s/(....)(..)(..)/$1-$2-$3/g;
+    }
 
     $sth = $dbh_hl7interface->prepare($select . " AND segment = 'PID' AND composite = 8 AND subcomposite = 0 AND subsubcomposite = 0");
     $sth->execute();
@@ -190,7 +198,9 @@ foreach (@trials) {
     $sth->execute();
     $r = $sth->fetchrow_hashref;
     $dataset{'admitDateTime'} = $r->{'value'};
-    $dataset{'admitDateTime'} =~ s/(....)(..)(..)(..)(..)(..)/$1-$2-$3 $4:$5:$6/g;
+    if ($dataset{'admitDateTime'}) {
+      $dataset{'admitDateTime'} =~ s/(....)(..)(..)(..)(..)(..)/$1-$2-$3 $4:$5:$6/g;
+    }
 
     #$sth = $dbh_hl7interface->prepare($select . " AND segment = 'PV1' AND composite = 45 AND subcomposite = 0 AND subsubcomposite = 0");
     #$sth->execute();
@@ -202,7 +212,9 @@ foreach (@trials) {
     $sth->execute();
     $r = $sth->fetchrow_hashref;
     $dataset{'extCaseId'} = $r->{'value'};
-    $dataset{'extCaseId'} =~ s/^0*(.*)/$1/g;
+    if ($dataset{'extCaseId'}) {
+      $dataset{'extCaseId'} =~ s/^0*(.*)/$1/g;
+    }
 
     $sth = $dbh_hl7interface->prepare($select . " AND segment = 'DG1' AND composite = 3 AND subcomposite = 1 AND subsubcomposite = 0");
     $sth->execute();
@@ -220,12 +232,8 @@ foreach (@trials) {
     $dataset{'icd10Code'} = $r->{'value'};
   
     $sth->finish();
-    $log->debug("build dataset: trial: " . $dataset{'trial_id'} . " extId: " . $dataset{'extId'} . " surname: " . $dataset{'surname'} . " prename: " . $dataset{'prename'} . " dob: " . $dataset{'dob'} . " sex: " . $dataset{'sex'} . " extDocId: " . $dataset{'extDocId'} . " nurseOu: " . $dataset{'nurseOu'} . " funcOu: " . $dataset{'funcOu'} . " admitDateTime: " . $dataset{'admitDateTime'} . " extCaseId: " . $dataset{'extCaseId'} . " icd10Text: " . $dataset{'icd10Text'} . " icd10Code: " . $dataset{'icd10Code'} . " icd10Version: " . $dataset{'icd10Version'});
+    $log->debug("build dataset: trial: " . $dataset{'trial_id'} || "<n/a>" . " extId: " . $dataset{'extId'} || "<n/a>" . " surname: " . $dataset{'surname'} || "<n/a>" . " prename: " . $dataset{'prename'} || "<n/a>" . " dob: " . $dataset{'dob'} || "<n/a>" . " sex: " . $dataset{'sex'} || "<n/a>" . " extDocId: " . $dataset{'extDocId'} || "<n/a>" . " nurseOu: " . $dataset{'nurseOu'} || "<n/a>" . " funcOu: " . $dataset{'funcOu'} || "<n/a>" . " admitDateTime: " . $dataset{'admitDateTime'} || "<n/a>" . " extCaseId: " . $dataset{'extCaseId'} || "<n/a>" . " icd10Text: " . $dataset{'icd10Text'} || "<n/a>" . " icd10Code: " . $dataset{'icd10Code'} || "<n/a>" . " icd10Version: " . $dataset{'icd10Version'} || "<n/a>");
     
-    # step 3: connect to the aerzte_ui DB an insert all true hits into it
-    my $dbh_aerzte_ui = DBI->connect($S3U_CONF{DB_DSN_WEBINTERFACE}, $S3U_CONF{DB_USER_WEBINTERFACE}, $S3U_CONF{DB_PASSWORD_WEBINTERFACE});
-    $dbh_aerzte_ui && $log->info("4/... success: webinterface connection") || die $log->error("3/... failure: webinterface connection " . DBI::errstr);
-
     # master requirement: we need a physician associated with the patient
     if ($dataset{'extDocId'}) {
       # check if we have an identical patient already in the patients table
@@ -281,7 +289,7 @@ foreach (@trials) {
 
       $sth->finish();
       # ok, we're done with the aerzte_ui
-      $dbh_aerzte_ui->disconnect();
+      #$dbh_aerzte_ui->disconnect();
     }
     else {
       # oh nooo, epic fail! we miss a patient because no physician is associated with it!
@@ -289,6 +297,7 @@ foreach (@trials) {
     }
   }
   # horray, we're done, let's get a beer :)
+  $dbh_aerzte_ui->disconnect();
   $dbh_hl7interface->disconnect();
 }
 
@@ -320,10 +329,10 @@ $dbh_studienmonitor && $log->info("2/... success: studienmonitor connection") ||
 
 if (@trial_ids) {
   $sth = $dbh_studienmonitor->prepare(
-    "SELECT mailInvestigator FROM trials WHERE id IN (". join(",",@trial_ids) .")");
+    "SELECT mailInvestigator, prenameInvestigator, surnameInvestigator, extId FROM trials WHERE id IN (". join(",",@trial_ids) .")");
   $sth->execute();
   while (my $r = $sth->fetchrow_hashref) {
-    buildTrialMail($r->{'mailInvestigator'});
+    buildTrialMail($r->{'mailInvestigator'},$r->{'prenameInvestigator'},$r->{'surnameInvestigator'},$r->{'extId'});
   }  
 }
 $dbh_studienmonitor->disconnect();
@@ -365,12 +374,17 @@ sub buildPhysicianMail {
 sub buildTrialMail {
   my $trialPersonnel = $_[0];
   
+  my %params;
+  $params{prename} = $_[1];
+  $params{surname} = $_[2];
+  $params{trial} = $_[3];
+  
   my %options;
   $options{INCLUDE_PATH} = $S3U_CONF{MAIL_TEMPLATE_PATH_PHYSICIAN};
   
   my %template;
-  $template{text} = $S3U_CONF{MAIL_TEMPLATE_FILE_PHYSICIAN};
-  $template{html} = $S3U_CONF{MAIL_TEMPLATE_FILE_PHYSICIAN};
+  $template{text} = $S3U_CONF{MAIL_TEMPLATE_FILE_TRIAL};
+  $template{html} = $S3U_CONF{MAIL_TEMPLATE_FILE_TRIAL};
   
   my $msg = MIME::Lite::TT::HTML->new(
     From => $S3U_CONF{MAIL_SENDER},
@@ -379,6 +393,7 @@ sub buildTrialMail {
     Subject => '[S3U][Forschungskontext] Übersicht über neue, potentiell rekrutierbare Patienten',
     Template => \%template,
     TmplOptions => \%options,
+    TmplParams => \%params,
     Charset => 'utf-8',
     Encoding => 'quoted-printable'
   );
