@@ -35,12 +35,13 @@ class PatientsController < ApplicationController
   # PUT /patients/1.json
   def update
     @patient = Patient.find(params[:id])
-    
+
     # as Subject and Consent models are ActiveRessource based,
     # update/insert is not *that* easy as with ActiveRecord based models
     # maybe we have to re-design this at a later stage due to privacy concerns
     
     # we need to update two remote applications: consentmanager + cdms
+    # (the trial's recruiting status is indirectly updated via consentmanager)
     
     cs_hit = 0
     @cdms_subjects = CdmsSubject.all
@@ -113,14 +114,6 @@ class PatientsController < ApplicationController
         :mailPhysician => current_user.mailDoc
       )
       @consent.save!
-    end
-    
-    @trial = Trial.find(@patient.trial.id)
-    status = @trial.recruiting_status || 0
-    if @consent.status == '0'
-      @trial.update_attribute(:recruiting_status, status - 1)
-    else
-      @trial.update_attribute(:recruiting_status, status + 1)
     end
 
     respond_to do |format|
