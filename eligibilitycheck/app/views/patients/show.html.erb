@@ -35,7 +35,7 @@
   </tr>
   <tr>
     <th><%=t :trial %></th>
-    <td>: <%= @patient.trial.extId %> (<%= link_to 'initiated informed consent process', edit_patient_path %>)</td>
+    <td>: <%= @patient.trial.extId %> <% if @patient.consent_status.nil? %>(<%= link_to 'initiated informed consent process', edit_patient_path %>)<% end %></td>
   </tr>
   <tr>
     <th><%=t :consent %></th>
