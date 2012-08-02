@@ -9,7 +9,7 @@ de:
         surnameContact: "Nachname"
         mailContact: "E-Mail Adresse"
         phoneContact: "Rufnummer"
-        description: "Beschreibung Ihres Vorhabens"
+        description: "Vorhabensbeschreibung"
     submit:
       request:
         create: "Weiter"
@@ -23,6 +23,8 @@ de:
   contact: "Anfragender"
   description: "Vorhabensbeschreibung"
   submitted: "Eingereicht"
+  approve: "Genehmigen"
+  reject: "Ablehnen"
   approved: "Genehmigt"
   result: "Ergebnis"
   criterion_type: "Kriteriumstyp"
@@ -38,3 +40,7 @@ de:
   destroy: "Löschen"
   show: "Details"
   requests: "Anfragen"
+  footer:
+    contact: "Kontakt"
+    report_bug: "Einen Fehler melden"
+    overview: "Überblick über die S3U-Infrastruktur"
