@@ -127,6 +127,18 @@ class PatientsController < ApplicationController
     end
   end
 
+  # DELETE /patients/1
+  # DELETE /patients/1.json
+  def destroy
+    @patient = Patient.find(params[:id])
+    @patient.destroy
+
+    respond_to do |format|
+      format.html { redirect_to patients_url }
+      format.json { head :ok }
+    end
+  end
+
   private
   
   def sort_column
