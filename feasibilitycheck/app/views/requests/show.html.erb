@@ -4,7 +4,7 @@
   <tr>
     <th><%=t :prename %></th>
     <td>: <%= @request.prenameContact %></td>
-    <td><% if @request.submit != 1 %><%= link_to 'Edit request', edit_request_path(@request) %><% end %></td>
+    <td><% if @request.submit != 1 %><%= link_to I18n.t('request.edit'), edit_request_path(@request) %><% end %></td>
   </tr>
   <tr>
     <th><%=t :surname %></th>
@@ -39,7 +39,7 @@
       <% if @request.submit != 1 %>
         <%= form_for(@request) do |f| %>
           <%= f.hidden_field :submit, :value => 1 %>
-          <%= f.submit "submit request" %>
+          <%= f.submit %>
         <% end %>
       <% end %>
     </td>

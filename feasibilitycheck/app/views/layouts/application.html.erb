@@ -22,9 +22,9 @@
         <ul id="navigation">
           <li>
             <% if user_signed_in? %>
-              <ul><%= link_to "Requests", :requests %></ul>
+              <ul><%= link_to I18n.t("requests"), :requests %></ul>
             <% else %>
-              <ul><%= link_to "Create a new request", new_request_path %></ul>
+              <ul><%= link_to I18n.t("request.new"), new_request_path %></ul>
             <% end %>
           </li>
         </ul>

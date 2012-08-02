@@ -1,0 +1,40 @@
+# Sample localization file for English. Add more files in this directory for other locales.
+# See https://github.com/svenfuchs/rails-i18n/tree/master/rails%2Flocale for starting points.
+
+de:
+  helpers:
+    label:
+      request:
+        prenameContact: "Vorname"
+        surnameContact: "Nachname"
+        mailContact: "E-Mail Adresse"
+        phoneContact: "Rufnummer"
+        description: "Beschreibung Ihres Vorhabens"
+    submit:
+      request:
+        create: "Weiter"
+        update: "Anfrage einreichen"
+      criterion:
+        create: "Kriterium hinzufügen"
+  prename: "Vorname"
+  surname: "Nachname"
+  contact_mail: "E-Mail Adresse"
+  contact_phone: "Rufnummer"
+  contact: "Anfragender"
+  description: "Vorhabensbeschreibung"
+  submitted: "Eingereicht"
+  approved: "Genehmigt"
+  result: "Ergebnis"
+  criterion_type: "Kriteriumstyp"
+  datum: "Kriterium"
+  operator: "Operator"
+  value: "Wert"
+  request:
+    edit: "Anfrage bearbeiten"
+    new: "Neue Anfrage erstellen"
+    index:
+      listing_requests: "Übersicht aller Anfragen"
+  pending: "unbearbeitet"
+  destroy: "Löschen"
+  show: "Details"
+  requests: "Anfragen"

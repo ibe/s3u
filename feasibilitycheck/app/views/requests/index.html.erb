@@ -1,13 +1,13 @@
-<h1>Listing requests</h1>
+<h1><%=t 'request.index.listing_requests' %></h1>
 
 <table class="person">
   <tr>
-    <th>Contact</th>
-    <th>Phonecontact</th>
-    <th>Description</th>
-    <th>Submitted</th>
-    <th>Approved</th>
-    <th>Result</th>
+    <th><%=t "contact" %></th>
+    <th><%=t "contact_phone" %></th>
+    <th><%=t "description" %></th>
+    <th><%=t "submitted" %></th>
+    <th><%=t "approved" %></th>
+    <th><%=t "result" %></th>
     <th></th>
     <th></th>
     <th></th>
@@ -28,13 +28,12 @@
     <% elsif request.approved == false %>
       <td class="red center" title="rejected">&empty;</td>
     <% else %>
-      <td class="center" title="pending">pending</td>
+      <td class="center" title="pending"><%=t "pending" %></td>
     <% end %>
     </td>
-    <td><% if request.result == nil %>pending<% else %><%= request.result %><% end %></td>
-    <td><%= link_to 'Show', request %></td>
-    <td><%= link_to 'Edit', edit_request_path(request) %></td>
-    <td><%= link_to 'Destroy', request, :confirm => 'Are you sure?', :method => :delete %></td>
+    <td><% if request.result == nil %><%=t "pending" %><% else %><%= request.result %><% end %></td>
+    <td><%= link_to I18n.t('show'), request %></td>
+    <td><%= link_to I18n.t('destroy'), request, :confirm => 'Are you sure?', :method => :delete %></td>
   </tr>
 <% end %>
 </table>
