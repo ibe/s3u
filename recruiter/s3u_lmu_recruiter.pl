@@ -308,14 +308,14 @@ foreach (@trials) {
 my $dbh_aerzte_ui = DBI->connect($S3U_CONF{DB_DSN_WEBINTERFACE}, $S3U_CONF{DB_USER_WEBINTERFACE}, $S3U_CONF{DB_PASSWORD_WEBINTERFACE});
 $dbh_aerzte_ui && $log->info("4/... success: webinterface connection") || die $log->error("3/... failure: webinterface connection " . DBI::errstr);
 $sth = $dbh_aerzte_ui->prepare(
-  "SELECT DISTINCT(p.extDocId) FROM patients p, medical_cases m, diagnoses d WHERE p.created_at = '" . $timestamp . "' OR m.created_at = '" . $timestamp . "' OR d.created_at = '" . $timestamp . "'"
+  "SELECT DISTINCT(p.extDocId) FROM patients p, medical_cases m, diagnoses d, users u WHERE u.extDocId = p.extDocId AND u.current_sign_in_at < '". $timestamp ."' AND ( p.created_at = '" . $timestamp . "' OR m.created_at = '" . $timestamp . "' OR d.created_at = '" . $timestamp . "' )"
 );
 $sth->execute();
 while (my $r = $sth->fetchrow_hashref) {
   buildPhysicianMail($r->{'extDocId'});
 }
 $sth = $dbh_aerzte_ui->prepare(
-  "SELECT DISTINCT(p.trial_id) FROM patients p, medical_cases m, diagnoses d WHERE p.created_at = '" . $timestamp . "' OR m.created_at = '" . $timestamp . "' OR d.created_at = '" . $timestamp . "'"
+  "SELECT DISTINCT(p.trial_id) FROM patients p, medical_cases m, diagnoses d, users u WHERE u.extDocId = p.extDocId AND u.current_sign_in_at < '". $timestamp ."' AND ( p.created_at = '" . $timestamp . "' OR m.created_at = '" . $timestamp . "' OR d.created_at = '" . $timestamp . "' )"
 );
 $sth->execute();
 my @trial_ids = ();
