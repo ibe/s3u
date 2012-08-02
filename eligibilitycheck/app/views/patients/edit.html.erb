@@ -1,8 +1,10 @@
-<h1>Setting Consent Status</h1>
+<h1><%=t "consent_set" %></h1>
 
-<%= link_to 'Download informed consent template', "#{S3uLmuAerzteUi::Application.config.s3u_lmu_studienmonitor_url}/system/informed_consents/#{@patient.trial.id}/original/#{@patient.trial.informed_consent_file_name}" %>
- 
+<ol>
+  <li>Patient mündlich aufklären.</li>
+  <li><%= link_to I18n.t("download_ic"), "#{S3uLmuAerzteUi::Application.config.s3u_lmu_studienmonitor_url}/system/informed_consents/#{@patient.trial.id}/original/#{@patient.trial.informed_consent_file_name}" %></li>
+  <li>Entscheidung des Patienten im Formular dokumentieren.</li>
+  <li>Formular archivieren.</li>
 <%= render 'form' %>
-
-<%= link_to 'Show', @patient %> |
-<%= link_to 'Back', patients_path %>
+</ol>
+<%= link_to I18n.t("cancel"), @patient %>

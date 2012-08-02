@@ -19,9 +19,9 @@
         <ul id="navigation">
           <li>
             <% if user_signed_in? %>
-              <% patients = Patient.where("extDocId = ? AND created_at > ?", current_user.extDocId, current_user.last_sign_in_at).count %>
-              <% medical_cases = MedicalCase.joins(:patient).where("patients.extDocId = ? AND medical_cases.created_at > ?", current_user.extDocId, current_user.last_sign_in_at).count %>
-              <% diagnoses = Diagnosis.where("created_at > ?", current_user.last_sign_in_at).count %>
+              <% patients = Patient.where("extDocId = ? AND created_at > ?", current_user.extDocId, current_user.current_sign_in_at.in_time_zone('Berlin')).count %>
+              <% medical_cases = MedicalCase.joins(:patient).where("patients.extDocId = ? AND medical_cases.created_at > ?", current_user.extDocId, current_user.current_sign_in_at.in_time_zone('Berlin')).count %>
+              <% diagnoses = Diagnosis.where("created_at > ?", current_user.current_sign_in_at.in_time_zone('Berlin')).count %>
             <% else %>
               <% patients = medical_cases = diagnoses = 0 %>
             <% end %>
@@ -60,8 +60,8 @@
           <% end %>          
         </div>
         <div id="notifications">
-          <p class="notice"><%= notice %></p>
-          <p class="alert"><%= alert %></p>
+          <p class="notice"><% if notice %><%=t notice %><% end %></p>
+          <p class="alert"><% if alert %><%=t alert %><% end %></p>
         </div>
         <div id="content">
           <%= yield %>
@@ -78,7 +78,7 @@
       </div>
     </div>
     <div id="footer">
-      <%= mail_to "my_user@localhost", "Contact" %> | <%= link_to "Overview of S3U infrastructure", "http://localhost" %>
+      <%= mail_to "my_user@localhost", I18n.t("report_bug"), :subject => "[S3U][EC] Bug report" %> | <%= mail_to "my_user@localhost", I18n.t("contact"), :subject => "[S3U] Contact" %> | <%= link_to I18n.t("overview"), "http://localhost" %>
     </div>
   </div>
 </body>

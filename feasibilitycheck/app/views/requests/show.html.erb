@@ -52,7 +52,7 @@
       <% elsif @request.approved == false %>
         <span class="">&empty;</span>
       <% else %>
-        not yet reviewed
+        <%=t :pending %>
       <% end %>
     </td>
     <td>
@@ -60,11 +60,11 @@
       <% if @request.approved.nil? %>
         <%= form_for(@request) do |f| %>
           <%= f.hidden_field :approved, :value => 1 %>
-          <%= f.submit "approve" %>
+          <%= f.submit I18n.t("approve") %>
         <% end %>
         <%= form_for(@request) do |f| %>
           <%= f.hidden_field :approved, :value => 0 %>
-          <%= f.submit "reject" %>
+          <%= f.submit I18n.t("reject") %>
         <% end %>
       <% end %>
       <% end %>
@@ -72,7 +72,7 @@
   </tr>
   <tr>
     <th><%=t :result %></th>
-    <td>: <% if @request.result == nil %>pending<% else %><%= @request.result %> (snapshot result processed <%= time_ago_in_words(@request.updated_at) %> ago)<% end %></td>
+    <td>: <% if @request.result == nil %><%=t "pending" %><% else %>Um <%= @request.updated_at.in_time_zone('Berlin') %> traf(en) <%= @request.result %> Patient(en) auf die von Ihnen gewählten Kriterien zu<% end %></td>
     <td></td>
   </tr>
 </table>

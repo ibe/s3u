@@ -55,7 +55,7 @@
       </div>
     </div>
     <div id="footer">
-      <%= mail_to "my_user@localhost", "Contact" %> | <%= link_to "Overview of S3U infrastructure", "http://localhost" %>
+      <%= mail_to "my_user@localhost", I18n.t("footer.report_bug"), :subject => "[S3U][FC] Bug report" %> | <%= mail_to "my_user@localhost", I18n.t("footer.contact"), :subject => "[S3U] Contact" %> | <%= link_to I18n.t("footer.overview"), "http://localhost" %>
     </div>
   </div>
 </body>

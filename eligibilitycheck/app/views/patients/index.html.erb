@@ -10,8 +10,7 @@
     <th><%= sortable "sex" %></th>
     <th><%=t :trial %></th>
     <th><%= sortable "consent_status", t(:consent) %></th>
-    <th><%= sortable "created_at" %></th>
-    <th><%= sortable "updated_at" %></th>
+    <th></th>
     <th></th>
   </tr>
 
@@ -37,9 +36,9 @@
     <% else %>
       <td class="center" title="<%=t :consent_unknown %>">?</td>
     <% end %>
-    <td><%= time_ago_in_words(patient.created_at) %></td>
-    <td><%= time_ago_in_words(patient.updated_at) %></td>
     <td><%= link_to(patient) do %><%=t :show %><% end %></td>
+    <td><%= link_to I18n.t("not_eligible"), patient, :confirm => I18n.t("not_eligible_sure"), :method => :delete %></td>
+
   </tr>
 <% end %>
 </table>

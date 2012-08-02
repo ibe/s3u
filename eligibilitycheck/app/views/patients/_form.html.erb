@@ -36,16 +36,21 @@
     <%= f.text_field :extDocId %>
   </div>
   -->
+  <li>
   <div class="field">
-    <%= f.label :consent_status %><br />
-    <%= f.radio_button :consent_status, 0 %> consent withdrawn<br/>
-    <%= f.radio_button :consent_status, 1 %> consent issued
+    <%= f.label I18n.t(:consent_status) %>
+    <%= f.radio_button :consent_status, 0 %><%=t "consent_withdrawn" %>
+    <%= f.radio_button :consent_status, 1 %><%=t "consent_issued" %>
   </div>
+  </li>
+  <li>
   <div class="field">
-    <%= f.label :self_service_status %><br />
-    <%= f.radio_button :self_service_status, 0 %> Patient does not want access to the S3U<sup>LMU</sup>-Consent-Manager<br/>
-    <%= f.radio_button :self_service_status, 1 %> Patient wants access to the S3U<sup>LMU</sup>-Consent-Manager
+    <%= f.label I18n.t(:self_service_status) %>
+    <%= f.radio_button :self_service_status, 0 %><%=t "self_service_no" %>
+    <%= f.radio_button :self_service_status, 1 %><%=t "self_service_yes" %>
+    <span>... zum S3U<sup>LMU</sup>-Consent-Manager</span>
   </div>
+  </li>
   <div class="actions">
     <%= f.submit %>
   </div>
