@@ -2,7 +2,7 @@
 
 <ol>
   <li>Patient mündlich aufklären.</li>
-  <li><%= link_to I18n.t("download_ic"), "#{S3uLmuAerzteUi::Application.config.s3u_lmu_studienmonitor_url}/system/informed_consents/#{@patient.trial.id}/original/#{@patient.trial.informed_consent_file_name}" %></li>
+  <li><%= link_to I18n.t("download_ic"), "#{Rails.application.config.s3u_lmu_studienmonitor_url}/trialregistry/system/trials/informed_consents/#{@patient.trial.id}/original/#{@patient.trial.informed_consent_file_name}" %></li>
   <li>Entscheidung des Patienten im Formular dokumentieren.</li>
   <li>Formular archivieren.</li>
 <%= render 'form' %>
