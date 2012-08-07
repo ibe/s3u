@@ -1,4 +1,4 @@
-<% if consent.status == 1 %><% @status = 'consent issued' %><% else %><% @status = 'consent withdrawn' %><% end %>
+<% if consent.status == 1 %><% @status = I18n.t('consent_issued') %><% else %><% @status = I18n.t('consent withdrawn') %><% end %>
 <tr>
   <td><%= consent.trial.extId %></td>
   <td><%= mail_to consent.mailPhysician, "#{consent.prenamePhysician} #{consent.surnamePhysician}" %></td>

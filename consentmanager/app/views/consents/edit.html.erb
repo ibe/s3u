@@ -1,6 +1,5 @@
-<h1>Editing consent</h1>
+<h1><%=t :consent_edit %></h1>
 
 <%= render 'form' %>
 
-<%= link_to 'Show', @consent %> |
-<%= link_to 'Back', consents_path %>
+<%= link_to I18n.t('back'), consents_path %>

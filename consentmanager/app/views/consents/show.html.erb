@@ -1,20 +1,20 @@
 <table class="classic">
   <tr>
-    <th>Subject</th>
+    <th><%=t :subject %></th>
     <td>: <%= @consent.subject.prename %> <%= @consent.subject.surname %></td>
   </tr>
   <tr>
-    <th>Trial</th>
+    <th><%=t :trial %></th>
     <td>: <%= @consent.trial.extId %></td>
   </tr>
   <tr>
-    <th>Physician</th>
+    <th><%=t :physician %></th>
     <td>: <%= mail_to @consent.mailPhysician, "#{@consent.prenamePhysician} #{@consent.surnamePhysician}" %></td>
   </tr>
   <tr>
-    <th>Status</th>
-    <td>: <% if @consent.status == 1 %><%= link_to "consent issued", edit_consent_path(@consent) %><% else %><%= link_to "consent withdrawn", edit_consent_path(@consent) %><% end %></td>
+    <th><%=t :status %></th>
+    <td>: <% if @consent.status == 1 %><%= link_to I18n.t(:consent_issued), edit_consent_path(@consent) %><% else %><%= link_to I18n.t(:consent_withdrawn), edit_consent_path(@consent) %><% end %></td>
   </tr>
 </table>
 
-<%= link_to 'Back', consents_path %>
+<%= link_to I18n.t('back'), consents_path %>

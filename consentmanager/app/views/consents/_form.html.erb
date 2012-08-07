@@ -12,28 +12,28 @@
   <% end %>
 
   <div class="field">
-    <%= f.label :subject_id %><br />
+    <%= f.label I18n.t(:subject_id) %><br />
     <%= f.select :subject_id, Subject.all.collect{|s| [s.prename + " " + s.surname, s.id]}, { :include_blank => true }, :disabled => "disabled" %>
   </div>
   <div class="field">
-    <%= f.label :trial_id %><br />
+    <%= f.label I18n.t(:trial_id) %><br />
     <%= f.select :trial_id, Trial.all.collect{|t| [t.extId, t.id]}, { :include_blank => true }, :disabled => "disabled" %>
   </div>
   <div class="field">
-    <%= f.label :status %><br />
-    <%= f.radio_button :status, 0 %> consent withdrawn<br/>
-    <%= f.radio_button :status, 1 %> consent issued
+    <%= f.label I18n.t(:status) %><br />
+    <%= f.radio_button :status, 0 %> <%=t :consent_withdraw %><br/>
+    <%= f.radio_button :status, 1 %> <%=t :consent_issue %>
   </div>
   <div class="field">
-    <%= f.label :prenamePhysician %><br />
+    <%= f.label I18n.t(:prenamePhysician) %><br />
     <%= f.text_field :prenamePhysician, :disabled => "disabled" %>
   </div>
   <div class="field">
-    <%= f.label :surnamePhysician %><br />
+    <%= f.label I18n.t(:surnamePhysician) %><br />
     <%= f.text_field :surnamePhysician, :disabled => "disabled" %>
   </div>
   <div class="field">
-    <%= f.label :mailPhysician %><br />
+    <%= f.label I18n.t(:mailPhysician) %><br />
     <%= f.text_field :mailPhysician, :disabled => "disabled" %>
   </div>
   <div class="actions">

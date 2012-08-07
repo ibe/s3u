@@ -1,11 +1,10 @@
-<h1>Listing subjects</h1>
+<h1><%=t :subjects_listing %></h1>
 
 <table class="person">
   <tr>
-    <th>Prename</th>
-    <th>Surname</th>
-    <th># Consents</th>
-    <th></th>
+    <th><%=t "prename" %></th>
+    <th><%=t "surname" %></th>
+    <th><%=t "no_consents" %></th>
     <th></th>
     <th></th>
   </tr>
@@ -15,13 +14,8 @@
     <td><%= subject.prename %></td>
     <td><%= subject.surname %></td>
     <td><%= subject.consents.size %></td>
-    <td><%= link_to 'Show', subject %></td>
-    <td><%= link_to 'Edit', edit_subject_path(subject) %></td>
-    <td><%= link_to 'Destroy', subject, :confirm => 'Are you sure?', :method => :delete %></td>
+    <td><%= link_to I18n.t('show'), subject %></td>
+    <td><%= link_to I18n.t('destroy'), subject, :confirm => 'Are you sure?', :method => :delete %></td>
   </tr>
 <% end %>
 </table>
-
-<br />
-
-<%= link_to 'New Subject', new_subject_path %>
