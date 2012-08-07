@@ -1,7 +1,5 @@
 <h1><%=t :details_patient, :prename => @patient.prename, :surname => @patient.surname %></h1>
 
-<p id="notice"><%= notice %></p>
-
 <table class="classic">
   <tr>
     <th><%=t :patient, :count => 1 %></th>
@@ -35,14 +33,14 @@
   </tr>
   <tr>
     <th><%=t :trial %></th>
-    <td>: <%= @patient.trial.extId %> <% if @patient.consent_status.nil? %>(<%= link_to I18n.t("patient.edit"), edit_patient_path %>)<% end %></td>
+    <td>: <%= link_to @patient.trial.extId, "#{S3uLmuAerzteUi::Application.config.s3u_lmu_studienmonitor_url}/trials/#{@patient.trial.id}" %> <% if @patient.consent_status.nil? %>(<%= link_to I18n.t("patient.edit"), edit_patient_path %>)<% end %></td>
   </tr>
   <tr>
     <th><%=t :consent %></th>
     <td>: <% if @patient.consent_status == 1 %>&radic;<% elsif @patient.consent_status == 0 %>&empty;<% else %>?<% end %></td>
   </tr>
   <tr>
-    <th><%=t :self_service %></th>
+    <th><%= link_to I18n.t(:self_service), S3uLmuAerzteUi::Application.config.s3u_lmu_consentmanager_url %></th>
     <td>: <% if @patient.self_service_status == 1 %>&radic;<% elsif @patient.self_service_status == 0 %>&empty;<% else %>?<% end %></td>
   </tr>
 </table>
