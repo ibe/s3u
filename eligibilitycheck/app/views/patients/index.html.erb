@@ -3,7 +3,6 @@
 <table class="person">
   <tr>
     <th><%=t :new %>?</th>
-<!--    <th>Extid</th>-->
     <th><%= sortable "prename" %></th>
     <th><%= sortable "surname" %></th>
     <th><%= sortable "dob" %></th>
@@ -16,8 +15,7 @@
 
 <% @patients.each do |patient| %>
   <tr>
-    <td class="center"><% if current_user.last_sign_in_at < patient.created_at %>&lowast;<% end %></td>
-<!--    <td><%= patient.extId %></td>-->
+    <td class="center"><% if current_user.current_sign_in_at < patient.created_at %>&lowast;<% end %></td>
     <td><%= patient.prename %></td>
     <td><%= patient.surname %></td>
     <td><%= patient.dob %></td>
@@ -37,7 +35,7 @@
       <td class="center" title="<%=t :consent_unknown %>">?</td>
     <% end %>
     <td><%= link_to(patient) do %><%=t :show %><% end %></td>
-    <td><%= link_to I18n.t("not_eligible"), patient, :confirm => I18n.t("not_eligible_sure"), :method => :delete %></td>
+    <td><% if patient.consent_status.nil? %><%= link_to I18n.t("not_eligible"), patient, :confirm => I18n.t("not_eligible_sure"), :method => :delete %><% end %></td>
 
   </tr>
 <% end %>
