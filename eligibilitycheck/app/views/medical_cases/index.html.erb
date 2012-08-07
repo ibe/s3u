@@ -14,7 +14,7 @@
 
 <% @medical_cases.each do |medical_case| %>
   <tr>
-    <td class="center"><% if current_user.last_sign_in_at < medical_case.created_at %>&lowast;<% end %></td>
+    <td class="center"><% if current_user.current_sign_in_at < medical_case.created_at %>&lowast;<% end %></td>
     <td><%= medical_case.extCaseId %></td>
     <td><%= link_to medical_case.patient.extId, medical_case.patient %></td>
     <td><%= medical_case.funcOu %></td>
