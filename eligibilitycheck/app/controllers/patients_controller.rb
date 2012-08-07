@@ -43,79 +43,39 @@ class PatientsController < ApplicationController
     # we need to update two remote applications: consentmanager + cdms
     # (the trial's recruiting status is indirectly updated via consentmanager)
     
-    cs_hit = 0
-    @cdms_subjects = CdmsSubject.all
-    @cdms_subjects.each do |cs|
-      if cs.prename == @patient.prename && cs.surname == @patient.surname
-        cs_hit = cs.id
-      end
-    end
-    if cs_hit > 0
-      @cdms_subject = CdmsSubject.find(cs_hit)
-      @cdms_subject.update_attributes(:prename => @patient.prename, :surname => @patient.surname)
-    else
-      @cdms_subject = CdmsSubject.new(
-        :prename => @patient.prename,
-        :surname => @patient.surname
-      )
+    @cdms_subject = CdmsSubject.new(:prename => @patient.prename, :surname => @patient.surname)
+    if @cdms_subject.new?
       @cdms_subject.save!
-    end
-    
-    s_hit = 0
-    
-    # let's search for "our" patient
-    @subjects = Subject.all
-    @subjects.each do |s|
-      # need to specify patient in a more detailed way
-      if s.prename == @patient.prename && s.surname == @patient.surname
-        s_hit = s.id
-      end
-    end
-
-    # ok, found => update
-    if s_hit > 0
-      @subject = Subject.find(s_hit)
-      @subject.update_attributes(:prename => @patient.prename, :surname => @patient.surname)
-    # not found => insert
     else
-        @subject = Subject.new(
-          :prename => @patient.prename,
-          :surname => @patient.surname
-        )
-        @subject.save!
-        s_hit = @subject.id
+      @cdms_subject.update   
     end
     
-    c_hit = 0
-    
-    # let's search for "our" consent
-    @consents = Consent.all
-    @consents.each do |c|
-      if c.subject_id == s_hit && c.trial_id == @patient.trial.id
-        c_hit = c.id
-      end
-    end
-    
-    if c_hit > 0
-      @consent = Consent.find(c_hit)
-      @consent.update_attributes(
-        :status => params[:patient][:consent_status],
-        :prenamePhysician => current_user.prenameDoc,
-        :surnamePhysician => current_user.surnameDoc,
-        :mailPhysician => current_user.mailDoc
-      )
+    @subject = Subject.new(:prename => @patient.prename, :surname => @patient.surname)
+    if @subject.new?
+      @subject.save!
     else
-      @consent = Consent.new(
-        :subject_id => @subject.id,
-        :trial_id => @patient.trial.id,
-        :status => params[:patient][:consent_status],
-        :prenamePhysician => current_user.prenameDoc,
-        :surnamePhysician => current_user.surnameDoc,
-        :mailPhysician => current_user.mailDoc
-      )
+      @subject.update 
+    end
+    
+    # question: why not put this code into the corresponding model?
+    # answer: because any "current_user"-relevant code should/can not be used inside
+    #         a model and belongs inside a controller
+    
+    @consent = Consent.new(:subject_id => @subject.id, :trial_id => @patient.trial.id)
+    if @consent.new?
+      @consent.status = params[:patient][:consent_status]
+      @consent.prenamePhysician = current_user.prenameDoc
+      @consent.surnamePhysician = current_user.surnameDoc
+      @consent.mailPhysician = current_user.mailDoc
       @consent.save!
+    else
+      @consent.status = params[:patient][:consent_status]
+      @consent.prenamePhysician = current_user.prenameDoc
+      @consent.surnamePhysician = current_user.surnameDoc
+      @consent.mailPhysician = current_user.mailDoc
+      @consent.update   
     end
-
+    
     respond_to do |format|
       if @patient.update_attributes(params[:patient])
         format.html { redirect_to @patient, :notice => 'Patient was successfully updated.' }
