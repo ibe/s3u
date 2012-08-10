@@ -5,9 +5,9 @@
 <table class="person">
   <tr>
     <th><%=t :subject %></th>
-    <th><%=t :trial %></th>
-    <th><%=t :physician %></th>
-    <th><%=t :status %></th>
+    <th><%= sortable "trial_id", I18n.t(:trial) %></th>
+    <th><%= sortable "prenamePhysician", I18n.t(:physician) %></th>
+    <th><%= sortable "status", I18n.t(:status) %></th>
     <th></th>
     <th></th>
     <th></th>

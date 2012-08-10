@@ -4,9 +4,9 @@
 
 <table class="person">
   <tr>
-    <th><%=t "prename" %></th>
-    <th><%=t "surname" %></th>
-    <th><%=t "no_consents" %></th>
+    <th><%= sortable "prename", I18n.t(:prename) %></th>
+    <th><%= sortable "surname", I18n.t(:surname) %></th>
+    <th><%=t :no_consents %></th>
     <th></th>
     <th></th>
   </tr>

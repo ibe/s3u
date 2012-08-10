@@ -1,8 +1,11 @@
 class SubjectsController < ApplicationController
+
+  helper_method :sort_column, :sort_direction
+
   # GET /subjects
   # GET /subjects.json
   def index
-    @subjects = Subject.page params[:page]
+    @subjects = Subject.order(sort_column + ' ' + sort_direction).page params[:page]
 
     respond_to do |format|
       format.html # index.html.erb
@@ -79,5 +82,15 @@ class SubjectsController < ApplicationController
       format.html { redirect_to subjects_url }
       format.json { head :ok }
     end
+  end
+
+  private
+  
+  def sort_column
+    Subject.column_names.include?(params[:sort]) ? params[:sort] : "prename"
+  end
+  
+  def sort_direction
+    %w[asc desc].include?(params[:direction]) ? params[:direction] : "asc"
   end
 end

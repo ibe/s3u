@@ -1,8 +1,11 @@
 class ConsentsController < ApplicationController
+
+  helper_method :sort_column, :sort_direction
+
   # GET /consents
   # GET /consents.json
   def index
-    @consents = Consent.page params[:page]
+    @consents = Consent.order(sort_column + ' ' + sort_direction).page params[:page]
 
     respond_to do |format|
       format.html # index.html.erb
@@ -110,5 +113,15 @@ class ConsentsController < ApplicationController
       format.html { redirect_to consents_url }
       format.json { head :ok }
     end
+  end
+
+  private
+  
+  def sort_column
+    Consent.column_names.include?(params[:sort]) ? params[:sort] : "trial_id"
+  end
+  
+  def sort_direction
+    %w[asc desc].include?(params[:direction]) ? params[:direction] : "asc"
   end
 end
