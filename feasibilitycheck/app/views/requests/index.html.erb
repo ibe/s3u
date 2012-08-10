@@ -1,5 +1,7 @@
 <h1><%=t 'request.index.listing_requests' %></h1>
 
+<%= paginate @requests %>
+
 <table class="person">
   <tr>
     <th><%=t "contact" %></th>
@@ -37,3 +39,5 @@
   </tr>
 <% end %>
 </table>
+
+<%= paginate @requests %>
