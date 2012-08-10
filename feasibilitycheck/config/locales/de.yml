@@ -44,3 +44,10 @@ de:
     contact: "Kontakt"
     report_bug: "Einen Fehler melden"
     overview: "Überblick über die S3U-Infrastruktur"
+  views:
+    pagination:
+      first: "&laquo; Erste Seite"
+      last: "Letzte Seite  &raquo;"
+      next: "Nächste Seite  &rsaquo;"
+      previous: "&lsaquo;  Vorherige Seite"
+      truncate: "..."

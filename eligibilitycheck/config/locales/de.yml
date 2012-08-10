@@ -70,6 +70,13 @@ de:
   trial: "Studie"
   unclear: "unklar"
   updated_at: "Aktualisiert am"
+  views:
+    pagination:
+      first: "&laquo; Erste Seite"
+      last: "Letzte Seite  &raquo;"
+      next: "Nächste Seite  &rsaquo;"
+      previous: "&lsaquo;  Vorherige Seite"
+      truncate: "..."
   which:
     one: "welcher"
     other: "welche"
