@@ -20,11 +20,11 @@
         <ul id="navigation">
           <li>
           <% if user_signed_in? %>
-            <ul><%= link_to "Messages", :messages %></ul>
-            <ul><%= link_to "Patients", :patients %></ul>
-            <ul><%= link_to "Medical Cases", :medical_cases %></ul>
-            <ul><%= link_to "Diagnoses", :diagnoses %></ul>
-            <ul><%= link_to "Groups", :groups %></ul>
+            <ul><%= link_to I18n.t(:messages), :messages %></ul>
+            <ul><%= link_to I18n.t(:patients), :patients %></ul>
+            <ul><%= link_to I18n.t(:medical_cases), :medical_cases %></ul>
+            <ul><%= link_to I18n.t(:diagnoses), :diagnoses %></ul>
+            <ul><%= link_to I18n.t(:groups), :groups %></ul>
           <% end %>
           </li>
         </ul>

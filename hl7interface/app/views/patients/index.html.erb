@@ -1,12 +1,12 @@
-<h1>Listing patients</h1>
+<h1><%=t :patients %></h1>
 
 <table class="person">
   <tr>
-    <th><%= sortable "extId" %></th>
-    <th><%= sortable "prename" %></th>
-    <th><%= sortable "surname" %></th>
-    <th><%= sortable "dob", "date of birth" %></th>
-    <th><%= sortable "sex" %></th>
+    <th><%= sortable "extId", I18n.t(:patient_id) %></th>
+    <th><%= sortable "prename", I18n.t(:prename) %></th>
+    <th><%= sortable "surname", I18n.t(:surname) %></th>
+    <th><%= sortable "dob", I18n.t(:dob) %></th>
+    <th><%= sortable "sex", I18n.t(:sex) %></th>
     <th></th>
   </tr>
 
@@ -17,7 +17,7 @@
     <td><%= patient.surname %></td>
     <td><%= patient.dob %></td>
     <td><%= patient.sex %></td>
-    <td><%= link_to 'Show', patient %></td>
+    <td><%= link_to I18n.t(:show), patient %></td>
   </tr>
 <% end %>
 </table>

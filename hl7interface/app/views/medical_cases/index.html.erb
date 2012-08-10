@@ -1,15 +1,15 @@
-<h1>Listing medical_cases</h1>
+<h1><%=t :medical_cases %></h1>
 
 <table class="person">
   <tr>
-    <th><%= sortable "extId" %></th>
-    <th>ExtPatId</th>
-    <th><%= sortable "funcOu" %></th>
-    <th><%= sortable "nurseOu" %></th>
-    <th><%= sortable "extDocId" %></th>
+    <th><%= sortable "extId", I18n.t(:case_id) %></th>
+    <th><%=t :patient %></th>
+    <th><%= sortable "funcOu", I18n.t(:func_ou) %></th>
+    <th><%= sortable "nurseOu", I18n.t(:nurse_ou) %></th>
+    <th><%= sortable "extDocId", I18n.t(:doc) %></th>
     <th><%= sortable "admissionType" %></th>
-    <th><%= sortable "admitDateTime" %></th>
-    <th><%= sortable "dischargeDateTime" %></th>
+    <th><%= sortable "admitDateTime", I18n.t(:admit_date_time) %></th>
+    <th><%= sortable "dischargeDateTime", I18n.t(:discharge_date_time) %></th>
     <th></th>
   </tr>
 
@@ -23,7 +23,7 @@
     <td><%= medical_case.admissionType %></td>
     <td><%= medical_case.admitDateTime %></td>
     <td><%= medical_case.dischargeDateTime %></td>
-    <td><%= link_to 'Show', medical_case %></td>
+    <td><%= link_to I18n.t(:show), medical_case %></td>
   </tr>
 <% end %>
 </table>

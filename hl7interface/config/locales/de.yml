@@ -2,6 +2,28 @@
 # See https://github.com/svenfuchs/rails-i18n/tree/master/rails%2Flocale for starting points.
 
 de:
+  admit_date_time: "Aufnahme"
+  case_id: "Fall-ID"
+  diagnoses: "Diagnosen"
+  discharge_date_time: "Entlassung"
+  dob: "Geburtsdatum"
+  doc: "Arzt"
+  func_ou: "Funkt. OrgE."
+  groups: "Gruppen"
+  icd10code: "ICD-10 Code"
+  icd10text: "ICD-10 Text"
+  icd10version: "ICD-10 Revision"
+  medical_case: "Fall"
+  medical_cases: "Fälle"
+  messages: "HL7-Nachrichten"
+  nurse_ou: "Beh. OrgE."
+  patient: "Patient"
+  patient_id: "Patient-ID"
+  patients: "Patienten"
+  prename: "Vorname"
+  sex: "Geschlecht"
+  show: "Details"
+  surname: "Nachname"
   views:
     pagination:
       first: "&laquo; Erste Seite"

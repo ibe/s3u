@@ -1,12 +1,12 @@
-<h1>Listing diagnoses</h1>
+<h1><%=t :diagnoses %></h1>
 
 <table class="person">
   <tr>
-    <th>Medical case</th>
-    <th>Patient</th>
-    <th><%= sortable "icd10Code" %></th>
-    <th><%= sortable "icd10Text" %></th>
-    <th><%= sortable "icd10Version" %></th>
+    <th><%=t :medical_case %></th>
+    <th><%=t :patient %></th>
+    <th><%= sortable "icd10Code", I18n.t(:icd10code) %></th>
+    <th><%= sortable "icd10Text", I18n.t(:icd10text) %></th>
+    <th><%= sortable "icd10Version", I18n.t(:icd10version) %></th>
     <th></th>
   </tr>
 
@@ -17,7 +17,7 @@
     <td><%= diagnosis.icd10Code %></td>
     <td><%= diagnosis.icd10Text %></td>
     <td><%= diagnosis.icd10Version %></td>
-    <td><%= link_to 'Show', diagnosis %></td>
+    <td><%= link_to I18n.t(:show), diagnosis %></td>
   </tr>
 <% end %>
 </table>
