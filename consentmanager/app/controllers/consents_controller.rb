@@ -2,7 +2,7 @@ class ConsentsController < ApplicationController
   # GET /consents
   # GET /consents.json
   def index
-    @consents = Consent.all
+    @consents = Consent.page params[:page]
 
     respond_to do |format|
       format.html # index.html.erb

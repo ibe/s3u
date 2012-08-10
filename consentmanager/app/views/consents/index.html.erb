@@ -1,5 +1,7 @@
 <h1><%=t :Consents %></h1>
 
+<%= paginate @consents %>
+
 <table class="person">
   <tr>
     <th><%=t :subject %></th>
@@ -30,3 +32,5 @@
   </tr>
 <% end %>
 </table>
+
+<%= paginate @consents %>

@@ -1,5 +1,7 @@
 <h1><%=t :subjects_listing %></h1>
 
+<%= paginate @subjects %>
+
 <table class="person">
   <tr>
     <th><%=t "prename" %></th>
@@ -19,3 +21,5 @@
   </tr>
 <% end %>
 </table>
+
+<%= paginate @subjects %>
