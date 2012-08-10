@@ -5,7 +5,7 @@ class DiagnosesController < ApplicationController
   # GET /diagnoses
   # GET /diagnoses.json
   def index
-    @diagnoses = Diagnosis.order("created_at DESC")
+    @diagnoses = Diagnosis.order("created_at DESC").page params[:page]
 
     respond_to do |format|
       format.html # index.html.erb

@@ -1,5 +1,7 @@
 <h1><%=t :listing_diagnoses %></h1>
 
+<%= paginate @diagnoses %>
+
 <table class="person">
   <tr>
     <th><%=t :new %>?</th>
@@ -23,3 +25,5 @@
   </tr>
 <% end %>
 </table>
+
+<%= paginate @diagnoses %>

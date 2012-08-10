@@ -7,7 +7,7 @@ class PatientsController < ApplicationController
   # GET /patients
   # GET /patients.json
   def index
-    @patients = Patient.where(:extDocId => current_user.extDocId).order(sort_column + ' ' + sort_direction)
+    @patients = Patient.where(:extDocId => current_user.extDocId).order(sort_column + ' ' + sort_direction).page params[:page]
 
     respond_to do |format|
       format.html # index.html.erb
