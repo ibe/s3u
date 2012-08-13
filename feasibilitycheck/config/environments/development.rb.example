@@ -33,4 +33,8 @@ S3uLmuWebrequest::Application.configure do
 
   # set the default sender mail address used by app/mailers/*.rb
   config.mailer_sender = "root@localhost"
+
+  # set the default recipient mail address used by app/mailers/*.rb
+  # typically only necessary at development environment, but who knows ...
+  config.mailer_recipient = "root@localhost"
 end
