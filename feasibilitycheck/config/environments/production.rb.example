@@ -60,4 +60,7 @@ S3uLmuWebrequest::Application.configure do
 
   # set the url where the studienmonitor webservice runs
   config.s3u_lmu_studienmonitor_url = "http://localhost:3000"
+
+  # set the default sender mail address used by app/mailers/*.rb
+  config.mailer_sender = "root@localhost"
 end
