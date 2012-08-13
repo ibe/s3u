@@ -68,12 +68,11 @@ class PatientsController < ApplicationController
       @consent.surnamePhysician = current_user.surnameDoc
       @consent.mailPhysician = current_user.mailDoc
       @consent.save!
-    else
-      @consent.status = params[:patient][:consent_status]
-      @consent.prenamePhysician = current_user.prenameDoc
-      @consent.surnamePhysician = current_user.surnameDoc
-      @consent.mailPhysician = current_user.mailDoc
-      @consent.update   
+    
+    # there is no else branch:
+    # only the initial consent (regardless if positive or negative) is issued from here
+    # further changes of the consent must be issued from the consent manager
+    
     end
     
     respond_to do |format|
