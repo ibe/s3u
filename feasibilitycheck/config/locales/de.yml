@@ -2,48 +2,56 @@
 # See https://github.com/svenfuchs/rails-i18n/tree/master/rails%2Flocale for starting points.
 
 de:
-  helpers:
-    label:
-      request:
-        prenameContact: "Vorname"
-        surnameContact: "Nachname"
-        mailContact: "E-Mail Adresse"
-        phoneContact: "Rufnummer"
-        description: "Vorhabensbeschreibung"
-    submit:
-      request:
-        create: "Weiter"
-        update: "Anfrage einreichen"
-      criterion:
-        create: "Kriterium hinzufügen"
-  prename: "Vorname"
-  surname: "Nachname"
+  approve: "Genehmigen"
+  approved: "Genehmigt"
+  cn: "Benutzername"
   contact_mail: "E-Mail Adresse"
   contact_phone: "Rufnummer"
   contact: "Anfragender"
-  description: "Vorhabensbeschreibung"
-  submitted: "Eingereicht"
-  approve: "Genehmigen"
-  reject: "Ablehnen"
-  approved: "Genehmigt"
-  result: "Ergebnis"
   criterion_type: "Kriteriumstyp"
   datum: "Kriterium"
-  operator: "Operator"
-  value: "Wert"
-  request:
-    edit: "Anfrage bearbeiten"
-    new: "Neue Anfrage erstellen"
-    index:
-      listing_requests: "Übersicht aller Anfragen"
-  pending: "unbearbeitet"
+  description: "Vorhabensbeschreibung"
   destroy: "Löschen"
-  show: "Details"
-  requests: "Anfragen"
   footer:
     contact: "Kontakt"
-    report_bug: "Einen Fehler melden"
     overview: "Überblick über die S3U-Infrastruktur"
+    report_bug: "Einen Fehler melden"
+  helpers:
+    label:
+      request:
+        description: "Vorhabensbeschreibung"
+        mailContact: "E-Mail Adresse"
+        phoneContact: "Rufnummer"
+        prenameContact: "Vorname"
+        surnameContact: "Nachname"
+      user:
+        cn: "Benutzername"
+        password: "Kennwort"
+    submit:
+      criterion:
+        create: "Kriterium hinzufügen"
+      request:
+        create: "Weiter"
+        update: "Anfrage einreichen"
+  logged_in_as: "Als %{user} angemeldet"
+  login: "Anmelden"
+  logout: "Abmelden"
+  operator: "Operator"
+  pending: "unbearbeitet"
+  prename: "Vorname"
+  reject: "Ablehnen"
+  request:
+    edit: "Anfrage bearbeiten"
+    index:
+      listing_requests: "Übersicht aller Anfragen"
+    new: "Neue Anfrage erstellen"
+  requests: "Anfragen"
+  result: "Ergebnis"
+  show: "Details"
+  sign_in: "Anmeldung"
+  submitted: "Eingereicht"
+  surname: "Nachname"
+  value: "Wert"
   views:
     pagination:
       first: "&laquo; Erste Seite"

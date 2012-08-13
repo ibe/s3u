@@ -38,6 +38,7 @@ de:
   listing_diagnoses: "Diagnosenliste"
   listing_patients: "Patientenliste"
   logged_in_as: "Als %{user} angemeldet"
+  logout: "Abmelden"
   male: "männlich"
   medical_case:
     one: "Fall"
@@ -66,6 +67,7 @@ de:
   self_service_yes: "Zugriff"
   sex: "Geschlecht"
   show: "Details"
+  sign_in: "Anmeldung"
   surname: "Nachname"
   trial: "Studie"
   unclear: "unklar"

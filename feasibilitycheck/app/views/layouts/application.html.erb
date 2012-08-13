@@ -13,10 +13,9 @@
       <div id="firstColumn">
         <div id="search">
           <% if user_signed_in? %>
-          Logged in as <%= current_user.cn %>
-          <%= link_to "Logout from AD", destroy_user_session_path, :method => :delete %>
+          <%=t :logged_in_as, :user => current_user.cn %> | <%= link_to I18n.t(:logout), destroy_user_session_path, :method => :delete %>
           <% else %>
-          <%= link_to('Login as CCC/CSC/TSC user', new_user_session_path) %>
+          <%= link_to I18n.t(:login), new_user_session_path %>
           <% end %>
         </div>
         <ul id="navigation">
