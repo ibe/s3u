@@ -5,7 +5,7 @@ class DiagnosesController < ApplicationController
   # GET /diagnoses
   # GET /diagnoses.json
   def index
-    @diagnoses = Diagnosis.order(sort_column + ' ' + sort_direction)
+    @diagnoses = Diagnosis.order(sort_column + ' ' + sort_direction).page params[:page]
 
     respond_to do |format|
       format.html # index.html.erb

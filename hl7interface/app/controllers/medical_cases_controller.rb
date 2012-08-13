@@ -8,7 +8,7 @@ class MedicalCasesController < ApplicationController
   # GET /medical_cases
   # GET /medical_cases.json
   def index
-    @medical_cases = MedicalCase.order(sort_column + ' ' + sort_direction)
+    @medical_cases = MedicalCase.order(sort_column + ' ' + sort_direction).page params[:page]
 
     respond_to do |format|
       format.html # index.html.erb

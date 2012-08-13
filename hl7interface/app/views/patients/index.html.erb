@@ -1,5 +1,7 @@
 <h1><%=t :patients %></h1>
 
+<%= paginate @patients %>
+
 <table class="person">
   <tr>
     <th><%= sortable "extId", I18n.t(:patient_id) %></th>
@@ -21,3 +23,5 @@
   </tr>
 <% end %>
 </table>
+
+<%= paginate @patients %>

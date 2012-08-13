@@ -8,7 +8,7 @@ class PatientsController < ApplicationController
   # GET /patients
   # GET /patients.json
   def index
-    @patients = Patient.order(sort_column + ' ' + sort_direction)
+    @patients = Patient.order(sort_column + ' ' + sort_direction).page params[:page]
 
     respond_to do |format|
       format.html # index.html.erb
