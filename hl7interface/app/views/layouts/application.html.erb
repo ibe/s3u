@@ -18,15 +18,13 @@
           <% end %>
         </div>
         <ul id="navigation">
-          <li>
           <% if user_signed_in? %>
-            <ul><%= link_to I18n.t(:messages), :messages %></ul>
-            <ul><%= link_to I18n.t(:patients), :patients %></ul>
-            <ul><%= link_to I18n.t(:medical_cases), :medical_cases %></ul>
-            <ul><%= link_to I18n.t(:diagnoses), :diagnoses %></ul>
-            <ul><%= link_to I18n.t(:groups), :groups %></ul>
+          <li><%= link_to I18n.t(:messages), :messages %></li>
+          <li><%= link_to I18n.t(:patients), :patients %></li>
+          <li><%= link_to I18n.t(:medical_cases), :medical_cases %></li>
+          <li><%= link_to I18n.t(:diagnoses), :diagnoses %></li>
+          <li><%= link_to I18n.t(:groups), :groups %></li>
           <% end %>
-          </li>
         </ul>
       </div>
       <div id="secondColumn">

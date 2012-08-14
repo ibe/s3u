@@ -11,15 +11,11 @@
     <div id="header"><%= image_tag("/assets/header.jpg") %></div>
     <div id="main">
       <div id="firstColumn">
-        <div id="search">
-          search
-        </div>
+        <div id="search">&nbsp;</div>
         <ul id="navigation">
-          <li>
-            <ul><%= link_to "Patients", :patients %></ul>
-            <ul><%= link_to "Cases", :medical_cases %></ul>
-            <ul><%= link_to "Diagnoses", :diagnoses %></ul>
-          </li>
+          <li><%= link_to "Patients", :patients %></li>
+          <li><%= link_to "Cases", :medical_cases %></li>
+          <li><%= link_to "Diagnoses", :diagnoses %></li>
         </ul>
       </div>
       <div id="secondColumn">

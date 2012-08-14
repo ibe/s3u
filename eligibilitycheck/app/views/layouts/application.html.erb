@@ -26,24 +26,22 @@
               <% patients = medical_cases = diagnoses = 0 %>
             <% end %>
             <% if user_signed_in? %><%= link_to :controller => 'dashboard' do %><%=t :dashboard %><% end %><% end %>
-            <ul>
-              <% if patients > 0 %>
-                <li class="bold"><%= link_to :patients do %><%=t :patient, :count => 2 %> (<%= patients %>)<% end %></li>
-              <% else %>
-                <li><%= link_to :patients do %><%=t :patient, :count => 2 %><% end %></li>
-              <% end %>
-              <% if medical_cases > 0 %>
-                <li class="bold"><%= link_to :medical_cases do %><%=t :medical_case, :count => 2 %> (<%= medical_cases %>)<% end %>
-              <% else %>
-                <li><%= link_to :medical_cases do %><%=t :medical_case, :count => 2 %><% end %></li>
-              <% end %>
-              <% if diagnoses > 0 %>
-                <li class="bold"><%= link_to :diagnoses do %><%=t :diagnosis, :count => 2 %> (<%= diagnoses %>)<% end %></li>
-              <% else %>
-                <li><%= link_to :diagnoses do %><%=t :diagnosis, :count => 2 %><% end %></li>
-              <% end %>
-            </ul>
           </li>
+          <% if patients > 0 %>
+            <li class="bold"><%= link_to :patients do %><%=t :patient, :count => 2 %> (<%= patients %>)<% end %></li>
+          <% else %>
+            <li><%= link_to :patients do %><%=t :patient, :count => 2 %><% end %></li>
+          <% end %>
+          <% if medical_cases > 0 %>
+            <li class="bold"><%= link_to :medical_cases do %><%=t :medical_case, :count => 2 %> (<%= medical_cases %>)<% end %>
+          <% else %>
+            <li><%= link_to :medical_cases do %><%=t :medical_case, :count => 2 %><% end %></li>
+          <% end %>
+          <% if diagnoses > 0 %>
+            <li class="bold"><%= link_to :diagnoses do %><%=t :diagnosis, :count => 2 %> (<%= diagnoses %>)<% end %></li>
+          <% else %>
+            <li><%= link_to :diagnoses do %><%=t :diagnosis, :count => 2 %><% end %></li>
+          <% end %>
         </ul>
       </div>
       <div id="secondColumn">
@@ -53,10 +51,8 @@
         <div id="breadcrumb">
           <% if controller.controller_name != 'dashboard' %>
             <%=t :dashboard %>
-            >
-            <%=t controller.controller_name.singularize, :count => 2 %><% if controller.action_name != 'index' %> > <%=t controller.action_name %><% end %>
-          <% else %>
-            <%=t :dashboard %>
+            &raquo;
+            <%=t controller.controller_name.singularize, :count => 2 %><% if controller.action_name != 'index' %> &raquo; <%=t controller.action_name %><% end %>
           <% end %>          
         </div>
         <div id="notifications">

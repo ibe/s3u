@@ -38,7 +38,6 @@
     <% end %>
     <td><%= link_to(patient) do %><%=t :show %><% end %></td>
     <td><% if patient.consent_status.nil? %><%= link_to I18n.t("not_eligible"), patient, :confirm => I18n.t("not_eligible_sure"), :method => :delete %><% end %></td>
-
   </tr>
 <% end %>
 </table>

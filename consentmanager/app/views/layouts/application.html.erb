@@ -11,14 +11,10 @@
     <div id="header"><%= image_tag("/assets/header.jpg") %></div>
     <div id="main">
       <div id="firstColumn">
-        <div id="search">
-          search
-        </div>
+        <div id="search">&nbsp;</div>
         <ul id="navigation">
-          <li>
-            <ul><%= link_to I18n.t("Subjects"), :subjects %></ul>
-            <ul><%= link_to I18n.t("Consents"), :consents %></ul>
-          </li>
+          <li><%= link_to I18n.t("Subjects"), :subjects %></li>
+          <li><%= link_to I18n.t("Consents"), :consents %></li>
         </ul>
       </div>
       <div id="secondColumn">
