@@ -2,7 +2,7 @@
   <tr>
     <th><%=t :prename %></th>
     <td>: <%= @request.prenameContact %></td>
-    <td><% if @request.submit != 1 %><%= link_to I18n.t('request.edit'), edit_request_path(@request) %><% end %></td>
+    <td><% if @request.submit != 1 %><%= link_to image_tag("cog_edit.png", { :title => t("request.edit") }), edit_request_path(@request) %><% end %></td>
   </tr>
   <tr>
     <th><%=t :surname %></th>
@@ -37,7 +37,7 @@
       <% if @request.submit != 1 %>
         <%= form_for(@request) do |f| %>
           <%= f.hidden_field :submit, :value => 1 %>
-          <%= f.submit %>
+          <%= f.submit t("helpers.submit.request.update"), { :type => "image", :src => image_path("accept.png"), :title => t("helpers.submit.request.update") } %>
         <% end %>
       <% end %>
     </td>

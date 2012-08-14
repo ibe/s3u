@@ -13,7 +13,7 @@
     <%= f.text_field :value, :size => 10 %>
   </td>
   <td class="actions">
-    <%= f.submit %>
+    <%= f.submit t("helpers.submit.criterion.create"), { :type => "image", :src => image_path("add.png"), :title => t("helpers.submit.criterion.create") } %>
   </td>
 </tr>
 <% end %>

@@ -17,27 +17,27 @@
 
 <% @patients.each do |patient| %>
   <tr>
-    <td class="center"><% if current_user.current_sign_in_at < patient.created_at %>&lowast;<% end %></td>
+    <td class="center"><% if current_user.current_sign_in_at < patient.created_at %><%= image_tag("weather_sun.png", { :title => t(:new) }) %><% end %></td>
     <td><%= patient.prename %></td>
     <td><%= patient.surname %></td>
     <td><%= patient.dob %></td>
     <% if patient.sex == 'M' %>
-      <td title="<%=t :male %>" class="male_female center">&#9794;</td>
+      <td class="male_female center"><%= image_tag("male.png", { :title => t(:male) }) %></td>
     <% elsif patient.sex == 'F' %>
-      <td title="<%=t :female %>" class="male_female center">&#9792;</td>
+      <td class="male_female center"><%= image_tag("female.png", { :title => t(:female) }) %></td>
     <% else %>
       <td title="<%=t :unclear %>" class="center">?</td>
     <% end %>
     <td><%= link_to patient.trial.extId, S3uLmuAerzteUi::Application.config.s3u_lmu_studienmonitor_url + "/trials/" + patient.trial.id.to_s %></td>
     <% if patient.consent_status == 1 %>
-      <td class="green center" title="<%=t :consent_yes %>">&radic;</td>
+      <td class="center"><%= image_tag("accept.png", { :title => t(:consent_yes) }) %></td>
     <% elsif patient.consent_status == 0 %>
-      <td class="red center" title="<%=t :consent_no %>">&empty;</td>
+      <td class="center"><%= image_tag("delete.png", { :title => t(:consent_no) }) %></td>
     <% else %>
       <td class="center" title="<%=t :consent_unknown %>">?</td>
     <% end %>
-    <td><%= link_to(patient) do %><%=t :show %><% end %></td>
-    <td><% if patient.consent_status.nil? %><%= link_to I18n.t("not_eligible"), patient, :confirm => I18n.t("not_eligible_sure"), :method => :delete %><% end %></td>
+    <td><%= link_to image_tag("magnifier.png", { :title => t(:show) }), patient %></td>
+    <td><% if patient.consent_status.nil? %><%= link_to image_tag("bin.png", { :title => t(:not_eligible) }), patient, :confirm => I18n.t("not_eligible_sure"), :method => :delete %><% end %></td>
   </tr>
 <% end %>
 </table>

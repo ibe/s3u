@@ -4,6 +4,6 @@
   <td><%= criterion.operator %></td>
   <td><%= criterion.value %></td>
   <td>
-    <% if criterion.request.submit != 1 %><%= link_to 'Destroy Criterion', [criterion.request, criterion], :confirm => 'Are you sure?', :method => :delete %><% end %>
+    <% if criterion.request.submit != 1 %><%= link_to image_tag("delete.png", { :title => t(:destroy) }), [criterion.request, criterion], :confirm => 'Are you sure?', :method => :delete %><% end %>
   </td>
 </tr>

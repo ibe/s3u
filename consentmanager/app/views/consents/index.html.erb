@@ -19,16 +19,16 @@
     <td><%= consent.trial.extId %></td>
     <td><%= mail_to consent.mailPhysician, "#{consent.prenamePhysician} #{consent.surnamePhysician}" %></td>
     <% if consent.status == 1 %>
-      <td class="green center">&radic;</td>
+      <td class="green center"><%= image_tag("accept.png", { :title => t(:consent_issued) }) %></td>
     <% elsif consent.status == 0 %>
-      <td class="red center">&empty;</td>
+      <td class="red center"><%= image_tag("delete.png", { :title => t(:consent_withdrawn) }) %></td>
     <% else %>
       <td class="center">?</td>
     <% end %>
 
-    <td><%= link_to I18n.t('show'), consent %></td>
-    <td><%= link_to I18n.t('edit'), edit_consent_path(consent) %></td>
-    <td><%= link_to I18n.t('destroy'), consent, :confirm => 'Are you sure?', :method => :delete %></td>
+    <td><%= link_to image_tag("magnifier.png", { :title => t(:show) }), consent %></td>
+    <td><%= link_to image_tag("cog_edit.png", { :title => t(:edit) }), edit_consent_path(consent) %></td>
+    <td><%= link_to image_tag("bin.png", { :title => t(:destroy) }), consent, :confirm => 'Are you sure?', :method => :delete %></td>
   </tr>
 <% end %>
 </table>

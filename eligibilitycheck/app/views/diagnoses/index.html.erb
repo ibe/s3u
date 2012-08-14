@@ -15,13 +15,13 @@
 
 <% @diagnoses.each do |diagnosis| %>
   <tr>
-    <td class="center"><% if current_user.current_sign_in_at < diagnosis.created_at %>&lowast;<% end %></td>
+    <td class="center"><% if current_user.current_sign_in_at < diagnosis.created_at %><%= image_tag("weather_sun.png") %><% end %></td>
     <td><%= link_to diagnosis.medical_case.extCaseId, diagnosis.medical_case %></td>
     <td title="<%= diagnosis.icd10Version %>"><%= diagnosis.icd10Code %></td>
     <td><%= diagnosis.icd10Text %></td>
     <td><%= time_ago_in_words(diagnosis.created_at) %></td>
     <td><%= time_ago_in_words(diagnosis.updated_at) %></td>
-    <td><%= link_to(diagnosis) do %><%=t :show %><% end %></td>
+    <td><%= link_to image_tag("magnifier.png"), diagnosis %></td>
   </tr>
 <% end %>
 </table>

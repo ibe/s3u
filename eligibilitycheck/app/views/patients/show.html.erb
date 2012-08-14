@@ -20,9 +20,9 @@
   <tr>
     <th><%=t :sex %></th>
     <% if @patient.sex == 'M' %>
-      <td title="<%=t :male %>">: <span class="male_female">&#9794;</span></td>
+      <td>: <span class="male_female"><%= image_tag("male.png", { :title => t(:male) }) %></span></td>
     <% elsif @patient.sex == 'F' %>
-      <td title="<%=t :female %>">: <span class="male_female">&#9792;</span></td>
+      <td>: <span class="male_female"><%= image_tag("female.png", { :title => t(:female) }) %></span></td>
     <% else %>
       <td title="<%=t :unclear %>">: ?</td>
     <% end %>

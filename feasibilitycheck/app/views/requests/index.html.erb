@@ -22,20 +22,22 @@
     <td><%= link_to truncate(request.description, :length => 50), request %></td>
     <td class="center">
       <% if request.submit == 1 %>
-        <span title="submitted">&radic;</span>
+        <%= image_tag("accept.png", { :title => t(:submitted) }) %>
+      <% else %>
+        <%= image_tag("gear_in.png", { :title => t(:pending) }) %>
       <% end %>
     </td>
     <% if request.approved == true %>
-      <td class="green center" title="approved">&radic;</td>
+      <td class="center"><%= image_tag("accept.png", { :title => t(:approved) }) %></td>
     <% elsif request.approved == false %>
-      <td class="red center" title="rejected">&empty;</td>
+      <td class="center"><%= image_tag("delete.png", { :title => t(:rejected) }) %></td>
     <% else %>
-      <td class="center" title="pending"><%=t "pending" %></td>
+      <td class="center" title="pending"><%= image_tag("gear_in.png", { :title => t(:pending) }) %></td>
     <% end %>
     </td>
-    <td><% if request.result == nil %><%=t "pending" %><% else %><%= request.result %><% end %></td>
-    <td><%= link_to I18n.t('show'), request %></td>
-    <td><%= link_to I18n.t('destroy'), request, :confirm => 'Are you sure?', :method => :delete %></td>
+    <td class="center"><% if request.result == nil %><%= image_tag("gear_in.png", { :title => t(:pending) }) %><% else %><%= request.result %><% end %></td>
+    <td><%= link_to image_tag("magnifier.png", { :title => t('show') }), request %></td>
+    <td><%= link_to image_tag("bin.png", { :title => t('destroy') }), request, :confirm => 'Are you sure?', :method => :delete %></td>
   </tr>
 <% end %>
 </table>
