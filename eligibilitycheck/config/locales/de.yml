@@ -14,7 +14,7 @@ de:
   consent_yes: "Patient hat für diese Studie eingewilligt."
   contact: "Kontakt"
   created_at: "Hinzugefügt am"
-  dashboard: "Home"
+  dashboard: "Übersicht"
   details_diagnosis: "Diagnosendetails"
   details_case: "Details zur Fall-ID %{medical_case}"
   details_patient: "Details zum Patienten %{prename} %{surname}"
