@@ -40,6 +40,7 @@ de:
   pending: "unbearbeitet"
   prename: "Vorname"
   reject: "Ablehnen"
+  rejected: "Abgelehnt"
   request:
     edit: "Anfrage bearbeiten"
     index:
