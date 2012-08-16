@@ -19,6 +19,7 @@ de:
   physician: "Behandelnder Arzt"
   prename: "Vorname"
   prenamePhysician: "Vorname Arzt"
+  print: "Drucken"
   report_bug: "Einen Fehler melden"
   show: "Details"
   status: "Einwilligung"
@@ -28,5 +29,13 @@ de:
   subjects_listing: "Teilnehmerliste"
   surname: "Nachname"
   surnamePhysician: "Nachname Arzt"
+  top: "Zum Seitenanfang"
   trial: "Studie"
   trial_id: "Studie"
+  views:
+    pagination:
+      first: "&laquo; Erste Seite"
+      last: "Letzte Seite  &raquo;"
+      next: "Nächste Seite  &rsaquo;"
+      previous: "&lsaquo;  Vorherige Seite"
+      truncate: "..."

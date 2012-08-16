@@ -31,14 +31,15 @@ de:
       criterion:
         create: "Kriterium hinzufügen"
       request:
-        create: "Weiter"
+        create: "Speichern & Kriterien definieren"
         update: "Anfrage einreichen"
-  logged_in_as: "Als %{user} angemeldet"
+  logged_in_as: "%{user} angemeldet"
   login: "Anmelden"
   logout: "Abmelden"
   operator: "Operator"
   pending: "unbearbeitet"
   prename: "Vorname"
+  print: "Drucken"
   reject: "Ablehnen"
   rejected: "Abgelehnt"
   request:
@@ -52,6 +53,7 @@ de:
   sign_in: "Anmeldung"
   submitted: "Eingereicht"
   surname: "Nachname"
+  top: "Zum Seitenanfang"
   value: "Wert"
   views:
     pagination:
