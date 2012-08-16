@@ -5,7 +5,7 @@ tmp/
 .sass-cache/
 config/environments/*.rb
 config/initializers/s3u_lmu.rb
-app/assets/images/
+app/assets/images/header.jpg
 public/assets/
 config/ldap.yml
 config/database.yml

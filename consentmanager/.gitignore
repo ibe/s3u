@@ -5,6 +5,6 @@ tmp/
 .sass-cache/
 config/database.yml
 app/assets/stylesheets/lmu_corporate_design.css.scss
-app/assets/images/
+app/assets/images/header.jpg
 public/assets/
 config/environments/*.rb
