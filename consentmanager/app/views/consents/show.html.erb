@@ -5,7 +5,7 @@
   </tr>
   <tr>
     <th><%=t :trial %></th>
-    <td>: <%= @consent.trial.extId %></td>
+    <td>: <%= link_to @consent.trial.extId, S3uLmuConsentmanager::Application.config.s3u_lmu_studienmonitor_url + "/trials/" + @consent.trial.id.to_s %></td>
   </tr>
   <tr>
     <th><%=t :physician %></th>

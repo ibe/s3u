@@ -15,9 +15,9 @@
     <td><%= trial.extId %></td>
     <td>
       <% percentage = ((trial.recruiting_status.to_f / trial.recruitingTarget.to_f) * 100).to_i.to_s + "%" %>
-      <div class="progressbar" style="width: 100%; position: relative; border: 1px solid #999;">
-        <span style="text-align: center; z-index: 10"><%= percentage %></span>
-        <span style="width:<%= percentage %>; background-color: #99f; position: absolute; left: 0; top: 0">&nbsp;</span>
+      <div class="progressbar">
+        <span id="label"><%= percentage %></span>
+        <span id="bar" style="width:<%= percentage %>;">&nbsp;</span>
       </div>
     </td>
     <td><%= mail_to trial.mailInvestigator, "#{trial.prenameInvestigator} #{trial.surnameInvestigator}" %></td>
