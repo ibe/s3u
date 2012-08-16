@@ -13,20 +13,20 @@
       <div id="firstColumn">
         <div id="search">
           <% if user_signed_in? %>
-          <%=t :logged_in_as, :user => current_user.cn %> | <%= link_to I18n.t(:logout), destroy_user_session_path, :method => :delete %>
+          <%= image_tag("ceo.png") %><%=t :logged_in_as, :user => current_user.cn %> | <%= link_to I18n.t(:logout), destroy_user_session_path, :method => :delete %>
+          <% else %>
+          <%= image_tag("user_silhouette.png") %><%= link_to I18n.t(:login), new_user_session_path %>
           <% end %>
         </div>
         <ul id="navigation">
-          <li>
-            <% if user_signed_in? %>
-              <% patients = Patient.where("extDocId = ? AND created_at > ?", current_user.extDocId, current_user.current_sign_in_at.in_time_zone('Berlin')).count %>
-              <% medical_cases = MedicalCase.joins(:patient).where("patients.extDocId = ? AND medical_cases.created_at > ?", current_user.extDocId, current_user.current_sign_in_at.in_time_zone('Berlin')).count %>
-              <% diagnoses = Diagnosis.where("created_at > ?", current_user.current_sign_in_at.in_time_zone('Berlin')).count %>
-            <% else %>
-              <% patients = medical_cases = diagnoses = 0 %>
-            <% end %>
-            <% if user_signed_in? %><%= link_to :controller => 'dashboard' do %><%=t :dashboard %><% end %><% end %>
-          </li>
+          <% if user_signed_in? %>
+            <% patients = Patient.where("extDocId = ? AND created_at > ?", current_user.extDocId, current_user.current_sign_in_at.in_time_zone('Berlin')).count %>
+            <% medical_cases = MedicalCase.joins(:patient).where("patients.extDocId = ? AND medical_cases.created_at > ?", current_user.extDocId, current_user.current_sign_in_at.in_time_zone('Berlin')).count %>
+            <% diagnoses = Diagnosis.where("created_at > ?", current_user.current_sign_in_at.in_time_zone('Berlin')).count %>
+            <li><%= link_to :controller => 'dashboard' do %><%=t :dashboard %><% end %></li>
+          <% else %>
+            <% patients = medical_cases = diagnoses = 0 %>
+          <% end %>
           <% if patients > 0 %>
             <li class="bold"><%= link_to :patients do %><%=t :patient, :count => 2 %> (<%= patients %>)<% end %></li>
           <% else %>
@@ -56,19 +56,19 @@
           <% end %>          
         </div>
         <div id="notifications">
-          <p id="notice"><% if notice %><%=t notice %><% end %></p>
-          <p id="alert"><% if alert %><%=t alert %><% end %></p>
+          <% if notice %><p id="notice"><%= image_tag("information.png") %><%= notice %></p><% end %>
+          <% if alert %><p id="alert"><%= image_tag("exclamation.png") %><%= alert %></p><% end %>
         </div>
         <div id="content">
           <%= yield %>
         </div>
         <div id="functions">
           <div class="printlink">
-            <%= link_to image_tag("/assets/drucken.gif"), "#" %>
+            <%= link_to image_tag("printer.png", { :title => t("print") }), "#" %>
           </div>
           <div class="responsible">&nbsp;</div>
           <div class="toplink">
-            <%= link_to image_tag("/assets/toplink.gif"), "#" %>
+            <%= link_to image_tag("application_get.png", :title => t(:top)), "#" %>
           </div>
         </div>
       </div>
