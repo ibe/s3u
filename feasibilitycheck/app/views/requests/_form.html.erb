@@ -30,6 +30,6 @@
   <!-- approved flag gets set at a later point of time -->
   <!-- result gets set only by external service -->
   <div class="actions">
-    <%= f.submit %>
+    <%= f.submit t("helpers.submit.request.create"), { :type => "image", :src => image_path("disk.png"), :title => t("helpers.submit.request.create") } %>
   </div>
 <% end %>

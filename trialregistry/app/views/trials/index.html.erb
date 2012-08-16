@@ -4,7 +4,6 @@
   <tr>
     <th>Extid</th>
     <th>Recruitingtarget</th>
-    <th>Recruiting Status</th>
     <th>Investigator</th>
     <th></th>
     <th></th>
@@ -14,8 +13,13 @@
 <% @trials.each do |trial| %>
   <tr>
     <td><%= trial.extId %></td>
-    <td><%= trial.recruitingTarget %></td>
-    <td><%= trial.recruiting_status %></td>
+    <td>
+      <% percentage = ((trial.recruiting_status.to_f / trial.recruitingTarget.to_f) * 100).to_i.to_s + "%" %>
+      <div class="progressbar" style="width: 100%; position: relative; border: 1px solid #999;">
+        <span style="text-align: center; z-index: 10"><%= percentage %></span>
+        <span style="width:<%= percentage %>; background-color: #99f; position: absolute; left: 0; top: 0">&nbsp;</span>
+      </div>
+    </td>
     <td><%= mail_to trial.mailInvestigator, "#{trial.prenameInvestigator} #{trial.surnameInvestigator}" %></td>
     <td><%= link_to 'Show', trial %></td>
     <td><%= link_to 'Edit', edit_trial_path(trial) %></td>

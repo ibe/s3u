@@ -26,19 +26,19 @@
           breadcrumb
         </div>
         <div id="notifications">
-          <p class="notice"><%= notice %></p>
-          <p class="alert"><%= alert %></p>
+          <% if notice %><p id="notice"><%= image_tag("information.png") %><%= notice %></p><% end %>
+          <% if alert %><p id="alert"><%= image_tag("exclamation.png") %><%= alert %></p><% end %>
         </div>
         <div id="content">
           <%= yield %>
         </div>
         <div id="functions">
           <div class="printlink">
-            <%= link_to image_tag("/assets/drucken.gif"), "#" %>
+            <%= link_to image_tag("printer.png", { :title => t("print") }), "#" %>
           </div>
           <div class="responsible">&nbsp;</div>
           <div class="toplink">
-            <%= link_to image_tag("/assets/toplink.gif"), "#" %>
+            <%= link_to image_tag("application_get.png", :title => t(:top)), "#" %>
           </div>
         </div>
       </div>

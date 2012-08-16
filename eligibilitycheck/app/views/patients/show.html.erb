@@ -37,11 +37,27 @@
   </tr>
   <tr>
     <th><%=t :consent %></th>
-    <td>: <% if @patient.consent_status == 1 %>&radic;<% elsif @patient.consent_status == 0 %>&empty;<% else %>?<% end %></td>
+    <td>:
+      <% if @patient.consent_status == 1 %>
+        <%= image_tag("accept.png", { :title => t(:consent_yes) }) %>
+      <% elsif @patient.consent_status == 0 %>
+        <%= image_tag("delete.png", { :title => t(:consent_no) }) %>
+      <% else %>
+        <%= image_tag("help.png", { :title => t(:consent_unknown) }) %>
+      <% end %>
+    </td>
   </tr>
   <tr>
     <th><%= link_to I18n.t(:self_service), S3uLmuAerzteUi::Application.config.s3u_lmu_consentmanager_url %></th>
-    <td>: <% if @patient.self_service_status == 1 %>&radic;<% elsif @patient.self_service_status == 0 %>&empty;<% else %>?<% end %></td>
+    <td>:
+      <% if @patient.self_service_status == 1 %>
+        <%= image_tag("accept.png", { :title => t(:consent_yes) }) %>
+      <% elsif @patient.self_service_status == 0 %>
+        <%= image_tag("delete.png", { :title => t(:consent_no) }) %>
+      <% else %>
+        <%= image_tag("help.png", { :title => t(:consent_unknown) }) %>
+      <% end %>
+    </td>
   </tr>
 </table>
 <table class="person">

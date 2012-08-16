@@ -34,7 +34,7 @@
     <% elsif patient.consent_status == 0 %>
       <td class="center"><%= image_tag("delete.png", { :title => t(:consent_no) }) %></td>
     <% else %>
-      <td class="center" title="<%=t :consent_unknown %>">?</td>
+      <td class="center"><%= image_tag("help.png", { :title => t(:consent_unknown) }) %></td>
     <% end %>
     <td><%= link_to image_tag("magnifier.png", { :title => t(:show) }), patient %></td>
     <td><% if patient.consent_status.nil? %><%= link_to image_tag("bin.png", { :title => t(:not_eligible) }), patient, :confirm => I18n.t("not_eligible_sure"), :method => :delete %><% end %></td>

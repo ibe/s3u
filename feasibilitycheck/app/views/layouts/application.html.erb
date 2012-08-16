@@ -13,9 +13,9 @@
       <div id="firstColumn">
         <div id="search">
           <% if user_signed_in? %>
-          <%=t :logged_in_as, :user => current_user.cn %> | <%= link_to I18n.t(:logout), destroy_user_session_path, :method => :delete %>
+          <%= image_tag("ceo.png") %><%=t :logged_in_as, :user => current_user.cn %> | <%= link_to I18n.t(:logout), destroy_user_session_path, :method => :delete %>
           <% else %>
-          <%= link_to I18n.t(:login), new_user_session_path %>
+          <%= image_tag("user_silhouette.png") %><%= link_to I18n.t(:login), new_user_session_path %>
           <% end %>
         </div>
         <ul id="navigation">
@@ -36,19 +36,19 @@
           breadbrumb
         </div>
         <div id="notifications">
-          <p id="notice"><%= notice %></p>
-          <p id="alert"><%= alert %></p>
+          <% if notice %><p id="notice"><%= image_tag("information.png") %><%= notice %></p><% end %>
+          <% if alert %><p id="alert"><%= image_tag("exclamation.png") %><%= alert %></p><% end %>
         </div>
         <div id="content">
           <%= yield %>
         </div>
         <div id="functions">
           <div class="printlink">
-            <%= link_to image_tag("/assets/drucken.gif"), "#" %>
+            <%= link_to image_tag("printer.png", { :title => t("print") }), "#" %>
           </div>
           <div class="responsible">&nbsp;</div>
           <div class="toplink">
-            <%= link_to image_tag("/assets/toplink.gif"), "#" %>
+            <%= link_to image_tag("application_get.png", :title => t(:top)), "#" %>
           </div>
         </div>
       </div>

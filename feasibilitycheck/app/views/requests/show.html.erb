@@ -2,7 +2,9 @@
   <tr>
     <th><%=t :prename %></th>
     <td>: <%= @request.prenameContact %></td>
-    <td><% if @request.submit != 1 %><%= link_to image_tag("cog_edit.png", { :title => t("request.edit") }), edit_request_path(@request) %><% end %></td>
+    <td>
+      <% if @request.submit != 1 %><%= link_to image_tag("cog_edit.png", { :title => t("request.edit") }), edit_request_path(@request) %><% end %>
+    </td>
   </tr>
   <tr>
     <th><%=t :surname %></th>
@@ -58,11 +60,11 @@
       <% if @request.approved.nil? %>
         <%= form_for(@request) do |f| %>
           <%= f.hidden_field :approved, :value => 1 %>
-          <%= f.submit I18n.t("approve") %>
+          <%= f.submit t("approve"), { :type => "image", :src => image_path("accept.png"), :title => t("approve") } %>
         <% end %>
         <%= form_for(@request) do |f| %>
           <%= f.hidden_field :approved, :value => 0 %>
-          <%= f.submit I18n.t("reject") %>
+          <%= f.submit t("reject"), { :type => "image", :src => image_path("delete.png"), :title => t("reject") } %>
         <% end %>
       <% end %>
       <% end %>
