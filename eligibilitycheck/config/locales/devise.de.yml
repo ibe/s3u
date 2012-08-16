@@ -17,7 +17,7 @@ de:
       unauthenticated: 'Bitte melden Sie sich an, um fortzufahren.'
       unconfirmed: 'You have to confirm your account before continuing.'
       locked: 'Your account is locked.'
-      invalid: 'Invalid email or password.'
+      invalid: 'Benutzername und/oder Kennwort ungültig.'
       invalid_token: 'Invalid authentication token.'
       timeout: 'Your session expired, please sign in again to continue.'
       inactive: 'Your account was not activated yet.'

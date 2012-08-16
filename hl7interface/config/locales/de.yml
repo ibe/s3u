@@ -16,6 +16,7 @@ de:
       user:
         cn: "Benutzername"
         password: "Kennwort"
+  home: "Startseite"
   icd10code: "ICD-10 Code"
   icd10text: "ICD-10 Text"
   icd10version: "ICD-10 Revision"

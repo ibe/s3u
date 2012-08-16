@@ -33,6 +33,7 @@ de:
       request:
         create: "Speichern & Kriterien definieren"
         update: "Anfrage einreichen"
+  home: "Startseite"
   logged_in_as: "%{user} angemeldet"
   login: "Anmelden"
   logout: "Abmelden"
