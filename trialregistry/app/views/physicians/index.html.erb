@@ -12,7 +12,7 @@
 
 <% @physicians.each do |physician| %>
   <tr>
-    <td><%= physician.trial %></td>
+    <td><%= physician.trial.extId %></td>
     <td><%= physician.extDocId %></td>
     <td><%= physician.counter %></td>
     <td><%= link_to 'Show', physician %></td>
