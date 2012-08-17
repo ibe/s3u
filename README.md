@@ -22,6 +22,7 @@ Thanks to
 - David Heinemeier Hansson and everybody behind Ruby on Rails (http://www.rubyonrails.org)
 - Larry Wall and everybody behind Perl (http://www.perl.org)
 - The guys behind Fatcow (http://www.fatcow.com)
+- All the devs providing the Ruby gems and Perl modules I use (execute ```grep -R "^gem " *``` and ```grep -R "^use " *``` respectively at the root directory of S3U to get the latest list)
 
 As main developer of S3U, I (https://github.com/tobias-schleinkofer) would of course also thank these people/institutions:
 
