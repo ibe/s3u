@@ -1,4 +1,6 @@
 S3uLmuConsentmanager::Application.routes.draw do
+  devise_for :users
+
   resources :subjects
 
   resources :consents

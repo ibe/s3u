@@ -1,5 +1,7 @@
 class SubjectsController < ApplicationController
 
+  before_filter :authenticate_user!
+
   helper_method :sort_column, :sort_direction
 
   # GET /subjects
