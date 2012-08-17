@@ -3,6 +3,7 @@
 
 de:
   back: "Zurück"
+  cn: "Benutzername"
   Consents: "Einwilligungen"
   consent_edit: "Einwilligung bearbeiten"
   consent_issue: "einwilligen"
@@ -14,6 +15,9 @@ de:
   edit: "Bearbeiten"
   home: "Startseite"
   issued_at: "erstellt"
+  login: "Anmelden"
+  logged_in_as: "%{user} angemeldet"
+  logout: "Abmelden"
   mailPhysician: "E-Mail Arzt"
   no_consents: "Anzahl Einwilligungen"
   overview: "Überblick über die S3U-Infrastruktur"
@@ -23,6 +27,7 @@ de:
   print: "Drucken"
   report_bug: "Einen Fehler melden"
   show: "Details"
+  sign_in: "Anmeldung"
   status: "Einwilligung"
   subject: "Teilnehmer"
   subject_id: "Teilnehmer"
