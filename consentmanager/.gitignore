@@ -4,6 +4,7 @@ log/*.log
 tmp/
 .sass-cache/
 config/database.yml
+config/ldap.yml
 app/assets/stylesheets/lmu_corporate_design.css.scss
 app/assets/images/header.jpg
 public/assets/
