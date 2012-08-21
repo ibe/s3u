@@ -1,10 +1,10 @@
-<h1>Listing physicians</h1>
+<h1><%=t :physician_list %></h1>
 
 <table class="person center">
   <tr>
-    <th>Trial</th>
-    <th>Extdocid</th>
-    <th>Counter</th>
+    <th><%=t :trial %></th>
+    <th><%=t :extdocid %></th>
+    <th><%=t :counter %></th>
   </tr>
 
 <% @physicians.each do |physician| %>

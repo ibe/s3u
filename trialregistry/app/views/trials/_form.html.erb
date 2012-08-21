@@ -12,32 +12,25 @@
   <% end %>
 
   <div class="field">
-    <%= f.label :extId %><br />
-    <%= f.text_field :extId %>
+    <%= f.label t(:extid) %>:<%= f.text_field :extId %>
   </div>
   <div class="field">
-    <%= f.label :description %><br />
-    <%= f.text_field :description %>
+    <%= f.label t(:description) %>:<%= f.text_field :description %>
   </div>
   <div class="field">
-    <%= f.label :recruitingTarget %><br />
-    <%= f.number_field :recruitingTarget %>
+    <%= f.label t(:recruiting_target) %>:<%= f.number_field :recruitingTarget %>
   </div>
   <div class="field">
-    <%= f.label :prenameInvestigator %><br />
-    <%= f.number_field :prenameInvestigator %>
+    <%= f.label t(:prename_investigator) %>:<%= f.number_field :prenameInvestigator %>
   </div>
   <div class="field">
-    <%= f.label :surnameInvestigator %><br />
-    <%= f.number_field :surnameInvestigator %>
+    <%= f.label t(:surname_investigator) %>:<%= f.number_field :surnameInvestigator %>
   </div>
   <div class="field">
-    <%= f.label :mailInvestigator %><br />
-    <%= f.number_field :mailInvestigator %>
+    <%= f.label t(:mail_investigator) %>:<%= f.number_field :mailInvestigator %>
   </div>
   <div class="field">
-    <%= f.label :informed_consent %><br />
-    <%= f.file_field :informed_consent %>
+    <%= f.label t(:informed_consent) %>:<%= f.file_field :informed_consent %>
   </div>
   <div class="actions">
     <%= f.submit %>

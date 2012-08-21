@@ -13,9 +13,9 @@
       <div id="firstColumn">
         <div id="search">&nbsp;</div>
         <ul id="navigation">
-          <li><%= link_to "Trials", :trials %></li>
-          <li><%= link_to "Physicians", :physicians %></li>
-          <li><%= link_to "Data", :data %></li>
+          <li><%= link_to t(:trials), :trials %></li>
+          <li><%= link_to t(:physicians), :physicians %></li>
+          <li><%= link_to t(:data), :data %></li>
         </ul>
       </div>
       <div id="secondColumn">
@@ -44,7 +44,7 @@
       </div>
     </div>
     <div id="footer">
-      <%= mail_to "my_user@localhost", "Contact" %> | <%= link_to "Overview of S3U infrastructure", "http://localhost" %>
+      <%= mail_to "my_user@localhost", I18n.t("report_bug"), :subject => "[S3U][TR] Bug report" %> | <%= mail_to "my_user@localhost", I18n.t("contact"), :subject => "[S3U] Contact" %> | <%= link_to I18n.t("overview"), "http://localhost" %>
     </div>
   </div>
 </body>
