@@ -1,40 +1,42 @@
-<p>
-  <b>Extid:</b>
-  <%= @trial.extId %>
-</p>
-
-<p>
-  <b>Description:</b>
-  <%= @trial.description %>
-</p>
-
-<p>
-  <b>Recruitingtarget:</b>
-  <%= @trial.recruitingTarget %>
-</p>
-
-<p>
-  <b>Recruiting Status:</b>
-  <%= @trial.recruiting_status %>
-</p>
-
-<p>
-  <b>PrenameInvestigator:</b>
-  <%= @trial.prenameInvestigator %>
-</p>
-
-<p>
-  <b>SurnameInvestigator:</b>
-  <%= @trial.surnameInvestigator %>
-</p>
-
-<p>
-  <b>MailInvestigator:</b>
-  <%= @trial.mailInvestigator %>
-</p>
-
-<p>
-  <b>InformedConsent:</b>
+<table class="classic">
+  <tr>
+    <th><%=t :extid %></th>
+    <th>:</th>
+    <td><%= @trial.extId %></td>
+  </tr>
+  <tr>
+    <th><%=t :description %></th>
+    <th>:</th>
+    <td><%= @trial.description %></td>
+  </tr>
+  <tr>
+    <th><%=t :recruiting_target %></th>
+    <th>:</th>
+    <td><%= @trial.recruitingTarget %></td>
+  </tr>
+  <tr>
+    <th><%=t :recruiting_status %></th>
+    <th>:</th>
+    <td><%= @trial.recruiting_status %></td>
+  </tr>
+  <tr>
+    <th><%=t :prename_investigator %></th>
+    <th>:</th>
+    <td><%= @trial.prenameInvestigator %></td>
+  </tr>
+  <tr>
+    <th><%=t :surname_investigator %></th>
+    <th>:</th>
+    <td><%= @trial.surnameInvestigator %></td>
+  </tr>
+  <tr>
+    <th><%=t :mail_investigator %></th>
+    <th>:</th>
+    <td><%= @trial.mailInvestigator %></td>
+  </tr>
+  <tr>
+    <th><%=t :informed_consent %></th>
+    <th>:</th>
   <%
   # deployed to sub uri ("http://foo.bar/trialregistry" instead of "http://foo.bar")
   # therefor having to workaround bug in paperclip
@@ -42,23 +44,21 @@
   # ideally this should look like:
   # link_to "Download", @trial.informed_consent.url
   %>
-  <%= link_to "Download", url_for("https://mitibem4.srv.med.uni-muenchen.de/trialregistry/trialregistry/system/trials/informed_consents/") + @trial.id.to_s + "/original/" + @trial.informed_consent_file_name %>
-</p>
+  <td><%= link_to "Download", url_for("https://mitibem4.srv.med.uni-muenchen.de/trialregistry/trialregistry/system/trials/informed_consents/") + @trial.id.to_s + "/original/" + @trial.informed_consent_file_name %></td>
+  </tr>
+</table>
 
-<h2>Criteria</h2>
-<table>
+<table class="person center">
   <tr>
-    <th>Criterion type</th>
-    <th>Datum</th>
-    <th>Operator</th>
-    <th>Value</th>
+    <th><%=t :criterion_type %></th>
+    <th><%=t :datum %></th>
+    <th><%=t :operator %></th>
+    <th><%=t :value %></th>
     <th></th>
   </tr>
 <%= render @trial.criteria %>
-</table>
- 
-<h2>Add a criterion:</h2>
 <%= render "criteria/form" %>
+</table> 
 
 <%= link_to 'Edit', edit_trial_path(@trial) %> |
 <%= link_to 'Back', trials_path %>
