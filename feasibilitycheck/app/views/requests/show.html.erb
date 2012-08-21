@@ -1,34 +1,40 @@
 <table class="classic">
   <tr>
     <th><%=t :prename %></th>
-    <td>: <%= @request.prenameContact %></td>
+    <th>:</th>
+    <td><%= @request.prenameContact %></td>
     <td>
       <% if @request.submit != 1 %><%= link_to image_tag("cog_edit.png", { :title => t("request.edit") }), edit_request_path(@request) %><% end %>
     </td>
   </tr>
   <tr>
     <th><%=t :surname %></th>
-    <td>: <%= @request.surnameContact %></td>
+    <th>:</th>
+    <td><%= @request.surnameContact %></td>
     <td></td>
   </tr>
   <tr>
     <th><%=t :contact_mail %></th>
-    <td>: <%= mail_to @request.mailContact %></td>
+    <th>:</th>
+    <td><%= mail_to @request.mailContact %></td>
     <td></td>
   </tr>
   <tr>
     <th><%=t :contact_phone %></th>
-    <td>: <%= @request.phoneContact %></td>
+    <th>:</th>
+    <td><%= @request.phoneContact %></td>
     <td></td>
   </tr>
   <tr>
     <th><%=t :description %></th>
-    <td>: <%= @request.description %></td>
+    <th>:</th>
+    <td><%= @request.description %></td>
     <td></td>
   </tr>
   <tr>
     <th><%=t :submitted %></th>
-    <td>:
+    <th>:</th>
+    <td>
       <% if @request.submit == 1 %>
         <span class="">&radic;</span>
       <% else %>
@@ -36,17 +42,20 @@
       <% end %>
     </td>
     <td>
-      <% if @request.submit != 1 %>
-        <%= form_for(@request) do |f| %>
-          <%= f.hidden_field :submit, :value => 1 %>
-          <%= f.submit t("helpers.submit.request.update"), { :type => "image", :src => image_path("accept.png"), :title => t("helpers.submit.request.update") } %>
+      <% if !user_signed_in? %>
+        <% if @request.submit != 1 %>
+          <%= form_for(@request) do |f| %>
+            <%= f.hidden_field :submit, :value => 1 %>
+            <%= f.submit t("helpers.submit.request.update"), { :type => "image", :src => image_path("accept.png"), :title => t("helpers.submit.request.update") } %>
+          <% end %>
         <% end %>
       <% end %>
     </td>
   </tr>
   <tr>
     <th><%=t :approved %></th>
-    <td>:
+    <th>:</th>
+    <td>
       <% if @request.approved == true %>
         <span class="">&radic;</span>
       <% elsif @request.approved == false %>
@@ -56,7 +65,7 @@
       <% end %>
     </td>
     <td>
-      <% if user_signed_in? && current_user.admin? %>
+      <% if user_signed_in? && current_user.admin? && @request.submit == 1 %>
       <% if @request.approved.nil? %>
         <%= form_for(@request) do |f| %>
           <%= f.hidden_field :approved, :value => 1 %>
@@ -72,7 +81,8 @@
   </tr>
   <tr>
     <th><%=t :result %></th>
-    <td>: <% if @request.result == nil %><%=t "pending" %><% else %>Um <%= @request.updated_at.in_time_zone('Berlin') %> traf(en) <%= @request.result %> Patient(en) auf die von Ihnen gewählten Kriterien zu<% end %></td>
+    <th>:</th>
+    <td><% if @request.result == nil %><%=t "pending" %><% else %>Um <%= @request.updated_at.in_time_zone('Berlin') %> traf(en) <%= @request.result %> Patient(en) auf die von Ihnen gewählten Kriterien zu<% end %></td>
     <td></td>
   </tr>
 </table>
