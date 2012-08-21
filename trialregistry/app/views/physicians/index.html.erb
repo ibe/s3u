@@ -1,23 +1,17 @@
 <h1>Listing physicians</h1>
 
-<table>
+<table class="person center">
   <tr>
     <th>Trial</th>
     <th>Extdocid</th>
     <th>Counter</th>
-    <th></th>
-    <th></th>
-    <th></th>
   </tr>
 
 <% @physicians.each do |physician| %>
   <tr>
-    <td><%= physician.trial.extId %></td>
+    <td><%= link_to physician.trial.extId, physician.trial %></td>
     <td><%= physician.extDocId %></td>
     <td><%= physician.counter %></td>
-    <td><%= link_to 'Show', physician %></td>
-    <td><%= link_to 'Edit', edit_physician_path(physician) %></td>
-    <td><%= link_to 'Destroy', physician, confirm: 'Are you sure?', method: :delete %></td>
   </tr>
 <% end %>
 </table>

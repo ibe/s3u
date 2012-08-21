@@ -57,6 +57,27 @@ class PatientsController < ApplicationController
       @subject.update 
     end
     
+    # not yet that sexy:
+    # this does not work: Physician.find(:first, :conditions => {...})
+    # so we have to switch to the more ugly version: Physician.all ... @physicians.each do ... end
+    
+    if params[:patient][:consent_status]
+      @physicians = Physician.all
+      @physician = nil
+      @physicians.each do |p|
+        if p.trial_id == @patient.trial_id && p.extDocId == current_user.prenameDoc + " " + current_user.surnameDoc
+          @physician = p
+        end
+      end
+      if @physician.nil?
+        @physician = Physician.new(:trial_id => @patient.trial_id, :extDocId => current_user.prenameDoc + " " + current_user.surnameDoc, :counter => 1)
+        @physician.save!
+      else
+        @physician.counter = @physician.counter + 1
+        @physician.save!
+      end
+    end
+    
     # question: why not put this code into the corresponding model?
     # answer: because any "current_user"-relevant code should/can not be used inside
     #         a model and belongs inside a controller
