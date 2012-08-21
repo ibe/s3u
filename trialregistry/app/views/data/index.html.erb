@@ -1,12 +1,12 @@
-<h1>Listing data</h1>
+<h1><%=t :data_list %></h1>
 
 <table class="person">
   <tr>
-    <th>Description</th>
-    <th>Segment</th>
-    <th>Composite</th>
-    <th>Subcomposite</th>
-    <th>Subsubcomposite</th>
+    <th><%=t :description %></th>
+    <th><%=t :segment %></th>
+    <th><%=t :composite %></th>
+    <th><%=t :subcomposite %></th>
+    <th><%=t :subsubcomposite %></th>
     <th></th>
     <th></th>
     <th></th>
@@ -19,13 +19,13 @@
     <td><%= datum.composite %></td>
     <td><%= datum.subcomposite %></td>
     <td><%= datum.subsubcomposite %></td>
-    <td><%= link_to 'Show', datum %></td>
-    <td><%= link_to 'Edit', edit_datum_path(datum) %></td>
-    <td><%= link_to 'Destroy', datum, :confirm => 'Are you sure?', :method => :delete %></td>
+    <td><%= link_to image_tag("magnifier.png", { :title => t(:show) }), datum %></td>
+    <td><%= link_to image_tag("cog_edit.png", { :title => t(:edit) }), edit_datum_path(datum) %></td>
+    <td><%= link_to image_tag("bin.png", { :title => t(:destroy) }), datum, :confirm => I18n.t("destroy"), :method => :delete %></td>
   </tr>
 <% end %>
 </table>
 
 <br />
 
-<%= link_to 'New Datum', new_datum_path %>
+<%= link_to t(:datum_new), new_datum_path %>
