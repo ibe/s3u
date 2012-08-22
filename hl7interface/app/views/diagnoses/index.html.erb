@@ -14,11 +14,11 @@
 
 <% @diagnoses.each do |diagnosis| %>
   <tr>
-    <td><%= link_to diagnosis.medical_case.extId, diagnosis.medical_case %></td>
-    <td><%= link_to diagnosis.medical_case.patient.extId, diagnosis.medical_case.patient %></td>
-    <td><%= diagnosis.icd10Code %></td>
+    <td class="center"><%= link_to diagnosis.medical_case.extId, diagnosis.medical_case %></td>
+    <td class="center"><%= link_to diagnosis.medical_case.patient.extId, diagnosis.medical_case.patient %></td>
+    <td class="center"><%= diagnosis.icd10Code %></td>
     <td><%= diagnosis.icd10Text %></td>
-    <td><%= diagnosis.icd10Version %></td>
+    <td class="center"><%= diagnosis.icd10Version %></td>
     <td><%= link_to I18n.t(:show), diagnosis %></td>
   </tr>
 <% end %>

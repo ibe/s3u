@@ -14,11 +14,11 @@
 
 <% @patients.each do |patient| %>
   <tr>
-    <td><%= patient.extId %></td>
+    <td class="center"><%= patient.extId %></td>
     <td><%= patient.prename %></td>
     <td><%= patient.surname %></td>
-    <td><%= patient.dob %></td>
-    <td><%= patient.sex %></td>
+    <td class="center"><%= patient.dob %></td>
+    <td class="center"><%= patient.sex %></td>
     <td><%= link_to I18n.t(:show), patient %></td>
   </tr>
 <% end %>

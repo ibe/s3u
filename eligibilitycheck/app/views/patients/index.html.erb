@@ -20,7 +20,7 @@
     <td class="center"><% if current_user.current_sign_in_at < patient.created_at %><%= image_tag("weather_sun.png", { :title => t(:new) }) %><% end %></td>
     <td><%= patient.prename %></td>
     <td><%= patient.surname %></td>
-    <td><%= patient.dob %></td>
+    <td class="center"><%= patient.dob %></td>
     <% if patient.sex == 'M' %>
       <td class="male_female center help"><%= image_tag("male.png", { :title => t(:male) }) %></td>
     <% elsif patient.sex == 'F' %>
@@ -28,7 +28,7 @@
     <% else %>
       <td title="<%=t :unclear %>" class="center">?</td>
     <% end %>
-    <td><%= link_to patient.trial.extId, S3uLmuAerzteUi::Application.config.s3u_lmu_studienmonitor_url + "/trials/" + patient.trial.id.to_s %></td>
+    <td class="center"><%= link_to patient.trial.extId, S3uLmuAerzteUi::Application.config.s3u_lmu_studienmonitor_url + "/trials/" + patient.trial.id.to_s %></td>
     <% if patient.consent_status == 1 %>
       <td class="center help"><%= image_tag("accept.png", { :title => t(:consent_yes) }) %></td>
     <% elsif patient.consent_status == 0 %>

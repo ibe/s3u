@@ -19,12 +19,12 @@
 
 <% @messages.each do |message| %>
   <tr>
-    <td><%= message.dataSource %></td>
-    <td><%= message.messageControlId %></td>
-    <td><%= message.segment %></td>
-    <td><%= message.composite %></td>
-    <td><%= message.subcomposite %></td>
-    <td><%= message.subsubcomposite %></td>
+    <td class="center"><%= message.dataSource %></td>
+    <td class="center"><%= message.messageControlId %></td>
+    <td class="center"><%= message.segment %></td>
+    <td class="center"><%= message.composite %></td>
+    <td class="center"><%= message.subcomposite %></td>
+    <td class="center"><%= message.subsubcomposite %></td>
     <td><%= message.value %></td>
     <td><%= message.created_at %></td>
   </tr>
