@@ -6,18 +6,18 @@
   <tr>
     <th><%=t :new %>?</th>
     <th><%=t :medical_case, :count => 1 %></th>
-    <th><%=t :icd10code %></th>
-    <th><%=t :icd10text %></th>
-    <th><%=t :created_at %></th>
-    <th><%=t :updated_at %></th>
+    <th><%= sortable "icd10Code", t(:icd10Code) %></th>
+    <th><%= sortable "icd10Text", t(:icd10Text) %></th>
+    <th><%= sortable "created_at", t(:created_at) %></th>
+    <th><%= sortable "updated_at", t(:updated_at) %></th>
     <th></th>
   </tr>
 
 <% @diagnoses.each do |diagnosis| %>
   <tr>
     <td class="center"><% if current_user.current_sign_in_at < diagnosis.created_at %><%= image_tag("weather_sun.png") %><% end %></td>
-    <td><%= link_to diagnosis.medical_case.extCaseId, diagnosis.medical_case %></td>
-    <td title="<%= diagnosis.icd10Version %>"><%= diagnosis.icd10Code %></td>
+    <td class="center"><%= link_to diagnosis.medical_case.extCaseId, diagnosis.medical_case %></td>
+    <td class="center" title="<%= diagnosis.icd10Version %>"><%= diagnosis.icd10Code %></td>
     <td><%= diagnosis.icd10Text %></td>
     <td><%= time_ago_in_words(diagnosis.created_at) %></td>
     <td><%= time_ago_in_words(diagnosis.updated_at) %></td>

@@ -2,11 +2,11 @@
 
 <table class="person">
   <tr>
-    <th><%=t :description %></th>
-    <th><%=t :segment %></th>
-    <th><%=t :composite %></th>
-    <th><%=t :subcomposite %></th>
-    <th><%=t :subsubcomposite %></th>
+    <th><%= sortable "description", t(:description) %></th>
+    <th><%= sortable "segment", t(:segment) %></th>
+    <th><%= sortable "composite", t(:composite) %></th>
+    <th><%= sortable "subcomposite", t(:subcomposite) %></th>
+    <th><%= sortable "subsubcomposite", t(:subsubcomposite) %></th>
     <th></th>
     <th></th>
     <th></th>
@@ -15,13 +15,13 @@
 <% @data.each do |datum| %>
   <tr>
     <td><%= datum.description %></td>
-    <td><%= datum.segment %></td>
-    <td><%= datum.composite %></td>
-    <td><%= datum.subcomposite %></td>
-    <td><%= datum.subsubcomposite %></td>
-    <td><%= link_to image_tag("magnifier.png", { :title => t(:show) }), datum %></td>
-    <td><%= link_to image_tag("cog_edit.png", { :title => t(:edit) }), edit_datum_path(datum) %></td>
-    <td><%= link_to image_tag("bin.png", { :title => t(:destroy) }), datum, :confirm => I18n.t("destroy"), :method => :delete %></td>
+    <td class="center"><%= datum.segment %></td>
+    <td class="center"><%= datum.composite %></td>
+    <td class="center"><%= datum.subcomposite %></td>
+    <td class="center"><%= datum.subsubcomposite %></td>
+    <td class="center"><%= link_to image_tag("magnifier.png", { :title => t(:show) }), datum %></td>
+    <td class="center"><%= link_to image_tag("cog_edit.png", { :title => t(:edit) }), edit_datum_path(datum) %></td>
+    <td class="center"><%= link_to image_tag("bin.png", { :title => t(:destroy) }), datum, :confirm => I18n.t("destroy"), :method => :delete %></td>
   </tr>
 <% end %>
 </table>

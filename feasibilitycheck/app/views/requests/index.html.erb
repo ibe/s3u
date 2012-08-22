@@ -4,12 +4,12 @@
 
 <table class="person">
   <tr>
-    <th><%=t "contact" %></th>
-    <th><%=t "contact_phone" %></th>
+    <th><%= sortable "prenameContact", t(:contact) %></th>
+    <th><%= sortable "phoneContact", t(:contact_phone) %></th>
     <th><%=t "description" %></th>
-    <th><%=t "submitted" %></th>
-    <th><%=t "approved" %></th>
-    <th><%=t "result" %></th>
+    <th><%= sortable "submit", t(:submitted) %></th>
+    <th><%= sortable "approved", t(:approved) %></th>
+    <th><%= sortable "result", t(:result) %></th>
     <th></th>
     <th></th>
     <th></th>
@@ -18,7 +18,7 @@
 <% @requests.each do |request| %>
   <tr>
     <td><%= mail_to request.mailContact, "#{request.prenameContact} #{request.surnameContact}" %></td>
-    <td><%= request.phoneContact %></td>
+    <td class="center"><%= request.phoneContact %></td>
     <td><%= link_to truncate(request.description, :length => 50), request %></td>
     <td class="center">
       <% if request.submit == 1 %>
