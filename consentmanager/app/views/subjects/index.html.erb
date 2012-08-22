@@ -15,9 +15,9 @@
   <tr>
     <td><%= subject.prename %></td>
     <td><%= subject.surname %></td>
-    <td><%= subject.consents.size %></td>
-    <td><%= link_to image_tag("magnifier.png", { :title => t(:show) }), subject %></td>
-    <td><%= link_to image_tag("bin.png", { :title => t(:destroy) }), subject, :confirm => 'Are you sure?', :method => :delete %></td>
+    <td class="center"><%= subject.consents.size %></td>
+    <td class="center"><%= link_to image_tag("magnifier.png", { :title => t(:show) }), subject %></td>
+    <td class="center"><%= link_to image_tag("bin.png", { :title => t(:destroy) }), subject, :confirm => 'Are you sure?', :method => :delete %></td>
   </tr>
 <% end %>
 </table>
