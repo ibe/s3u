@@ -3,4 +3,5 @@ class MedicalCase < ActiveRecord::Base
   has_many :diagnoses, :dependent => :destroy
   attr_accessible :extCaseId, :funcOu, :nurseOu, :patient_id
   paginates_per 12
+  validates :extCaseId, :funcOu, :nurseOu, :presence => true
 end

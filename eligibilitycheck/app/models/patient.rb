@@ -3,6 +3,10 @@ class Patient < ActiveRecord::Base
   attr_accessible :extId, :prename, :surname, :dob, :sex, :extDocId, :consent_status, :self_service_status, :trial_id
   paginates_per 7
 
+  validates :extId, :prename, :surname, :extDocId, :consent_status, :self_service_status, :presence => true
+  validates :sex, :inclusion => { :in => %w(M F) }
+  validates :dob, :format => { :with => /[0-9]{4}-[0-9]{2}-[0-9]{2}/ }
+  
   after_save :update_studienmonitor
   
   def trial
