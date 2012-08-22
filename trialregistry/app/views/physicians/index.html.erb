@@ -3,8 +3,8 @@
 <table class="person center">
   <tr>
     <th><%=t :trial %></th>
-    <th><%=t :extdocid %></th>
-    <th><%=t :counter %></th>
+    <th><%= sortable "extdocid", t(:extdocid) %></th>
+    <th><%= sortable "counter", t(:counter) %></th>
   </tr>
 
 <% @physicians.each do |physician| %>

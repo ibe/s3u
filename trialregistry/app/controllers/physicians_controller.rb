@@ -1,8 +1,11 @@
 class PhysiciansController < ApplicationController
+
+  helper_method :sort_column, :sort_direction
+  
   # GET /physicians
   # GET /physicians.json
   def index
-    @physicians = Physician.all
+    @physicians = Physician.order(sort_column + ' ' + sort_direction)
 
     respond_to do |format|
       format.html # index.html.erb
@@ -79,5 +82,15 @@ class PhysiciansController < ApplicationController
       format.html { redirect_to physicians_url }
       format.json { head :ok }
     end
+  end
+
+  private
+  
+  def sort_column
+    Physician.column_names.include?(params[:sort]) ? params[:sort] : "counter"
+  end
+  
+  def sort_direction
+    %w[asc desc].include?(params[:direction]) ? params[:direction] : "desc"
   end
 end

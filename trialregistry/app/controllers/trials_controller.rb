@@ -1,8 +1,11 @@
 class TrialsController < ApplicationController
+
+  helper_method :sort_column, :sort_direction
+
   # GET /trials
   # GET /trials.json
   def index
-    @trials = Trial.all
+    @trials = Trial.order(sort_column + ' ' + sort_direction)
 
     respond_to do |format|
       format.html # index.html.erb
@@ -79,5 +82,15 @@ class TrialsController < ApplicationController
       format.html { redirect_to trials_url }
       format.json { head :ok }
     end
+  end
+  
+  private
+  
+  def sort_column
+    Trial.column_names.include?(params[:sort]) ? params[:sort] : "extid"
+  end
+  
+  def sort_direction
+    %w[asc desc].include?(params[:direction]) ? params[:direction] : "asc"
   end
 end

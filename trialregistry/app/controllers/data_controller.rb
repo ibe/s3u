@@ -1,8 +1,11 @@
 class DataController < ApplicationController
+
+  helper_method :sort_column, :sort_direction
+
   # GET /data
   # GET /data.json
   def index
-    @data = Datum.all
+    @data = Datum.order(sort_column + ' ' + sort_direction)
 
     respond_to do |format|
       format.html # index.html.erb
@@ -79,5 +82,15 @@ class DataController < ApplicationController
       format.html { redirect_to data_url }
       format.json { head :ok }
     end
+  end
+
+  private
+  
+  def sort_column
+    Datum.column_names.include?(params[:sort]) ? params[:sort] : "description"
+  end
+  
+  def sort_direction
+    %w[asc desc].include?(params[:direction]) ? params[:direction] : "asc"
   end
 end
