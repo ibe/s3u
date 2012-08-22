@@ -10,7 +10,7 @@ de:
   contact: "Anfragender"
   criterion_type: "Kriteriumstyp"
   datum: "Kriterium"
-  description: "Vorhabensbeschreibung"
+  description: "Beschreibung"
   destroy: "Löschen"
   footer:
     contact: "Kontakt"
@@ -19,7 +19,7 @@ de:
   helpers:
     label:
       request:
-        description: "Vorhabensbeschreibung"
+        description: "Beschreibung"
         mailContact: "E-Mail Adresse"
         phoneContact: "Rufnummer"
         prenameContact: "Vorname"
