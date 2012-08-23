@@ -18,9 +18,17 @@ de:
   extdocid: "Arzt"
   extid: "Studie"
   destroy: "Löschen"
+  helpers:
+    label:
+      user:
+        cn: "Benutzername"
+        password: "Kennwort"
   home: "Startseite"
   informed_consent: "Information-/Einwilligungserklärung"
   investigator: "Investigator"
+  login: "Anmelden"
+  logged_in_as: "%{user} angemeldet"
+  logout: "Abmelden"
   mail_investigator: "eMail-Adresse Investigator"
   operator: "Operator"
   overview: "Überblick über die S3U-Infrastruktur"
@@ -33,6 +41,7 @@ de:
   recruiting_status: "Rekrutierungsstatus"
   segment: "HL7-Segment"
   show: "Details"
+  sign_in: "Anmeldung"
   subcomposite: "HL7-Subcomp."
   subsubcomposite: "HL7-Subsubc."
   surname_investigator: "Nachname Investigator"

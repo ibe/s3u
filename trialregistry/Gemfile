@@ -2,6 +2,8 @@ source 'http://rubygems.org'
 
 gem 'rails'
 gem 'paperclip'
+gem 'devise'
+gem 'devise_ldap_authenticatable'
 
 # Bundle edge Rails instead:
 # gem 'rails',     :git => 'git://github.com/rails/rails.git'

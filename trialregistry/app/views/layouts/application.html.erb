@@ -11,7 +11,13 @@
     <div id="header"><%= image_tag("/assets/header.jpg") %></div>
     <div id="main">
       <div id="firstColumn">
-        <div id="search">&nbsp;</div>
+        <div id="search">
+          <% if user_signed_in? %>
+          <%= image_tag("ceo.png") %><%=t :logged_in_as, :user => current_user.cn %> | <%= link_to I18n.t(:logout), destroy_user_session_path, :method => :delete %>
+          <% else %>
+          <%= image_tag("user_silhouette.png") %><%= link_to I18n.t(:login), new_user_session_path %>
+          <% end %>
+        </div>
         <ul id="navigation">
           <li><%= link_to t(:trials), :trials %></li>
           <li><%= link_to t(:physicians), :physicians %></li>

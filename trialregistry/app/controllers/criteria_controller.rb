@@ -1,4 +1,7 @@
 class CriteriaController < ApplicationController
+
+  #before_filter :authenticate_user!
+
   ## GET /criteria
   ## GET /criteria.json
   #def index
