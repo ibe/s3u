@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120516115138) do
+ActiveRecord::Schema.define(:version => 20120824134549) do
 
   create_table "diagnoses", :force => true do |t|
     t.integer  "medical_case_id"
@@ -20,6 +20,8 @@ ActiveRecord::Schema.define(:version => 20120516115138) do
     t.string   "icd10Version"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "read_status"
+    t.string   "extDocId"
   end
 
   add_index "diagnoses", ["medical_case_id"], :name => "index_diagnoses_on_medical_case_id"
@@ -31,6 +33,8 @@ ActiveRecord::Schema.define(:version => 20120516115138) do
     t.string   "nurseOu"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "read_status"
+    t.string   "extDocId"
   end
 
   add_index "medical_cases", ["patient_id"], :name => "index_medical_cases_on_patient_id"
@@ -47,6 +51,7 @@ ActiveRecord::Schema.define(:version => 20120516115138) do
     t.integer  "trial_id"
     t.integer  "consent_status"
     t.integer  "self_service_status"
+    t.integer  "read_status"
   end
 
   add_index "patients", ["trial_id"], :name => "index_patients_on_trial_id"
@@ -68,7 +73,7 @@ ActiveRecord::Schema.define(:version => 20120516115138) do
     t.string   "extDocId"
   end
 
-  add_index "users", ["email"], :name => "index_users_on_email", :unique => true
+  add_index "users", ["cn"], :name => "index_users_on_cn", :unique => true
   add_index "users", ["reset_password_token"], :name => "index_users_on_reset_password_token", :unique => true
 
 end
