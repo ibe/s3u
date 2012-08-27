@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120817060402) do
+ActiveRecord::Schema.define(:version => 20120824112446) do
 
   create_table "consents", :force => true do |t|
     t.integer  "patient_id"
@@ -51,7 +51,7 @@ ActiveRecord::Schema.define(:version => 20120817060402) do
     t.string   "cn"
   end
 
-  add_index "users", ["email"], :name => "index_users_on_email", :unique => true
+  add_index "users", ["cn"], :name => "index_users_on_cn", :unique => true
   add_index "users", ["reset_password_token"], :name => "index_users_on_reset_password_token", :unique => true
 
 end
