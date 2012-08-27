@@ -16,8 +16,13 @@
   </tr>
 
 <% @patients.each do |patient| %>
+  <% if patient.read_status.nil? %>
+  <tr class="unread">
+  <% else %>   
   <tr>
-    <td class="center"><% if current_user.current_sign_in_at < patient.created_at %><%= image_tag("weather_sun.png", { :title => t(:new) }) %><% end %></td>
+  <% end %>
+    <!-- <td class="center"><% if current_user.current_sign_in_at < patient.created_at %><%= image_tag("weather_sun.png", { :title => t(:new) }) %><% end %></td>-->
+    <td class="center"><% if patient.read_status.nil? %><%= image_tag("weather_sun.png", { :title => t(:new) }) %><% end %></td>
     <td><%= patient.prename %></td>
     <td><%= patient.surname %></td>
     <td class="center"><%= patient.dob %></td>

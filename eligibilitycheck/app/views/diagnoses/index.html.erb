@@ -14,8 +14,12 @@
   </tr>
 
 <% @diagnoses.each do |diagnosis| %>
+  <% if diagnosis.read_status.nil? %>
+  <tr class="unread">
+  <% else %>   
   <tr>
-    <td class="center"><% if current_user.current_sign_in_at < diagnosis.created_at %><%= image_tag("weather_sun.png") %><% end %></td>
+  <% end %>
+    <td class="center"><% if diagnosis.read_status.nil? %><%= image_tag("weather_sun.png", { :title => t(:new) }) %><% end %></td>
     <td class="center"><%= link_to diagnosis.medical_case.extCaseId, diagnosis.medical_case %></td>
     <td class="center" title="<%= diagnosis.icd10Version %>"><%= diagnosis.icd10Code %></td>
     <td><%= diagnosis.icd10Text %></td>

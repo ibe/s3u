@@ -20,9 +20,9 @@
         </div>
         <ul id="navigation">
           <% if user_signed_in? %>
-            <% patients = Patient.where("extDocId = ? AND created_at > ?", current_user.extDocId, current_user.current_sign_in_at.in_time_zone('Berlin')).count %>
-            <% medical_cases = MedicalCase.joins(:patient).where("patients.extDocId = ? AND medical_cases.created_at > ?", current_user.extDocId, current_user.current_sign_in_at.in_time_zone('Berlin')).count %>
-            <% diagnoses = Diagnosis.where("created_at > ?", current_user.current_sign_in_at.in_time_zone('Berlin')).count %>
+            <% patients = Patient.where(:extDocId => current_user.extDocId, :read_status => nil).count %>
+            <% medical_cases = MedicalCase.where(:extDocId => current_user.extDocId, :read_status => nil).count %>
+            <% diagnoses = Diagnosis.where(:extDocId => current_user.extDocId, :read_status => nil).count %>
             <li><%= link_to :controller => 'dashboard' do %><%=t :dashboard %><% end %></li>
           <% else %>
             <% patients = medical_cases = diagnoses = 0 %>

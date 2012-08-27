@@ -3,7 +3,7 @@
 <div class="table">
   <div class="tr">
     <div class="td"></div>
-    <div class="td big shadow"><%= link_to @new_patients.count, :patients %></div>
+    <div class="td big shadow"><%= link_to @patients_new.count, :patients %></div>
     <div class="td"></div>
     <div class="td">
       <span class="big shadow"><%=t :patients_new_short %></span>
@@ -13,7 +13,7 @@
   </div>
   <div class="tr">
     <div class="td"></div>
-    <div class="td big shadow"><%= link_to @remaining_patients, :patients %></div>
+    <div class="td big shadow"><%= link_to @patients_old.count, :patients %></div>
     <div class="td"></div>
     <div class="td">
       <span class="big shadow"><%=t :patients_remaining_short %></span>
@@ -23,7 +23,7 @@
   </div>
   <div class="tr sum">
     <div class="td"></div>
-    <div class="td big shadow"><%= link_to @total_patients.count, :patients %></div>
+    <div class="td big shadow"><%= link_to @patients_total.count, :patients %></div>
     <div class="td"></div>
     <div class="td">
       <span class="big shadow"><%=t :patients_total_short %></span>

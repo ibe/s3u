@@ -15,8 +15,12 @@
   </tr>
 
 <% @medical_cases.each do |medical_case| %>
+  <% if medical_case.read_status.nil? %>
+  <tr class="unread">
+  <% else %>   
   <tr>
-    <td class="center"><% if current_user.current_sign_in_at < medical_case.created_at %><%= image_tag("weather_sun.png", { :title => t(:new) }) %><% end %></td>
+  <% end %>
+    <td class="center"><% if medical_case.read_status.nil? %><%= image_tag("weather_sun.png", { :title => t(:new) }) %><% end %></td>
     <td class="center"><%= medical_case.extCaseId %></td>
     <td class="center"><%= link_to medical_case.patient.extId, medical_case.patient %></td>
     <td class="center"><%= medical_case.funcOu %></td>
