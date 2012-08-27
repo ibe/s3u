@@ -232,7 +232,7 @@ foreach (@trials) {
     $dataset{'icd10Code'} = $r->{'value'};
   
     $sth->finish();
-    $log->debug("build dataset: trial: " . $dataset{'trial_id'} || "<n/a>" . " extId: " . $dataset{'extId'} || "<n/a>" . " surname: " . $dataset{'surname'} || "<n/a>" . " prename: " . $dataset{'prename'} || "<n/a>" . " dob: " . $dataset{'dob'} || "<n/a>" . " sex: " . $dataset{'sex'} || "<n/a>" . " extDocId: " . $dataset{'extDocId'} || "<n/a>" . " nurseOu: " . $dataset{'nurseOu'} || "<n/a>" . " funcOu: " . $dataset{'funcOu'} || "<n/a>" . " admitDateTime: " . $dataset{'admitDateTime'} || "<n/a>" . " extCaseId: " . $dataset{'extCaseId'} || "<n/a>" . " icd10Text: " . $dataset{'icd10Text'} || "<n/a>" . " icd10Code: " . $dataset{'icd10Code'} || "<n/a>" . " icd10Version: " . $dataset{'icd10Version'} || "<n/a>");
+    $log->debug("build dataset: trial: " . $dataset{'trial_id'} . " extId: " . $dataset{'extId'} . " surname: " . $dataset{'surname'} . " prename: " . $dataset{'prename'} . " dob: " . $dataset{'dob'} . " sex: " . $dataset{'sex'} . " extDocId: " . $dataset{'extDocId'} . " nurseOu: " . $dataset{'nurseOu'} . " funcOu: " . $dataset{'funcOu'}  . " admitDateTime: " . $dataset{'admitDateTime'} . " extCaseId: " . $dataset{'extCaseId'} . " icd10Text: " . $dataset{'icd10Text'} . " icd10Code: " . $dataset{'icd10Code'} || "<n/a>" . " icd10Version: " . $dataset{'icd10Version'});
     
     # master requirement: we need a physician associated with the patient
     if ($dataset{'extDocId'}) {
@@ -266,7 +266,7 @@ foreach (@trials) {
       # medical case is not yet in the medical_cases table
       if (! $count) {
         # insert the case part in the medical_cases table (only if there is a case at all)
-        $sth = $dbh_aerzte_ui->prepare("INSERT INTO medical_cases (patient_id, extCaseId, nurseOu, funcOu, created_at, updated_at) VALUES ('". $intId ."', '". $dataset{'extCaseId'}. "', '".$dataset{'nurseOu'}."', '".$dataset{'funcOu'}."', '".$timestamp."', '".$timestamp."')");
+        $sth = $dbh_aerzte_ui->prepare("INSERT INTO medical_cases (patient_id, extDocId, extCaseId, nurseOu, funcOu, created_at, updated_at) VALUES ('". $intId ."', '".$dataset{'extDocId'}."', '". $dataset{'extCaseId'}. "', '".$dataset{'nurseOu'}."', '".$dataset{'funcOu'}."', '".$timestamp."', '".$timestamp."')");
         $sth->execute();
         # get the autoincrement primary key of the medical_cases table (we need this as foreign key at the diagnoses table)
         $intCaseId = $dbh_aerzte_ui->last_insert_id(undef,undef,undef,undef);
@@ -282,7 +282,7 @@ foreach (@trials) {
       if (! $count) {
         # insert the diagnoses part in the diagnoses table (only if there is a diagnosis at all)
         if ($dataset{'icd10Code'}) {
-          $sth = $dbh_aerzte_ui->prepare("INSERT INTO diagnoses (medical_case_id, icd10Code, icd10Text, icd10Version, created_at, updated_at) VALUES ('". $intCaseId ."', '". $dataset{'icd10Code'}. "', '". $dataset{'icd10Text'}. "', '". $dataset{'icd10Version'}. "', '".$timestamp."', '".$timestamp."')");
+          $sth = $dbh_aerzte_ui->prepare("INSERT INTO diagnoses (medical_case_id, extDocId, icd10Code, icd10Text, icd10Version, created_at, updated_at) VALUES ('". $intCaseId ."', '".$dataset{'extDocId'}."', '". $dataset{'icd10Code'}. "', '". $dataset{'icd10Text'}. "', '". $dataset{'icd10Version'}. "', '".$timestamp."', '".$timestamp."')");
           $sth->execute();
         }
       }
