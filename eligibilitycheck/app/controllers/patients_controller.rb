@@ -19,6 +19,10 @@ class PatientsController < ApplicationController
   # GET /patients/1.json
   def show
     @patient = Patient.where(:extDocId => current_user.extDocId).find(params[:id])
+    if @patient.read_status != 1
+      @patient.read_status = 1
+      @patient.save!
+    end
 
     respond_to do |format|
       format.html # show.html.erb
@@ -42,13 +46,6 @@ class PatientsController < ApplicationController
     
     # we need to update two remote applications: consentmanager + cdms
     # (the trial's recruiting status is indirectly updated via consentmanager)
-    
-    @cdms_subject = CdmsSubject.new(:prename => @patient.prename, :surname => @patient.surname)
-    if @cdms_subject.new?
-      @cdms_subject.save!
-    else
-      @cdms_subject.update   
-    end
     
     @subject = Subject.new(:prename => @patient.prename, :surname => @patient.surname)
     if @subject.new?

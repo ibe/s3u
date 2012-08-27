@@ -7,7 +7,7 @@ class MedicalCasesController < ApplicationController
   # GET /medical_cases
   # GET /medical_cases.json
   def index
-    @medical_cases = MedicalCase.joins(:patient).where('patients.extDocId' => current_user.extDocId).order(sort_column + ' ' + sort_direction).page params[:page]
+    @medical_cases = MedicalCase.where(:extDocId => current_user.extDocId).order(sort_column + ' ' + sort_direction).page params[:page]
 
     respond_to do |format|
       format.html # index.html.erb
@@ -18,8 +18,12 @@ class MedicalCasesController < ApplicationController
   # GET /medical_cases/1
   # GET /medical_cases/1.json
   def show
-    @medical_case = MedicalCase.joins(:patient).where('patients.extDocId' => current_user.extDocId).find(params[:id])
-
+    @medical_case = MedicalCase.where(:extDocId => current_user.extDocId).find(params[:id])
+    if @medical_case.read_status != 1
+      @medical_case.read_status = 1
+      @medical_case.save
+    end
+    
     respond_to do |format|
       format.html # show.html.erb
       format.json { render :json => @medical_case }

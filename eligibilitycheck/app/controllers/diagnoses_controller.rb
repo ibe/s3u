@@ -7,7 +7,7 @@ class DiagnosesController < ApplicationController
   # GET /diagnoses
   # GET /diagnoses.json
   def index
-    @diagnoses = Diagnosis.order(sort_column + ' ' + sort_direction).page params[:page]
+    @diagnoses = Diagnosis.where(:extDocId => current_user.extDocId).order(sort_column + ' ' + sort_direction).page params[:page]
 
     respond_to do |format|
       format.html # index.html.erb
@@ -18,7 +18,11 @@ class DiagnosesController < ApplicationController
   # GET /diagnoses/1
   # GET /diagnoses/1.json
   def show
-    @diagnosis = Diagnosis.find(params[:id])
+    @diagnosis = Diagnosis.where(:extDocId => current_user.extDocId).find(params[:id])
+    if @diagnosis.read_status != 1
+      @diagnosis.read_status = 1
+      @diagnosis.save!
+    end
 
     respond_to do |format|
       format.html # show.html.erb
