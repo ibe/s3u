@@ -1,4 +1,6 @@
 S3uLmuStudienmonitor::Application.routes.draw do
+  resources :hits
+
   devise_for :users
 
   resources :physicians

@@ -1,0 +1,24 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b><%=t :trial %>:</b>
+  <%= @hit.trial %>
+</p>
+
+<p>
+  <b><%=t :nurse_ou %>:</b>
+  <%= @hit.nurse_ou %>
+</p>
+
+<p>
+  <b><%=t :func_ou %>:</b>
+  <%= @hit.func_ou %>
+</p>
+
+<p>
+  <b><%=t :extdocid %>:</b>
+  <%= @hit.ext_doc_id %>
+</p>
+
+
+<%= link_to t(:edit), edit_hit_path(@hit) %>

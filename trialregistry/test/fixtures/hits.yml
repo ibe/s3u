@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  trial: 
+  nurse_ou: MyString
+  func_ou: MyString
+  ext_doc_id: MyString
+
+two:
+  trial: 
+  nurse_ou: MyString
+  func_ou: MyString
+  ext_doc_id: MyString

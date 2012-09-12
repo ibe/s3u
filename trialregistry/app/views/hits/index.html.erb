@@ -1,0 +1,29 @@
+<h1><%=t :hits_list %></h1>
+
+<table>
+  <tr>
+    <th><%=t :trial %></th>
+    <th><%=t :nurse_ou %></th>
+    <th><%=t :func_ou %></th>
+    <th><%=t :extdocid %></th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @hits.each do |hit| %>
+  <tr>
+    <td><%= hit.trial.extId %></td>
+    <td><%= hit.nurse_ou %></td>
+    <td><%= hit.func_ou %></td>
+    <td><%= hit.ext_doc_id %></td>
+    <td><%= link_to 'Show', hit %></td>
+    <td><%= link_to 'Edit', edit_hit_path(hit) %></td>
+    <td><%= link_to 'Destroy', hit, confirm: 'Are you sure?', method: :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Hit', new_hit_path %>
