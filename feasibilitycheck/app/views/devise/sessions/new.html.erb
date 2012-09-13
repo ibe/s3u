@@ -1,5 +1,5 @@
 <h2><%=t :sign_in %></h2>
-
+<p><%=t :sign_in_service_center_label %></p>
 <%= form_for(resource, :as => resource_name, :url => session_path(resource_name)) do |f| %>
   <div class="field">
     <%= f.label :cn %>: <%= f.text_field :cn %>
