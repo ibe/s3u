@@ -17,12 +17,15 @@ de:
   edit: "Bearbeiten"
   extdocid: "Arzt"
   extid: "Studie"
+  func_ou: "Fachliche OrgEinheit"
   destroy: "Löschen"
   helpers:
     label:
       user:
         cn: "Benutzername"
         password: "Kennwort"
+  hits: "Treffer"
+  hits_list: "Übersicht über Treffer"
   home: "Startseite"
   informed_consent: "Information-/Einwilligungserklärung"
   investigator: "Investigator"
@@ -30,6 +33,7 @@ de:
   logged_in_as: "%{user} angemeldet"
   logout: "Abmelden"
   mail_investigator: "eMail-Adresse Investigator"
+  nurse_ou: "Pflegerische OrgEinheit"
   operator: "Operator"
   overview: "Überblick über die S3U-Infrastruktur"
   physician_list: "Übersicht über Rekrutierungsperformance"
