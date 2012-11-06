@@ -1,9 +1,13 @@
-Welcome to example.com, <%= @user.surnameContact %>
-===============================================
- 
-You have successfully signed up to example.com,
-your username is: <%= @user.mailContact %>.
- 
-To login to the site, just follow this link: <%= @url %>.
- 
-Thanks for joining and have a great day!
+Sehr geehrte/r Frau/Herr <%= @user.prenameContact %> <%= @user.surnameContact %>,
+
+vielen Dank für Ihre Protocol Feasibility Anfrage.
+
+Diese wird im Laufe des folgenden Tages von einem unserer Mitarbeiter geprüft und zur anschließenden Ausführung aktiviert.
+Danach werden an fünf aufeinanderfolgenden Tagen die IT-Systeme des Klinikums Ihre Anfrage bearbeiten und Sie per eMail über die Anzahl der Treffer informieren.
+
+Über folgende WWW-Adresse können Sie Ihre Anfrage innerhalb dieser fünf Tage jederzeit einsehen: <%= @url %>.
+
+Bei Rückfragen stehen wir Ihnen gerne zur Verfügung.
+Mit freundlichen Grüssen
+
+Ihr S3U-Seviceteam

@@ -4,14 +4,18 @@
     <meta content="text/html; charset=UTF-8" http-equiv="Content-Type" />
   </head>
   <body>
-    <h1>Welcome to example.com, <%= @user.surnameContact %></h1>
-    <p>
-      You have successfully signed up to example.com,
-      your username is: <%= @user.mailContact %>.<br/>
-    </p>
-    <p>
-      To login to the site, just follow this link: <%= @url %>.
-    </p>
-    <p>Thanks for joining and have a great day!</p>
+<p>Sehr geehrte/r Frau/Herr <%= @user.prenameContact %> <%= @user.surnameContact %>,</p>
+
+<p>vielen Dank für Ihre Protocol Feasibility Anfrage.</p>
+
+<p>Diese wird im Laufe des folgenden Tages von einem unserer Mitarbeiter geprüft und zur anschließenden Ausführung aktiviert.<br/>
+Danach werden an fünf aufeinanderfolgenden Tagen die IT-Systeme des Klinikums Ihre Anfrage bearbeiten und Sie per eMail über die Anzahl der Treffer informieren.</p>
+
+<p>Über folgende WWW-Adresse können Sie Ihre Anfrage innerhalb dieser fünf Tage jederzeit einsehen: <%= link_to @url, @url %>.</p>
+
+<p>Bei Rückfragen stehen wir Ihnen gerne zur Verfügung.<br/>
+Mit freundlichen Grüssen</p>
+
+<p>Ihr S3U-Seviceteam</p>
   </body>
 </html>

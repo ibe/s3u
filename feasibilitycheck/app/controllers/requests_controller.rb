@@ -49,7 +49,8 @@ class RequestsController < ApplicationController
 
     respond_to do |format|
       if @request.save
-        RequestMailer.welcome_email(@request).deliver
+        @url = root_url + @request.id.to_s
+        RequestMailer.welcome_email(@request, @url).deliver
         
         format.html { redirect_to @request, :notice => 'Request was successfully created.' }
         format.json { render :json => @request, :status => :created, :location => @request }
