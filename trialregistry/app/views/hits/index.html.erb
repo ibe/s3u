@@ -2,23 +2,18 @@
 
 <table class="person center">
   <tr>
-    <th><%=t :trial %></th>
-    <th><%=t :nurse_ou %></th>
+    <th>Treffer</th>
     <th><%=t :func_ou %></th>
+    <th><%=t :nurse_ou %></th>
     <th><%=t :extdocid %></th>
-    <th></th>
-    <th></th>
-    <th></th>
   </tr>
 
-<% @hits.each do |hit| %>
+<% @hits.each do |hit,count| %>
   <tr>
-    <td><%= link_to hit.trial.extId, hit.trial %></td>
-    <td><%= hit.nurse_ou %></td>
-    <td><%= hit.func_ou %></td>
-    <td><%= hit.ext_doc_id %></td>
-    <td><%= link_to 'Show', hit %></td>
-    <td><%= link_to 'Destroy', hit, confirm: 'Are you sure?', method: :delete %></td>
+    <td><%= count %></td>
+    <% hit.each do |h| %>
+      <td><%= h %></td>
+    <% end %>
   </tr>
 <% end %>
 </table>

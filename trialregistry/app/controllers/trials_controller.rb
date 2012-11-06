@@ -19,6 +19,7 @@ class TrialsController < ApplicationController
   # GET /trials/1.json
   def show
     @trial = Trial.find(params[:id])
+    @hits = Hit.where(:trial_id => params[:id]).order("count_all desc").count(:group => [ :func_ou, :nurse_ou, :ext_doc_id ])
 
     respond_to do |format|
       format.html # show.html.erb

@@ -2,7 +2,7 @@ class HitsController < ApplicationController
   # GET /hits
   # GET /hits.json
   def index
-    @hits = Hit.all
+    @hits = Hit.order("count_all desc").count(:group => [ :func_ou, :nurse_ou, :ext_doc_id ])
 
     respond_to do |format|
       format.html # index.html.erb
