@@ -23,6 +23,21 @@
   <%= @datum.subsubcomposite %>
 </p>
 
+<p>
+  <b>Hint:</b>
+  <%= @datum.hint %>
+</p>
+
+<p>
+  <b>Hint short:</b>
+  <%= @datum.hint_short %>
+</p>
+
+<p>
+  <b>Regex:</b>
+  <%= @datum.regex %>
+</p>
+
 
 <%= link_to 'Edit', edit_datum_path(@datum) %> |
 <%= link_to 'Back', data_path %>

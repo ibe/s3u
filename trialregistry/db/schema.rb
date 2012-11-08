@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120828135651) do
+ActiveRecord::Schema.define(:version => 20121108063145) do
 
   create_table "criteria", :force => true do |t|
     t.string   "value"
@@ -34,6 +34,9 @@ ActiveRecord::Schema.define(:version => 20120828135651) do
     t.integer  "subsubcomposite"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.text     "hint"
+    t.string   "regex"
+    t.string   "hint_short"
   end
 
   create_table "hits", :force => true do |t|
