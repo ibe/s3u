@@ -1,0 +1,10 @@
+div#error_explanation {
+    box-shadow: 3px 3px 10px #000;
+    position: absolute;
+    top: 100px;
+    left: 200px;
+    z-index: 100;
+    opacity: 0.9;
+    border: none;
+    cursor: pointer;
+}

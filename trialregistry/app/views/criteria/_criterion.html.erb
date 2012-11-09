@@ -4,6 +4,7 @@
   <td><%= criterion.operator %></td>
   <td><%= criterion.value %></td>
   <td>
-    <%= link_to t(:criterion_destroy), [criterion.trial, criterion], :confirm => 'Are you sure?', :method => :delete %>
+<!--    <%= link_to t(:criterion_destroy), [criterion.trial, criterion], :confirm => 'Are you sure?', :method => :delete %>-->
+    <%= link_to image_tag("bin.png", { :title => t(:criterion_destroy) }), [criterion.trial, criterion], :confirm => 'Are you sure?', :method => :delete %>
   </td>
 </tr>
