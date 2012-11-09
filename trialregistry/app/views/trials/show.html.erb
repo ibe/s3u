@@ -1,8 +1,26 @@
+<h2>Basisdaten (<%= link_to 'Edit', edit_trial_path(@trial) %>)</h2>
 <table class="classic">
   <tr>
     <th><%=t :extid %></th>
     <th>:</th>
     <td><%= @trial.extId %></td>
+  </tr>
+  <tr>
+    <th>Status</th>
+    <th>:</th>
+    <td>
+      <% if @trial.activated.nil? %>
+        <%= form_for(@trial) do |f| %>
+          <%= f.hidden_field :activated, :value => 1 %>
+          deactivated <%= f.submit "activate now" %>
+        <% end %>
+      <% else %>
+        <%= form_for(@trial) do |f| %>
+          <%= f.hidden_field :activated, :value => nil %>
+          activated <%= f.submit "deactivate now" %>
+        <% end %>
+      <% end %>
+    </td>
   </tr>
   <tr>
     <th><%=t :description %></th>
@@ -48,6 +66,8 @@
   </tr>
 </table>
 
+<br/>
+<h2>Ein-/Ausschlusskriterien</h2>
 <table class="person center">
   <tr>
     <th><%=t :criterion_type %></th>
@@ -57,9 +77,19 @@
     <th></th>
   </tr>
 <%= render @trial.criteria %>
+<% if @trial.activated.nil? %>
 <%= render "criteria/form" %>
-</table> 
+<% end %>
+</table>
 
-<%= link_to 'Edit', edit_trial_path(@trial) %> |
-<%= link_to 'Back', trials_path %>
-</table> 
+<h2>Bisherige Treffer</h2>
+<table class="person center">
+  <tr>
+    <th><%=t :created_at %></th>
+    <th><%=t :func_ou %></th>
+    <th><%=t :nurse_ou %></th>
+    <th><%=t :extdocid %></th>
+    <th></th>
+  </tr>
+<%= render @trial.hits %>
+</table>
