@@ -15,7 +15,7 @@ S3uLmuHl7interface::Application.routes.draw do
 
   resources :messages do
     collection do
-      get 'search'
+      post 'search'
     end
   end
   #resources :messages do
