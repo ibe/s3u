@@ -9,6 +9,8 @@ use DBD::mysql;
 use Data::Dumper;
 use Net::LDAP;
 use MIME::Lite::TT::HTML;
+use JSON;
+use REST::Client;
 
 # this line is only necessary, if run as cgi-script via apache
 print "Content-type: text/html\n\n";
@@ -34,23 +36,26 @@ my $log = Log::Log4perl->get_logger();
 my $dbh_studienmonitor = DBI->connect($S3U_CONF{DB_DSN_STUDIENMONITOR}, $S3U_CONF{DB_USER_STUDIENMONITOR}, $S3U_CONF{DB_PASSWORD_STUDIENMONITOR});
 $dbh_studienmonitor && $log->info("1/... success: studienmonitor connection") || die $log->error("1/... failure: studienmonitor connection " . DBI::errstr);
 
-#my $dbh_webrequest = DBI->connect($S3U_CONF{DB_DSN_WEBREQUEST}, $S3U_CONF{DB_USER_WEBREQUEST}, $S3U_CONF{DB_PASSWORD_WEBREQUEST});
-#$dbh_webrequest && $log->info("1/... success: webrequest connection") || die $log->error("1/... failure: webrequest connection " . DBI::errstr);
+my $sth;
 
-# get all trials
-my $sth = $dbh_studienmonitor->prepare("SELECT id FROM trials");
-$sth->execute();
+# allow self-signed ssl certificates (hopefully not needed in production environment)
+# http://search.cpan.org/~gaas/libwww-perl-6.04/lib/LWP.pm#ENVIRONMENT
+BEGIN { $ENV{PERL_LWP_SSL_VERIFY_HOSTNAME} = 0 }
+my $client = REST::Client->new();
+$client->GET($S3U_CONF{TRIALS_LIST_URL});
+my $response = from_json($client->responseContent());
+my @a = @$response;
 my @trials = ();
-# save trial ids in array of hashes
-while (my $r = $sth->fetchrow_hashref) {
+foreach (@a) {
+  my %h = %{$_};
   my %result = (
-    'id' => $r->{'id'}
+    'id' => $h{'id'}
   );
-  push @trials, \%result;
+  # process only trials that have been activated
+  if ($h{'activated'}) {
+    push @trials, \%result;
+  }
 }
-$sth->finish();
-$dbh_studienmonitor->disconnect();
-$dbh_studienmonitor && $log->info("1/... success: studienmonitor disconnected - got " .@trials. " trials") || die $log->error("1/... failure: studienmonitor disconnected " . DBI::errstr);
 
 # get current timestamp
 (my $sec, my $min, my $hour, my $mday, my $mon, my $year, my $wday, my $yday, my $isdst) = localtime(time);
@@ -232,8 +237,21 @@ foreach (@trials) {
     $dataset{'icd10Code'} = $r->{'value'};
   
     $sth->finish();
-    $log->debug("build dataset: trial: " . $dataset{'trial_id'} . " extId: " . $dataset{'extId'} . " surname: " . $dataset{'surname'} . " prename: " . $dataset{'prename'} . " dob: " . $dataset{'dob'} . " sex: " . $dataset{'sex'} . " extDocId: " . $dataset{'extDocId'} . " nurseOu: " . $dataset{'nurseOu'} . " funcOu: " . $dataset{'funcOu'}  . " admitDateTime: " . $dataset{'admitDateTime'} . " extCaseId: " . $dataset{'extCaseId'} . " icd10Text: " . $dataset{'icd10Text'} . " icd10Code: " . $dataset{'icd10Code'} || "<n/a>" . " icd10Version: " . $dataset{'icd10Version'});
+    $log->debug("build dataset: trial: " . $dataset{'trial_id'} . " extId: " . $dataset{'extId'} . " surname: " . $dataset{'surname'} . " prename: " . $dataset{'prename'} . " dob: " . $dataset{'dob'} . " sex: " . $dataset{'sex'} . " extDocId: " . $dataset{'extDocId'} . " nurseOu: " . $dataset{'nurseOu'} . " funcOu: " . $dataset{'funcOu'}  . " admitDateTime: " . $dataset{'admitDateTime'} . " extCaseId: " . $dataset{'extCaseId'} . " icd10Text: " . $dataset{'icd10Text'} . " icd10Code: " . $dataset{'icd10Code'} . " icd10Version: " . $dataset{'icd10Version'});
     
+    # if we have at least the two OU's (nursing and functional) then we write the hit to the trialregistry
+    if ($dataset{'nurseOu'} && $dataset{'funcOu'}) {
+      $dbh_studienmonitor = DBI->connect($S3U_CONF{DB_DSN_STUDIENMONITOR}, $S3U_CONF{DB_USER_STUDIENMONITOR}, $S3U_CONF{DB_PASSWORD_STUDIENMONITOR});
+      $dbh_studienmonitor && $log->info("2/... success: studienmonitor connection") || die $log->error("2/... failure: studienmonitor connection " . DBI::errstr);
+      my $ext_doc_id = "";
+       if ($dataset{'extDocId'} ne "") {
+         $ext_doc_id = $dataset{'extDocId'};
+      }
+      $sth = $dbh_studienmonitor->prepare("INSERT INTO hits (trial_id, nurse_ou, func_ou, ext_doc_id, created_at) VALUES ('". $dataset{'trial_id'} ."', '".$dataset{'nurseOu'}."', '". $dataset{'funcOu'}. "', '". $ext_doc_id ."', '". $timestamp. "')");
+      $sth->execute();
+      $dbh_studienmonitor->disconnect();
+    }
+
     # master requirement: we need a physician associated with the patient
     if ($dataset{'extDocId'}) {
       # check if we have an identical patient already in the patients table
@@ -308,14 +326,18 @@ foreach (@trials) {
 my $dbh_aerzte_ui = DBI->connect($S3U_CONF{DB_DSN_WEBINTERFACE}, $S3U_CONF{DB_USER_WEBINTERFACE}, $S3U_CONF{DB_PASSWORD_WEBINTERFACE});
 $dbh_aerzte_ui && $log->info("4/... success: webinterface connection") || die $log->error("3/... failure: webinterface connection " . DBI::errstr);
 $sth = $dbh_aerzte_ui->prepare(
-  "SELECT DISTINCT(p.extDocId) FROM patients p, medical_cases m, diagnoses d, users u WHERE u.extDocId = p.extDocId AND u.current_sign_in_at < '". $timestamp ."' AND ( p.created_at = '" . $timestamp . "' OR m.created_at = '" . $timestamp . "' OR d.created_at = '" . $timestamp . "' )"
+#  "SELECT DISTINCT(p.extDocId) FROM patients p, medical_cases m, diagnoses d, users u WHERE u.extDocId = p.extDocId AND u.current_sign_in_at < '". $timestamp ."' AND ( p.created_at = '" . $timestamp . "' OR m.created_at = '" . $timestamp . "' OR d.created_at = '" . $timestamp . "' )"
+  "SELECT DISTINCT(p.extdocid) FROM patients p, medical_cases m, diagnoses d WHERE d.medical_case_id = m.id AND m.patient_id = p.id AND ( p.read_status IS NULL OR m.read_status IS NULL OR d.read_status IS NULL )"
 );
 $sth->execute();
+$log->debug("preparing to send physician notification mail");
 while (my $r = $sth->fetchrow_hashref) {
+  $log->debug("physician notification mail sent to: " . $r->{'extDocId'});
   buildPhysicianMail($r->{'extDocId'});
 }
 $sth = $dbh_aerzte_ui->prepare(
-  "SELECT DISTINCT(p.trial_id) FROM patients p, medical_cases m, diagnoses d, users u WHERE u.extDocId = p.extDocId AND u.current_sign_in_at < '". $timestamp ."' AND ( p.created_at = '" . $timestamp . "' OR m.created_at = '" . $timestamp . "' OR d.created_at = '" . $timestamp . "' )"
+  #"SELECT DISTINCT(p.trial_id) FROM patients p, medical_cases m, diagnoses d, users u WHERE u.extDocId = p.extDocId AND u.current_sign_in_at < '". $timestamp ."' AND ( p.created_at = '" . $timestamp . "' OR m.created_at = '" . $timestamp . "' OR d.created_at = '" . $timestamp . "' )"
+  "SELECT DISTINCT(p.trial_id) FROM patients p, medical_cases m, diagnoses d WHERE d.medical_case_id = m.id AND m.patient_id = p.id AND ( p.read_status IS NULL OR m.read_status IS NULL OR d.read_status IS NULL )"
 );
 $sth->execute();
 my @trial_ids = ();
@@ -331,7 +353,9 @@ if (@trial_ids) {
   $sth = $dbh_studienmonitor->prepare(
     "SELECT mailInvestigator, prenameInvestigator, surnameInvestigator, extId FROM trials WHERE id IN (". join(",",@trial_ids) .")");
   $sth->execute();
+  $log->debug("preparing to send trials notification mail ");
   while (my $r = $sth->fetchrow_hashref) {
+    $log->debug("trials notification mail sent to: " . $r->{'mailInvestigator'});
     buildTrialMail($r->{'mailInvestigator'},$r->{'prenameInvestigator'},$r->{'surnameInvestigator'},$r->{'extId'});
   }  
 }

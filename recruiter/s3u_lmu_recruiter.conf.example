@@ -61,3 +61,6 @@ MAIL_SENDER = my_other_user@localhost
 
 # URL which shows all feasibility checks
 FEASIBILITY_CHECK_URL = https://localhost/requests
+
+# URL which represents the REST endpoint for the trials list
+TRIALS_LIST_URL = https://localhost/trials.json
