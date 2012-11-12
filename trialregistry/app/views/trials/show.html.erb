@@ -12,12 +12,12 @@
       <% if @trial.activated.nil? %>
         <%= form_for(@trial) do |f| %>
           <%= f.hidden_field :activated, :value => 1 %>
-          deactivated <%= f.submit "activate now" %>
+          <%= image_tag "radiolocator_off.png" %> <%= f.submit "activate now" %>
         <% end %>
       <% else %>
         <%= form_for(@trial) do |f| %>
           <%= f.hidden_field :activated, :value => nil %>
-          activated <%= f.submit "deactivate now" %>
+          <%= image_tag "radiolocator_on.gif" %> <%= f.submit "deactivate now" %>
         <% end %>
       <% end %>
     </td>
