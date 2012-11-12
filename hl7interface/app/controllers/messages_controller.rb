@@ -1,7 +1,14 @@
 class MessagesController < ApplicationController
 
+  # for every action except :search, use devise/devise_ldap_authenticatable as
+  # authentication backend
+  # for :search use basic http authentication instead
+  # see https://github.com/plataformatec/devise/issues/2030
   before_filter :authenticate_user!
+  skip_before_filter :authenticate_user!, :only => :search
   load_and_authorize_resource
+  skip_load_and_authorize_resource :only => :search
+  http_basic_authenticate_with :name => S3uLmuHl7interface::Application.config.REST_username, :password => S3uLmuHl7interface::Application.config.REST_password, :only => :search
 
   helper_method :sort_column, :sort_direction
   

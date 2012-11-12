@@ -1,8 +1,14 @@
+S3uLmuHl7interface::Application.configure do
 #
 # here, the Active Directory group is defined, which users must be member of
 # if they should be recognized as administrators of this application.
 # mandatory, default is:
 # CN=admins,OU=group,DC=your,DC=org,DC=company,DC=de
 #
-
-S3uLmuHl7interface::Application.config.administrator_group = 'CN=admins,OU=group,DC=your,DC=org,DC=company,DC=de'
+  config.administrator_group = 'CN=admins,OU=group,DC=your,DC=org,DC=company,DC=de'
+#
+# credentials that need to be used for authentication of the RESTful web services provided by this application
+#
+  config.REST_username = "### username here ###"
+  config.REST_password = "### password here ###"
+end
