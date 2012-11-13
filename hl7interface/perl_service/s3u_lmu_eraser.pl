@@ -3,8 +3,12 @@ use Log::Log4perl;
 use DBI;
 use DBD::mysql;
 
+unless (exists $ARGV[0] && -f $ARGV[0]) {
+  die "ERROR: No config file provided. exiting.\nusage: 's3u_lmu_eraser.pl <config file with full path>'\n";
+}
+
 # loading/processing major config file
-open(CONFIG, "s3u_lmu_services.conf");
+open(CONFIG, $ARGV[0]);
 while (<CONFIG>) {
   chomp;
   s/#.*//;
@@ -35,10 +39,10 @@ my $sth;
 
 # if we're in debug mode simply delete all
 if ($S3U_CONF{ERASER_MODE} eq "DEBUG") {
-  $sth = $dbh->do("DELETE FROM messages") or die $log->error($dbh->errstr);
-  $sth = $dbh->do("DELETE FROM patients") or die $log->error($dbh->errstr);
-  $sth = $dbh->do("DELETE FROM medical_cases") or die $log->error($dbh->errstr);
-  $sth = $dbh->do("DELETE FROM diagnoses") or die $log->error($dbh->errstr);
+  $sth = $dbh->do("TRUNCATE TABLE messages") or die $log->error($dbh->errstr);
+  $sth = $dbh->do("TRUNCATE TABLE patients") or die $log->error($dbh->errstr);
+  $sth = $dbh->do("TRUNCATE TABLE medical_cases") or die $log->error($dbh->errstr);
+  $sth = $dbh->do("TRUNCATE TABLE diagnoses") or die $log->error($dbh->errstr);
   $log->info("running in debug mode therefor deleted all");
 }
 # else delete only those patients/cases/diagnoses that have been discharged for at least 48 hours
