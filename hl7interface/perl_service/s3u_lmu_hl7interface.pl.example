@@ -14,8 +14,8 @@
 #
 # Instructions:
 #  * create a daemon and listen to a particular TCP port to which HL7 messages are sent by a HL7 client
-#  * use public available documentation on HL7 to determine, which data you need from the whole HL7 stream
-#  * store it into your database
+#  * use public available documentation on HL7 to determine, which data you need from the whole HL7 stream (Hint: Try Google et al. ... *douh*)
+#  * store it into your database (two different schema types exist: a) bulk hl7 message (one dataset per segment) b) transformed schema (the usual patient/case/diagnosis setup))
 #  * done
 #
 # Feel free to contact me on this topic. Use the appropriate mail address on the organization's website:
