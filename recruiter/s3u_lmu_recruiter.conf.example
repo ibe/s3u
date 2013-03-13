@@ -64,3 +64,9 @@ FEASIBILITY_CHECK_URL = https://localhost/requests
 
 # URL which represents the REST endpoint for the trials list
 TRIALS_LIST_URL = https://localhost/trials.json
+
+# URL which represents the REST endpoint for the wards list
+WARDS_LIST_URL = https://localhost/wards.json
+
+# URL which represents the REST endpoint for the wards contact list
+WARDS_CONTACT_LIST_URL = https://localhost/contacts.json
