@@ -51,3 +51,8 @@ ERASER_TIMESPAN = 172800
 # mandatory, defaults to:
 # DEBUG
 ERASER_MODE = DEBUG
+
+# admin mail notification
+MAIL_ADMIN = myadmin@example.com
+MAIL_TEMPLATE_PATH = /some/path/mail_templates
+MAIL_TEMPLATE_FILE = notification.txt.tt
