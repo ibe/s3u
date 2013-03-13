@@ -14,3 +14,4 @@ perl_service/*.sql
 perl_service/s3u_lmu_hl7interface.pl
 app/assets/images/header.jpg
 public/assets/
+perl_service/mail_templates/notification.txt.tt
