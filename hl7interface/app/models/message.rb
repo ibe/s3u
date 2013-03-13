@@ -1,5 +1,5 @@
 class Message < ActiveRecord::Base
-  belongs_to :abbrevation
+  belongs_to :tag
   attr_accessible :dataSource, :messageControlId, :segment, :composite, :subcomposite, :subsubcomposite, :value
   
   paginates_per 100

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120824112846) do
+ActiveRecord::Schema.define(:version => 20121119074154) do
 
   create_table "diagnoses", :force => true do |t|
     t.integer  "medical_case_id"
@@ -80,6 +80,13 @@ ActiveRecord::Schema.define(:version => 20120824112846) do
   end
 
   add_index "permissions", ["group_id"], :name => "index_permissions_on_group_id"
+
+  create_table "tags", :force => true do |t|
+    t.string   "name"
+    t.text     "description"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "users", :force => true do |t|
     t.string   "email",                                 :default => "", :null => false

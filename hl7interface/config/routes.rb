@@ -1,4 +1,6 @@
 S3uLmuHl7interface::Application.routes.draw do
+  resources :tags
+
   resources :diagnoses
 
   resources :medical_cases
