@@ -57,6 +57,37 @@ foreach (@a) {
   }
 }
 
+$client->GET($S3U_CONF{WARDS_LIST_URL});
+$response = from_json($client->responseContent());
+@a = @$response;
+my @wards = ();
+foreach (@a) {
+  my %h = %{$_};
+  my %result = (
+    'id' => $h{'id'},
+    'name' => $h{'name'}
+  );
+  push @wards, \%result;
+  print "$h{'name'} \n";
+}
+
+$client->GET($S3U_CONF{WARDS_CONTACT_LIST_URL});
+$response = from_json($client->responseContent());
+@a = @$response;
+my @contacts = ();
+foreach (@a) {
+  my %h = %{$_};
+  my %result = (
+    'id' => $h{'id'},
+    'name' => $h{'surname'},
+    'mail' => $h{'mail'},
+    'phone' => $h{'phone'},
+    'ward_id' => $h{'ward_id'}
+  );
+  push @contacts, \%result;
+  print "$h{'ward_id'} \n";
+}
+
 # get current timestamp
 (my $sec, my $min, my $hour, my $mday, my $mon, my $year, my $wday, my $yday, my $isdst) = localtime(time);
 my $timestamp = sprintf "%4d-%02d-%02d %02d:%02d:%02d",$year+1900,$mon+1,$mday,$hour,$min,$sec;
@@ -308,6 +339,25 @@ foreach (@trials) {
       $sth->finish();
       # ok, we're done with the aerzte_ui
       #$dbh_aerzte_ui->disconnect();
+    }
+    
+    ###
+    ### new notification algorithm (contact trial personell according to lookup table in module "s3u config")
+    ###
+    
+    elsif ($dataset{'nurseOu'}) {
+      foreach (@wards) {
+        my %h = %{$_};
+        if ($dataset{'nurseOu'} eq $h{'name'}) {
+          foreach (@contacts) {
+            my %i = %{$_};
+            if ($h{'id'} eq $i{'ward_id'}) {
+              $log->debug("identified treating personell for current medical case: ward $h{'name'}, personell $i{'name'}, mail $i{'mail'}");
+              # somewhere around here, we will have to send the actual notification mails
+            }
+          }
+        }
+      }
     }
     else {
       # oh nooo, epic fail! we miss a patient because no physician is associated with it!
