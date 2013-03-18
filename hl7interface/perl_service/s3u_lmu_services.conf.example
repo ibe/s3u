@@ -56,3 +56,12 @@ ERASER_MODE = DEBUG
 MAIL_ADMIN = myadmin@example.com
 MAIL_TEMPLATE_PATH = /some/path/mail_templates
 MAIL_TEMPLATE_FILE = notification.txt.tt
+
+# idle mode. available modes are: ON, OFF
+# If set to ON, the hl7interface service does not store anything in the database(s)
+# but simply discards the messages received.
+# This mode should be set to ON for testing purposes only so that the buffer of the
+# sending server does not fill up.
+# mandatory, defaults to:
+# ON
+IDLE_MODE = ON
