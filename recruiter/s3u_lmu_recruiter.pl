@@ -401,7 +401,7 @@ $dbh_studienmonitor && $log->info("2/... success: studienmonitor connection") ||
 
 if (@trial_ids) {
   $sth = $dbh_studienmonitor->prepare(
-    "SELECT mailInvestigator, prenameInvestigator, surnameInvestigator, extId FROM trials WHERE id IN (". join(",",@trial_ids) .")");
+    "SELECT mailInvestigator, prenameInvestigator, surnameInvestigator, extId FROM trials WHERE id IN (". join(",",@trial_ids) .") AND NOT activated IS NULL");
   $sth->execute();
   $log->debug("preparing to send trials notification mail ");
   while (my $r = $sth->fetchrow_hashref) {
