@@ -16,8 +16,12 @@
     <%= f.text_field :description %>
   </div>
   <div class="field">
+    <%= f.label :data_source %><br />
+    <%= f.select :data_source, options_for_select([['PDMS','PDMS'],['PATHOLOGY','PATHOLOGY'],['LABORATORY','LABORATORY']]) %>
+  </div>
+  <div class="field">
     <%= f.label :segment %><br />
-    <%= f.select :segment, options_for_select([['MSH','MSH'],['EVN','EVN'],['PID','PID'],['PV1','PV1'],['DG1','DG1'],['NK1','NK1'],['IN1','IN1']]) %>
+    <%= f.select :segment, options_for_select([['MSH','MSH'],['EVN','EVN'],['PID','PID'],['PV1','PV1'],['DG1','DG1'],['NK1','NK1'],['IN1','IN1'],['OBR','OBR'],['OBX','OBX']]) %>
   </div>
   <div class="field">
     <%= f.label :composite %><br />

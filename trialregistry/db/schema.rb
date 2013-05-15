@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20121108063145) do
+ActiveRecord::Schema.define(:version => 20130515053426) do
 
   create_table "criteria", :force => true do |t|
     t.string   "value"
@@ -37,6 +37,7 @@ ActiveRecord::Schema.define(:version => 20121108063145) do
     t.text     "hint"
     t.string   "regex"
     t.string   "hint_short"
+    t.string   "data_source"
   end
 
   create_table "hits", :force => true do |t|
@@ -74,6 +75,7 @@ ActiveRecord::Schema.define(:version => 20121108063145) do
     t.integer  "informed_consent_file_size"
     t.datetime "informed_consent_updated_at"
     t.integer  "recruiting_status"
+    t.boolean  "activated"
   end
 
   create_table "users", :force => true do |t|

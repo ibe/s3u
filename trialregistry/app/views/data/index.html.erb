@@ -3,6 +3,7 @@
 <table class="person">
   <tr>
     <th><%= sortable "description", t(:description) %></th>
+    <th><%= sortable "data_source", t(:data_source) %></th>
     <th><%= sortable "segment", t(:segment) %></th>
     <th><%= sortable "composite", t(:composite) %></th>
     <th><%= sortable "subcomposite", t(:subcomposite) %></th>
@@ -15,6 +16,7 @@
 <% @data.each do |datum| %>
   <tr>
     <td><%= datum.description %></td>
+    <td class="center"><%= datum.data_source %></td>
     <td class="center"><%= datum.segment %></td>
     <td class="center"><%= datum.composite %></td>
     <td class="center"><%= datum.subcomposite %></td>
